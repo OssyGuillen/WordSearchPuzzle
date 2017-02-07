@@ -1,1 +1,1 @@
-# WorldSearchPuzzle
+# WordSearchPuzzle
