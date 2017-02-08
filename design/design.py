@@ -2,6 +2,7 @@
 
 def display_initial_message():
 # Displays the name of the game and a welcome message
+# Version 1.0
 
 def display_menu():
 # Displays the menu with the options:
@@ -9,10 +10,16 @@ def display_menu():
 # Multi Player
 # Instructions
 # Exit
+# Version 1.0
 
 def display_single_player_modes():
+# Version 1.0
 
 def get_player_nickname():
+
+def start_game():
+
+def setup():
 
 
 commands = ["help","exit","rotate","word","initial"]
@@ -31,15 +38,17 @@ messages = {"incorret_word":"The word is not on the list",
 			"insert_column_number": "Column number: "}
 
 class Player:
-
+# Version 1.0
 	def __init__(self, nickname):
-		self.nickname = nickname
-		self.clue = None
+		self.nickname = nickname # Not Version 1.0
+		self.clue = None # Not Version 1.0
 
 	def set_clue(self, clue):
+	# Version 1.0
 
 
 class Board:
+# Version 1.0
 
 	def __init__(self):
 		self.original_grid = [[]]
@@ -71,6 +80,7 @@ class Board:
 	def get_word(self,row1,column1,row2,column2):
 
 class Subject:
+# Version 1.0
 
 	def __init__(self, name):
 		self.name = name
@@ -84,21 +94,32 @@ class Subject:
 
 
 class Dictionary:
-
+# Version 1.0
 	def __init__(self):
-		self.subjets = []
+		self.subjects = []
 
-	def add_subject(self, subjet):
+	def add_subject(self, subject):
+	# Return if there was an error.
+	# Version 1.0
 
-	def display_subjets(self):
+	def display_subjects(self):
 	#Display the list of the names of the subjects
+	# Version 1.0
 
+	def load(self,file):
+	# Version 1.0
+
+	def get_subject_by_name(self, name):
+	# Version 1.0
+	# Return subject
 
 class Clue:
+# Version 1.0
+
 	# INHERITANCE FROM SUBJECT?
-	def __init__(self, subject_name, words_not_found):
+	def __init__(self, subject_name):
 		self.subject_name = subject_name
-		self.words_not_found = words_not_found
+		self.words_not_found = []
 		self.words_found = []
 
 	def word_in_clue(self, word):
@@ -107,9 +128,12 @@ class Clue:
 	def already_found(self,word):
 	# Cheks if the word is has already been found
 
+	def add_word_to_not_found(self, word):
+
 	def add_word_to_found(self, word):
 
 	def remove_word_from_not_found(self, word):
+	# Return if the word is in NOT FOUND
 
 	def found_all_the_words(self):
 
@@ -119,8 +143,10 @@ class BySubject(Clue):
 	def display ():
 		
 class BySolution(Clue):
+# Version 1.0
 
 	def display ():
+	# Version 1.0
 		
 class ByLetters(Clue):
 
@@ -161,40 +187,54 @@ class HighScores:
 
 
 class Game:
+# Version 1.0
 
 	def __init__(self):
 		self.board = None
 
 	def add_board(self):
-	
+	# Version 1.0
+
 	def select_subject(self):
-		
+	# Version 1.0
+	# Return subject.
+
 	def select_clue(self):
+	# Version 1.0
 
 	def read_command(self):
-	
+	# Version 1.0
+
 	def find_word(self):
+	# Version 1.0
 
 	def turn(self):
 	# reads the commands of the user.
 	# the user rotates the board, find words, etc..
+	# Version 1.0
 
 class SinglePlayer(Game):
+# Version 1.0
 
 	def __init__(self, player):
 		self.player = player
 
 	def display_current_state(self):
 	# Display the board, the list of words according to the clue
+	# Version 1.0
 
 	def restart(self):
+	# Version 1.0
 
 
 class PracticeMode(SinglePlayer):
+# Version 1.0
 
 	def play(self):
+	# Version 1.0
 		
 	def exit_game(self):
+	# Version 1.0
 		
 class SimpleMode(SinglePlayer):
 
