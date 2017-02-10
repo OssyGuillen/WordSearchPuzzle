@@ -1,35 +1,10 @@
 
-
-def display_initial_message():
-# Displays the name of the game and a welcome message
-# Version 1.0
-
-def display_menu():
-# Displays the menu with the options:
-# Single Player
-# Multi Player
-# Instructions
-# Exit
-# Version 1.0
-
-def display_single_player_modes():
-# Version 1.0
-
-def get_player_nickname():
-
-def start_game():
-
-def setup():
-
-def exit_game():
-
-
 commands = ["help","exit","rotate","word","initial"]
 direction = ["right","left","up","down"]
 messages = {"incorret_word":"The word is not on the list", 
 			"found_word":"You already found this word",
 			"good_word":"Congratulations! You just find a word",
-			"welcome":"WORD SEARCH PUZZLE"
+			"welcome":"WORD SEARCH PUZZLE",
 			"winner":" is the winner",
 			"win": "Congratulations! You won",
 			"highscore": "NEW HIGHSCORE",
@@ -39,6 +14,38 @@ messages = {"incorret_word":"The word is not on the list",
 			"insert_row_number": "Row number: ",
 			"insert_column_number": "Column number: "}
 
+
+def display_initial_message():
+# Displays the name of the game and a welcome message
+# Version 1.0
+	pass
+
+def display_menu():
+# Displays the menu with the options:
+# Single Player
+# Multi Player
+# Instructions
+# Exit
+# Version 1.0
+	pass
+
+def display_single_player_modes():
+# Version 1.0
+	pass
+
+def get_player_nickname():
+	pass
+
+def start_game():
+	pass
+
+def setup():
+	pass
+
+def exit_game():
+	pass
+
+
 class Player:
 # Version 1.0
 	def __init__(self, nickname):
@@ -47,6 +54,7 @@ class Player:
 
 	def set_clue(self, clue):
 	# Version 1.0
+		pass
 
 
 class Board:
@@ -62,24 +70,31 @@ class Board:
 	# Add to the board all the words in clue. 
 	# Fill the blank spaces with random letters
 	# Rotates the board randomly
-
+		pass
+		
 	def restart_board(self):
 	# Restart the board to its original state
+		pass
 
 	def rotate(self, number, direction):
 	# Rotates either the column or the row
 	# TYPE OF DIRECTION?
+		pass
 
 	def display(self):
 	# Prints the grid
+		pass
 
 	def is_valid_cell(self,row,column):
 	# The cell is inside the board
+		pass
 
 	def can_generate_a_word(self,row1,column1,row2,column2):
 	# The cells form a line where it is possible to find a word
+		pass
 
 	def get_word(self,row1,column1,row2,column2):
+		pass
 
 class Subject:
 # Version 1.0
@@ -90,9 +105,11 @@ class Subject:
 
 	def add_word(self, word):
 	#Add a word to self.content.
+		pass
 
 	def import_subject(self, file):
 	# Import all the words corresponding to a subject from a file
+		pass
 
 
 class Dictionary:
@@ -103,17 +120,21 @@ class Dictionary:
 	def add_subject(self, subject):
 	# Return if there was an error.
 	# Version 1.0
+		pass
 
 	def display_subjects(self):
 	#Display the list of the names of the subjects
 	# Version 1.0
+		pass
 
 	def load(self,file):
 	# Version 1.0
+		pass
 
 	def get_subject_by_name(self, name):
 	# Version 1.0
 	# Return subject
+		pass
 
 class Clue:
 # Version 1.0
@@ -125,40 +146,51 @@ class Clue:
 		self.words_found = []
 
 	def build():
+		pass
 
 	def word_in_clue(self, word):
 	# Checks if the word is on the list of words that have not been found
+		pass
 
 	def already_found(self,word):
 	# Cheks if the word is has already been found
+		pass
 
 	def add_word_to_not_found(self, word):
+		pass
 
 	def add_word_to_found(self, word):
+		pass
 
 	def remove_word_from_not_found(self, word):
 	# Return if the word is in NOT FOUND
+		pass
 
 	def found_all_the_words(self):
+		pass
 
 
 class BySubject(Clue):
 
 	def display ():
+		pass
 		
 class BySolution(Clue):
 # Version 1.0
 
 	def display ():
 	# Version 1.0
+		pass
 		
 class ByLetters(Clue):
 
 	def display ():
+		pass
 		
 class ByLength(Clue):
 
 	def display ():
+		pass
 
 
 class Score:
@@ -168,6 +200,7 @@ class Score:
 		self.points = points
 
 	def __str__(self):
+		pass
 
 class HighScores:
 
@@ -178,16 +211,22 @@ class HighScores:
 		self.racetime_mode = []
 
 	def add_simple_mode_highscore(self, score):
+		pass
 	
 	def add_race_time_mode_highscore(self, score):
+		pass
 
 	def import_highscores(self, file):
-
+		pass
+		
 	def export_highscores(self, file):
+		pass
 
 	def is_highscore(self, score):
+		pass
 
 	def display(self):
+		pass
 
 
 class Game:
@@ -198,26 +237,33 @@ class Game:
 
 	def add_board(self):
 	# Version 1.0
+		pass
 
 	def select_subject(self):
 	# Version 1.0
 	# Return subject.
+		pass
 
 	def select_clue(self):
 	# Version 1.0
+		pass
 
 	def read_command(self):
 	# Version 1.0
+		pass
 
 	def find_word(self):
 	# Version 1.0
+		pass
 
 	def turn(self):
 	# reads the commands of the user.
 	# the user rotates the board, find words, etc..
 	# Version 1.0
+		pass
 
 	def setup(self):
+		pass
 
 class SinglePlayer(Game):
 # Version 1.0
@@ -228,9 +274,11 @@ class SinglePlayer(Game):
 	def display_current_state(self):
 	# Display the board, the list of words according to the clue
 	# Version 1.0
+		pass
 
 	def restart(self):
 	# Version 1.0
+		pass
 
 
 class PracticeMode(SinglePlayer):
@@ -238,38 +286,47 @@ class PracticeMode(SinglePlayer):
 
 	def play(self):
 	# Version 1.0
+		pass
 		
 	def restart(self):
 	# Version 1.0
+		pass
 		
 class SimpleMode(SinglePlayer):
 
 	def __init__(self):
-		self.initial_time = 00:00
+		self.initial_time = 0
 		
 	def play(self):
+		pass
 		
 	def manage_time(self):
 	# Starts the time
 	# Thread 
+		pass
 
 	def compute_score(self, words, time):
+		pass
 
 
 class TimeRaceMode(SinglePlayer):
 
 	def __init__(self):
-		self.initial_time = 05:00
-		self.final_time = 00:00
+		self.initial_time = 0
+		self.final_time = 0
 
 	def manage_time(self):
 	# Takes the time
+		pass
 
 	def is_time_over(self):
+		pass
 	
 	def play(self):
+		pass
 
 	def compute_score(self, words, time):
+		pass
 
 class MultiPlayer(Game):
 
@@ -277,26 +334,33 @@ class MultiPlayer(Game):
 		self.player1 = player1
 		self.player2 = player2
 		self.current_player = player1
-		self.time_per_turn = 02:00
+		self.time_per_turn = 0
 
 	def display_current_state(self):
 	# Display the board, the list of words according to the clue
 	# The name of the player in turn
+		pass
 
 	def set_current_player(self):
 	# change of current_player
+		pass
 
 	def manage_time(self):
 	# take the time corresponding to each turn
+		pass
 
 	def play(self):
+		pass
 
 	def is_time_over(self):
+		pass
 
 	def display_winner(self):
+		pass
 
 	def restart(self):
 	# Setup of the game again, keeping the same players.
+		pass
 
 class Instruction:
 
@@ -304,9 +368,17 @@ class Instruction:
 		self.instruction = None
 
 	def import_instruction(self, file):
+		pass
 
 	def display():
+		pass
 
 
+def main():
+	pass
+
+if __name__ == '__main__':
+  main()
 
 
+	
