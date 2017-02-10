@@ -21,6 +21,8 @@ def start_game():
 
 def setup():
 
+def exit_game():
+
 
 commands = ["help","exit","rotate","word","initial"]
 direction = ["right","left","up","down"]
@@ -122,6 +124,8 @@ class Clue:
 		self.words_not_found = []
 		self.words_found = []
 
+	def build():
+
 	def word_in_clue(self, word):
 	# Checks if the word is on the list of words that have not been found
 
@@ -213,6 +217,8 @@ class Game:
 	# the user rotates the board, find words, etc..
 	# Version 1.0
 
+	def setup(self):
+
 class SinglePlayer(Game):
 # Version 1.0
 
@@ -233,7 +239,7 @@ class PracticeMode(SinglePlayer):
 	def play(self):
 	# Version 1.0
 		
-	def exit_game(self):
+	def restart(self):
 	# Version 1.0
 		
 class SimpleMode(SinglePlayer):
@@ -245,9 +251,7 @@ class SimpleMode(SinglePlayer):
 		
 	def manage_time(self):
 	# Starts the time
-	# Thread
-
-	def exit_game(self): 
+	# Thread 
 
 	def compute_score(self, words, time):
 
@@ -264,8 +268,6 @@ class TimeRaceMode(SinglePlayer):
 	def is_time_over(self):
 	
 	def play(self):
-
-	def exit_game(self):
 
 	def compute_score(self, words, time):
 
@@ -292,8 +294,6 @@ class MultiPlayer(Game):
 	def is_time_over(self):
 
 	def display_winner(self):
-
-	def exit_game(self):
 
 	def restart(self):
 	# Setup of the game again, keeping the same players.
