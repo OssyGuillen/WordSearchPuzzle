@@ -77,24 +77,50 @@ class Board:
 
 	def display(self):
 	# Prints the grid
-		pass
+		for i in range (self.rows):
+			for j in range (self.columns):
+				pass
 
 	def is_valid_cell(self,row,column):
 	# Cheks if the cell is inside the board
-		if row <= self.rows and row > 0 and column <= self.columns and column > 0:
+		if row < self.rows and row >= 0 and column < self.columns and column >= 0:
 			return True
 		return False
 
 
 	def can_generate_a_word(self,row1,column1,row2,column2):
-		''' The cells form a vertical or an horizontal line '''
-		if  (row1 == row2 and column1 != column2 and abs(column1 - column2) >= self.min_word_length) or \
+		''' The cells are valid, they form a vertical or an horizontal line and are long enough'''
+		if  (self.is_valid_cell(row1,column1) and self.is_valid_cell(row2,column2) and\
+			row1 == row2 and column1 != column2 and abs(column1 - column2) >= self.min_word_length) or \
 			(column1 == column2 and row1 != row2 and abs(row1 - row2) >= self.min_word_length):
 			return True
 		return False
 
+	def get_letter(self,row,column):
+		if self.is_valid_cell(row,column):
+			return self.current_grid[row][column]
+		return None
+
 	def get_word(self,row1,column1,row2,column2):
-		pass
+		if self.can_generate_a_word(row1,column1,row2,column2):
+			word = "" 
+			# The word is placed horizontally
+			if (row1 == row2):
+				start = min(column1,column2)
+				end = max(column1,column2)
+				for i in range (start,end):
+					word = word + self.get_letter(row1,i)
+				return word
+			# The word is placed vertically
+			elif (column1 == column2):
+				start = min(row1,row2)
+				end = max(row1,row2)
+				for i in range (start,end):
+					word = word + self.get_letter(i,column1)
+				return word
+		else:
+			return None
+
 
 class Subject:
 # Version 1.0
@@ -148,13 +174,16 @@ class Clue:
 	def build():
 		pass
 
-	def word_in_clue(self, word):
-	# Checks if the word is on the list of words that have not been found
-		pass
-
 	def already_found(self,word):
-	# Cheks if the word is has already been found
-		pass
+		# Cheks if the word is has already been found
+		return (self.words_found.count(word) != 0)
+
+	def word_not_found(self,word):
+		# Cheks if the word is has not been found
+		return (self.words_not_found.count(word) != 0)
+
+	def word_in_clue(self, word):
+		return (self.already_found(word) or self.word_not_found(word))
 
 	def add_word_to_not_found(self, word):
 		pass
@@ -163,11 +192,13 @@ class Clue:
 		self.words_found.append(word)
 
 	def remove_word_from_not_found(self, word):
-	# Return if the word is in NOT FOUND
-		pass
+		if (self.word_not_found(word)):
+			self.words_not_found.remove(word)
+			return True
+		return False
 
 	def found_all_the_words(self):
-		pass
+		return ((len(self.words_not_found) == 0) and (len(self.words_found) != 0))
 
 
 class BySubject(Clue):
@@ -377,7 +408,6 @@ class Instruction:
 
 def main():
 	pass
-
 
 
 if __name__ == '__main__':
