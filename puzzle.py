@@ -4,7 +4,7 @@ direction = ["right","left","up","down"]
 messages = {"incorret_word":"The word is not on the list", 
 			"found_word":"You already found this word",
 			"good_word":"Congratulations! You just find a word",
-			"welcome":"WORD SEARCH PUZZLE",
+			"welcome":"WORD SEARCH PUZZLE\n\nLet's play!\n",
 			"winner":" is the winner",
 			"win": "Congratulations! You won",
 			"highscore": "NEW HIGHSCORE",
@@ -12,26 +12,19 @@ messages = {"incorret_word":"The word is not on the list",
 			"invalid_cell": "That cell is not inside the board",
 			"insert_direction": "Direction: ",
 			"insert_row_number": "Row number: ",
-			"insert_column_number": "Column number: "}
+			"insert_column_number": "Column number: ",
+			"menu": "MENU\n\n[p] Play\n[h] Help\n[e] Exit\n",
+			"single_player_modes":"MODE\n\nPractice mode\n"}
 
 
 def display_initial_message():
-# Displays the name of the game and a welcome message
-# Version 1.0
-	pass
+	print (messages["welcome"])
 
 def display_menu():
-# Displays the menu with the options:
-# Single Player
-# Multi Player
-# Instructions
-# Exit
-# Version 1.0
-	pass
+	print (messages["menu"])
 
 def display_single_player_modes():
-# Version 1.0
-	pass
+	print (messages["single_player_modes"])
 
 def get_player_nickname():
 	pass
@@ -65,6 +58,7 @@ class Board:
 		self.current_grid = [[]]
 		self.rows = 10
 		self.columns = 10
+		self.min_word_length = 3
 
 	def build (self, words):
 	# Add to the board all the words in clue. 
@@ -86,12 +80,18 @@ class Board:
 		pass
 
 	def is_valid_cell(self,row,column):
-	# The cell is inside the board
-		pass
+	# Cheks if the cell is inside the board
+		if row <= self.rows and row > 0 and column <= self.columns and column > 0:
+			return True
+		return False
+
 
 	def can_generate_a_word(self,row1,column1,row2,column2):
-	# The cells form a line where it is possible to find a word
-		pass
+		''' The cells form a vertical or an horizontal line '''
+		if  (row1 == row2 and column1 != column2 and abs(column1 - column2) >= self.min_word_length) or \
+			(column1 == column2 and row1 != row2 and abs(row1 - row2) >= self.min_word_length):
+			return True
+		return False
 
 	def get_word(self,row1,column1,row2,column2):
 		pass
@@ -160,7 +160,7 @@ class Clue:
 		pass
 
 	def add_word_to_found(self, word):
-		pass
+		self.words_found.append(word)
 
 	def remove_word_from_not_found(self, word):
 	# Return if the word is in NOT FOUND
@@ -368,14 +368,17 @@ class Instruction:
 		self.instruction = None
 
 	def import_instruction(self, file):
-		pass
+		f = open(file,'r')
+		self.instruction = f.read()
 
-	def display():
-		pass
+	def display(self):
+		print(self.instruction)
 
 
 def main():
 	pass
+
+
 
 if __name__ == '__main__':
   main()
