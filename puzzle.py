@@ -1,20 +1,24 @@
 
 commands = ["help","exit","rotate","word","initial"]
 direction = ["right","left","up","down"]
-messages = {"incorret_word":"The word is not on the list", 
-			"found_word":"You already found this word",
-			"good_word":"Congratulations! You just find a word",
+messages = {"incorret_word":" is not on the list.", 
+			"already_found_word":" was already found.",
+			"good_word":"Congratulations! You just found ",
 			"welcome":"WORD SEARCH PUZZLE\n\nLet's play!\n",
-			"winner":" is the winner",
-			"win": "Congratulations! You won",
+			"winner":" is the winner.",
+			"win": "Congratulations! You won.",
 			"highscore": "NEW HIGHSCORE",
-			"wrong_direction": "That is an invalid direction. Only 'right', 'left', 'up', 'down' are possible",
-			"invalid_cell": "That cell is not inside the board",
+			"wrong_direction": "That is an invalid direction. Only 'right', 'left', 'up', 'down' are possible.",
+			"invalid_cell": "That cell is not inside the board.",
+			"invalid_row": "That row is not inside the board.",
+			"invalid_column": "That column is not inside the board.",
+			"it_is_not_a_line": "Those cells does not form a vertical or an horizontal line.",
 			"insert_direction": "Direction: ",
 			"insert_row_number": "Row number: ",
 			"insert_column_number": "Column number: ",
 			"menu": "MENU\n\n[p] Play\n[h] Help\n[e] Exit\n",
-			"single_player_modes":"MODE\n\nPractice mode\n"}
+			"single_player_modes":"MODE\n\nPractice mode\n",
+			"error": "Error. Exit"}
 
 
 def display_initial_message():
@@ -75,15 +79,31 @@ class Board:
 	# TYPE OF DIRECTION?
 		pass
 
+	def get_letter(self,row,column):
+		if self.is_valid_cell(row,column):
+			return self.current_grid[row][column]
+		return None
+
 	def display(self):
 	# Prints the grid
 		for i in range (self.rows):
 			for j in range (self.columns):
-				pass
+				print (self.get_letter(i,j) + " ", end='')
+			print("\n")
+
+	def is_valid_row(self,row):
+		if row < self.rows and row >= 0: 
+			return True
+		return False
+
+	def is_valid_column(self,column):
+		if column < self.columns and column >= 0:
+			return True
+		return False
 
 	def is_valid_cell(self,row,column):
 	# Cheks if the cell is inside the board
-		if row < self.rows and row >= 0 and column < self.columns and column >= 0:
+		if self.is_valid_row(row) and self.is_valid_column(column):
 			return True
 		return False
 
@@ -96,10 +116,6 @@ class Board:
 			return True
 		return False
 
-	def get_letter(self,row,column):
-		if self.is_valid_cell(row,column):
-			return self.current_grid[row][column]
-		return None
 
 	def get_word(self,row1,column1,row2,column2):
 		if self.can_generate_a_word(row1,column1,row2,column2):
@@ -108,14 +124,15 @@ class Board:
 			if (row1 == row2):
 				start = min(column1,column2)
 				end = max(column1,column2)
-				for i in range (start,end):
+				for i in range (start,end+1):
 					word = word + self.get_letter(row1,i)
+					print(word)
 				return word
 			# The word is placed vertically
 			elif (column1 == column2):
 				start = min(row1,row2)
 				end = max(row1,row2)
-				for i in range (start,end):
+				for i in range (start,end+1):
 					word = word + self.get_letter(i,column1)
 				return word
 		else:
@@ -265,6 +282,7 @@ class Game:
 
 	def __init__(self):
 		self.board = None
+		self.clue = None
 
 	def add_board(self):
 	# Version 1.0
@@ -283,9 +301,44 @@ class Game:
 	# Version 1.0
 		pass
 
+	def get_row_number(self):
+		is_valid = False
+		while not is_valid:
+			try: 
+				n = int(input(messages["insert_row_number"]))
+				if self.board.is_valid_row(n):
+					return n
+			except:
+				print(messages["invalid_row"])
+
+	def get_column_number(self):
+		is_valid = False
+		while not is_valid:
+			try:
+				n = int(input(messages["insert_column_number"]))
+				if self.board.is_valid_column(n):
+					return n
+			except:
+				print(messages["invalid_column"])
+
 	def find_word(self):
-	# Version 1.0
-		pass
+		row1 = self.get_row_number()
+		column1 = self.get_column_number()
+		row2 = self.get_row_number()
+		column2 = self.get_column_number()
+		word = self.board.get_word(row1,column1,row2,column2)
+		if word != None:
+			if not self.clue.word_in_clue(word):
+				print("'" + word + "'"+ messages["incorret_word"])
+				return
+			if self.clue.already_found(word):
+				print(messages["already_found_word"]+ "'" + word + "'.")
+			else:
+				self.clue.add_word_to_found(word)
+				self.clue.remove_word_from_not_found(word)
+				print(messages["good_word"] + "'" + word + "'.")
+		else:
+			print(messages["it_is_not_a_line"])
 
 	def turn(self):
 	# reads the commands of the user.
@@ -399,16 +452,19 @@ class Instruction:
 		self.instruction = None
 
 	def import_instruction(self, file):
-		f = open(file,'r')
-		self.instruction = f.read()
+		try: 
+			f = open(file,'r')
+			self.instruction = f.read()
+		except:
+			print(messages["error"])
 
 	def display(self):
 		print(self.instruction)
 
 
 def main():
-	pass
 
+	pass
 
 if __name__ == '__main__':
   main()
