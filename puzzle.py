@@ -2,14 +2,15 @@ from random import shuffle, randint, sample
 from string import ascii_uppercase
 
 
-commands = ["help","exit","rotate","word","initial"]
+commands = ["help","exit","rotate","find"]
+bool_answers = ["yes","no"]
 directions = ["right","left","up","down"]
 messages = {"incorret_word":" is not on the list.", 
 			"already_found_word":" was already found.",
 			"good_word":"Congratulations! You just found ",
 			"welcome":"WORD SEARCH PUZZLE\n\nLet's play!\n",
 			"winner":" is the winner.",
-			"win": "Congratulations! You won.",
+			"win": "\n\n\nCongratulations! You found all the words. You won. ",
 			"highscore": "NEW HIGHSCORE",
 			"invalid_direction": "\nThat is an invalid direction. Only 'right', 'left', 'up', 'down' are possible.",
 			"invalid_cell": "\nThat cell is not inside the board.",
@@ -27,7 +28,10 @@ messages = {"incorret_word":" is not on the list.",
 			"single_player_modes":"MODE\n\nPractice mode\n",
 			"error": "\nAn error occurred. Leaving the game.\n",
 			"exit_game": "\nLeaving the game.\n",
-			"insert_command": "\nAction ? "}
+			"insert_command": "\nAction ? ",
+			"play_again": "\n\nPlay again [yes/no] ? ",
+			"words_to_find":"Words to find: ",
+			"separator": "\n**************************************************\n"}
 
 class Instruction:
 
@@ -46,7 +50,6 @@ class Instruction:
 
 inst = Instruction()
 
-
 def display_initial_message():
 	print (messages["welcome"])
 
@@ -59,8 +62,6 @@ def display_single_player_modes():
 def get_player_nickname():
 	pass
 
-def start_game():
-	pass
 
 def setup():
 	pass
@@ -244,7 +245,7 @@ class Board:
 
 	def display(self):
 		""" Display the grid on the standard output.	"""
-		print ("   ", end='')
+		print ("\n   ", end='')
 		for i in range (self.columns):
 			print (str(i) + "   ", end='')
 		print("\n")
@@ -329,7 +330,6 @@ class Board:
 				end = max(column1,column2)
 				for i in range (start,end+1):
 					word = word + self.get_letter(row1,i)
-					print(word)
 				return word
 			# The word is placed vertically
 			elif (column1 == column2):
@@ -629,24 +629,25 @@ class Clue:
 
 class BySubject(Clue):
 
-	def display ():
+	def display (self):
 		pass
-		
+
 class BySolution(Clue):
 # Version 1.0
 
-	def display ():
+	def display (self):
 	# Version 1.0
-		pass
+		print(messages["words_to_find"])
+		print(self.words_not_found)
 		
 class ByLetters(Clue):
 
-	def display ():
+	def display (self):
 		pass
 		
 class ByLength(Clue):
 
-	def display ():
+	def display (self):
 		pass
 
 
@@ -692,6 +693,7 @@ class Game:
 	def __init__(self):
 		self.board = None
 		self.clue = None
+		self.start_again = False
 
 	def add_board(self, board):
 		''' Add the board into the element board of the game 
@@ -803,12 +805,6 @@ class Game:
 		else:
 			print(messages["it_is_not_a_line"])
 
-	def turn(self):
-	# reads the commands of the user.
-	# the user rotates the board, find words, etc..
-	# Version 1.0
-		pass
-
 	def setup(self):
 		''' Setup all the configuration of the game before starting.'''
 
@@ -871,6 +867,27 @@ class Game:
 			number = self.get_number_spaces(direction)
 			self.board.rotate_horizontally(column,number,direction)
 
+	def get_play_again(self):
+		''' Ask the user if he-she wants to start a new game.
+
+		Returns:
+			bool = True if success, False otherwise.
+		'''
+		while True:
+			answer = (input(messages["play_again"])).lower()
+			if answer in bool_answers:
+				if answer == "yes":
+					return True
+				elif answer == "no":
+					return False
+
+	def end_current_game(self):
+
+		if self.get_play_again():
+			self.start_again = True
+		else:
+			exit_game()
+
 	def read_command(self):
 		'''' Reads a command from standard input. Only 'rotate', 'word', 'help', 
 		'exit' are valid. Calls the corresponding function to execute each command.
@@ -883,20 +900,37 @@ class Game:
 				if command == "help":
 					inst.display()
 				elif command == "exit":
-					exit_game()
+					self.end_current_game()	
 				elif command == "rotate":
 					self.get_rotation_attr()
-				elif command == "word":
+				elif command == "find":
 					self.find_word()
-				self.board.display()
+				return None
 			else:
 				print(messages["invalid_command"])
+
+	def turn(self):
+		''' Manages the turns of the player. Call the function to read the
+			commands, and display the current state of the game. 
+
+		'''
+		print (messages["separator"])
+		self.board.display()
+		self.clue.display()
+		self.read_command()
+
 
 class SinglePlayer(Game):
 # Version 1.0
 
 	def __init__(self):
 		self.player = None
+<<<<<<< HEAD
+=======
+
+	def add_player(self,player):
+		pass
+>>>>>>> turns
 
 	def display_current_state(self):
 	# Display the board, the list of words according to the clue
@@ -911,9 +945,17 @@ class SinglePlayer(Game):
 class PracticeMode(SinglePlayer):
 # Version 1.0
 
+	def is_win (self):
+		return (self.clue.found_all_the_words())
+
 	def play(self):
 	# Version 1.0
-		pass
+		self.start_again = False
+		while not self.start_again:
+			self.turn()
+			if self.is_win():
+				print(messages["win"])
+				self.end_current_game()
 		
 	def restart(self):
 	# Version 1.0
@@ -989,12 +1031,25 @@ class MultiPlayer(Game):
 	# Setup of the game again, keeping the same players.
 		pass
 
+def start_game():
+	
+	game = PracticeMode()
+	# Asign board
+	# Asign clue
+	game.play()
 
+<<<<<<< HEAD
 # Dictionary of words.
 dictionary = Dictionary()
+=======
+def configure_instructions():
+	inst.import_instruction("instructions.txt")
+	
+>>>>>>> turns
 
 def main():
-	inst.import_instruction("instructions.txt")
+
+	configure_instructions()
 
 if __name__ == '__main__':
   main()
