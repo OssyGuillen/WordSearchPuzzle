@@ -18,7 +18,8 @@ messages = {"incorret_word":" is not on the list.",
 			"insert_column_number": "Column number: ",
 			"menu": "MENU\n\n[p] Play\n[h] Help\n[e] Exit\n",
 			"single_player_modes":"MODE\n\nPractice mode\n",
-			"error": "Error. Exit"}
+			"error": "\nAn error occurred. Leaving the game.\n",
+			"exit_game": "\nLeaving the game.\n"}
 
 
 def display_initial_message():
@@ -40,7 +41,9 @@ def setup():
 	pass
 
 def exit_game():
-	pass
+	print (messages["exit_game"])
+	exit()
+	
 
 
 class Player:
@@ -74,35 +77,6 @@ class Board:
 	# Restart the board to its original state
 		pass
 
-	def rotate(self, number, direction):
-	# Rotates either the column or the row
-	# TYPE OF DIRECTION?
-		pass
-
-	def get_letter(self,row,column):
-		if self.is_valid_cell(row,column):
-			return self.current_grid[row][column]
-		return None
-
-	def display(self):
-		""" Display the grid on the standard output.	"""
-		print ("   ", end='')
-		for i in range (self.columns):
-			print (str(i) + "   ", end='')
-		print("\n")
-		for i in range (self.rows):
-			for j in range (self.columns):
-				if j == 0:
-					print (str(i) + "  ", end='')
-				print (self.get_letter(i,j) + "   ", end='')
-				if j == self.rows - 1:
-					print (str(i), end='')
-			print("\n")
-		print ("   ", end='')
-		for i in range (self.columns):
-			print (str(i) + "   ", end='')
-		print("\n")
-
 	def is_valid_row(self,row):
 		""" Check if the row number is inside the grid.
 			
@@ -130,6 +104,83 @@ class Board:
 		if column < self.columns and column >= 0:
 			return True
 		return False
+
+	def rotate_horizontally(self, row, number, direction):
+		""" Rotates a row of the current grid a 'number' amount of spaces.
+			
+		Args: 
+			row (int): row number to rotate.
+			number (int): number of space to rotate.
+			direction (str): "left" or "right"
+
+		Return: 
+			bool: True if the board was successfully rotate, False otherwise.
+
+		"""
+		if self.is_valid_row(row):
+			number = number % self.rows
+			if direction == "right":
+				self.current_grid[row] = self.current_grid[row][-number:] +\
+										 self.current_grid[row][:-number]
+			elif direction == "left":	
+				self.current_grid[row] = self.current_grid[row][number:] +\
+										 self.current_grid[row][:number]
+			return True
+		return False
+	
+	def rotate_vertically(self, column, number, direction):
+		""" Rotates a column of the current grid a 'number' amount of spaces.
+			
+		Args: 
+			column (int): column number to rotate.
+			number (int): number of space to rotate.
+			direction (str): "up" or "down"
+
+		Returns: 
+			bool: True if the board was successfully rotate, False otherwise.
+			
+		"""
+		if self.is_valid_column(column):
+			number = number % self.columns
+			temp_col=[]
+			for i in range(self.columns):
+				temp_col.append(self.current_grid[i][column])
+
+			if direction == "up":
+				temp_col = temp_col[number:] + temp_col[:number]
+			elif direction == "down":
+				temp_col = temp_col[-number:] + temp_col[:-number]
+		
+			for i in range(self.columns):
+				self.current_grid[i][column]=temp_col[i]
+			return True
+		return False
+
+	def get_letter(self,row,column):
+		if self.is_valid_cell(row,column):
+			return self.current_grid[row][column]
+		return None
+
+	def display(self):
+		""" Display the grid on the standard output.	"""
+		print ("   ", end='')
+		for i in range (self.columns):
+			print (str(i) + "   ", end='')
+		print("\n")
+		for i in range (self.rows):
+			for j in range (self.columns):
+				if j == 0:
+					print (str(i) + "  ", end='')
+				print (self.get_letter(i,j) + "   ", end='')
+				if j == self.rows - 1:
+					print (str(i), end='')
+			print("\n")
+		print ("   ", end='')
+		for i in range (self.columns):
+			print (str(i) + "   ", end='')
+		print("\n")
+
+
 
 	def is_valid_cell(self,row,column):
 		""" Check if the cell is inside the grid.
