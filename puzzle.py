@@ -1,6 +1,6 @@
 
 commands = ["help","exit","rotate","word","initial"]
-direction = ["right","left","up","down"]
+directions = ["right","left","up","down"]
 messages = {"incorret_word":" is not on the list.", 
 			"already_found_word":" was already found.",
 			"good_word":"Congratulations! You just found ",
@@ -8,18 +8,40 @@ messages = {"incorret_word":" is not on the list.",
 			"winner":" is the winner.",
 			"win": "Congratulations! You won.",
 			"highscore": "NEW HIGHSCORE",
-			"wrong_direction": "That is an invalid direction. Only 'right', 'left', 'up', 'down' are possible.",
-			"invalid_cell": "That cell is not inside the board.",
-			"invalid_row": "That row is not inside the board.",
-			"invalid_column": "That column is not inside the board.",
-			"it_is_not_a_line": "Those cells does not form a vertical or an horizontal line.",
-			"insert_direction": "Direction: ",
-			"insert_row_number": "Row number: ",
-			"insert_column_number": "Column number: ",
+			"invalid_direction": "\nThat is an invalid direction. Only 'right', 'left', 'up', 'down' are possible.",
+			"invalid_cell": "\nThat cell is not inside the board.",
+			"invalid_row": "\nThat row is not inside the board.",
+			"invalid_column": "\nThat column is not inside the board.",
+			"invalid_number_spaces": "\nInvalid number of spaces.",
+			"invalid_command": "\nThat is an invalid command. Only 'rotate', 'word', 'help', 'exit' are possible.\n",
+			"it_is_not_a_line": "\nThose cells does not form a vertical or an horizontal line.",
+			"it_is_not_an_integer": "\nIt must be an integer.",
+			"insert_direction": "Direction ? ",
+			"insert_number_spaces": "Spaces ? ",
+			"insert_row_number": "Row number ?  ",
+			"insert_column_number": "Column number ?  ",
 			"menu": "MENU\n\n[p] Play\n[h] Help\n[e] Exit\n",
 			"single_player_modes":"MODE\n\nPractice mode\n",
 			"error": "\nAn error occurred. Leaving the game.\n",
-			"exit_game": "\nLeaving the game.\n"}
+			"exit_game": "\nLeaving the game.\n",
+			"insert_command": "\nAction ? "}
+
+class Instruction:
+
+	def __init__ (self):
+		self.instruction = None
+
+	def import_instruction(self, file):
+		try: 
+			f = open(file,'r')
+			self.instruction = f.read()
+		except:
+			print(messages["error"])
+
+	def display(self):
+		print(self.instruction)
+
+inst = Instruction()
 
 
 def display_initial_message():
@@ -103,6 +125,25 @@ class Board:
 		"""
 		if column < self.columns and column >= 0:
 			return True
+		return False
+
+	def is_valid_number_spaces(self,direction,number):
+		""" Check if the number is to rotate is correct.
+			
+		Args: 
+			direction (str): direction to rotate.
+			number (int): number of spaces to rotate.
+
+		Returns:
+			bool: True for success, False otherwise.
+
+		"""
+		if number > 0 and \
+			(((direction == "up" or direction == "down") and \
+				number < self.columns) or\
+			((direction == "left" or direction == "right") and\
+				number < self.rows)):
+				return True
 		return False
 
 	def rotate_horizontally(self, row, number, direction):
@@ -323,7 +364,7 @@ class Clue:
 			bool: True for success, False otherwise.
 
 		"""
-		return (self.words_found.count(word) != 0)
+		return (word in self.words_found)
 
 	def word_not_found(self,word):
 		""" Cheks if a word is on the list of words that have not been found.
@@ -335,7 +376,7 @@ class Clue:
 			bool: True for success, False otherwise.
 			
 		"""
-		return (self.words_not_found.count(word) != 0)
+		return (word in self.words_not_found)
 
 	def word_in_clue(self, word):
 		""" Cheks if a word belongs to a clue. Checks if a word is included on
@@ -470,10 +511,6 @@ class Game:
 	# Version 1.0
 		pass
 
-	def read_command(self):
-	# Version 1.0
-		pass
-
 	def get_row_number(self):
 		""" Read from standard input an integer.
 
@@ -487,8 +524,9 @@ class Game:
 				n = int(input(messages["insert_row_number"]))
 				if self.board.is_valid_row(n):
 					return n
-			except:
 				print(messages["invalid_row"])
+			except:
+				print(messages["it_is_not_an_integer"])
 
 	def get_column_number(self):
 		""" Read from standard input an integer.
@@ -503,8 +541,9 @@ class Game:
 				n = int(input(messages["insert_column_number"]))
 				if self.board.is_valid_column(n):
 					return n
-			except:
 				print(messages["invalid_column"])
+			except:
+				print(messages["it_is_not_an_integer"])
 
 	def find_word(self):
 		""" Find a word specified by the user. Get the row and the column 
@@ -539,6 +578,79 @@ class Game:
 
 	def setup(self):
 		pass
+
+	def get_direction(self):
+		""" Read from standard input a string corresponding to a direction.
+		Only 'right', 'left', 'up', 'down' are possible.
+		
+		Returns: 
+			str: direction read. 
+
+		"""	
+		is_valid = False
+		while not is_valid:
+			direction = (input(messages["insert_direction"])).lower()
+			if direction in directions:
+				return direction
+			print(messages["invalid_direction"])
+
+	def get_number_spaces(self,direction):
+		""" Read from standard input an integer.
+		
+		Arguments:
+			direction (str): direction the board is going to rotate.
+
+		Returns: 
+			int: number of spaces read. 
+
+		"""	
+		is_valid = False
+		while not is_valid:
+			try:
+				n = int(input(messages["insert_number_spaces"]))
+				if self.board.is_valid_number_spaces(direction,n):
+					return n
+				print(messages["invalid_number_spaces"])
+			except:
+				print(messages["it_is_not_an_integer"])
+
+
+	def get_rotation_attr(self): 
+		""" Get the direction to rotate the board, the number of row or column
+		that is going to rotate and the amount of spaces to rotate. Then
+		rotates the board accordint to these parameters.
+
+		"""	
+		direction = self.get_direction()
+		if direction == "up" or direction == "down":
+			row = self.get_column_number()
+			number = self.get_number_spaces(direction)
+			self.board.rotate_vertically(row,number,direction)
+		elif direction == "left" or direction == "right":
+			column = self.get_row_number()
+			number = self.get_number_spaces(direction)
+			self.board.rotate_horizontally(column,number,direction)
+
+	def read_command(self):
+		'''' Reads a command from standard input. Only 'rotate', 'word', 'help', 
+		'exit' are valid. Calls the corresponding function to execute each command.
+
+		'''
+		is_valid = False
+		while not is_valid:
+			command = (input(messages["insert_command"])).lower()
+			if command in commands:
+				if command == "help":
+					inst.display()
+				elif command == "exit":
+					exit_game()
+				elif command == "rotate":
+					self.get_rotation_attr()
+				elif command == "word":
+					self.find_word()
+				self.board.display()
+			else:
+				print(messages["invalid_command"])
 
 class SinglePlayer(Game):
 # Version 1.0
@@ -637,25 +749,12 @@ class MultiPlayer(Game):
 	# Setup of the game again, keeping the same players.
 		pass
 
-class Instruction:
 
-	def __init__ (self):
-		self.instruction = None
-
-	def import_instruction(self, file):
-		try: 
-			f = open(file,'r')
-			self.instruction = f.read()
-		except:
-			print(messages["error"])
-
-	def display(self):
-		print(self.instruction)
 
 
 def main():
+	inst.import_instruction("instructions.txt")
 
-	pass
 
 
 if __name__ == '__main__':
