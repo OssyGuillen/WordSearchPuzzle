@@ -85,39 +85,110 @@ class Board:
 		return None
 
 	def display(self):
-	# Prints the grid
+		""" Display the grid on the standard output.	"""
+		print ("   ", end='')
+		for i in range (self.columns):
+			print (str(i) + "   ", end='')
+		print("\n")
 		for i in range (self.rows):
 			for j in range (self.columns):
-				print (self.get_letter(i,j) + " ", end='')
+				if j == 0:
+					print (str(i) + "  ", end='')
+				print (self.get_letter(i,j) + "   ", end='')
+				if j == self.rows - 1:
+					print (str(i), end='')
 			print("\n")
+		print ("   ", end='')
+		for i in range (self.columns):
+			print (str(i) + "   ", end='')
+		print("\n")
 
 	def is_valid_row(self,row):
+		""" Check if the row number is inside the grid.
+			
+		Args: 
+			row (int): row number.
+
+		Returns:
+			bool: True for success, False otherwise.
+
+		"""
 		if row < self.rows and row >= 0: 
 			return True
 		return False
 
 	def is_valid_column(self,column):
+		""" Check if the column number is inside the grid.
+			
+		Args: 
+			column (int): column number.
+
+		Returns:
+			bool: True for success, False otherwise.
+
+		"""
 		if column < self.columns and column >= 0:
 			return True
 		return False
 
 	def is_valid_cell(self,row,column):
-	# Cheks if the cell is inside the board
+		""" Check if the cell is inside the grid.
+			
+		Args: 
+			row (int): row number.
+			column (int): column number.
+
+		Returns:
+			bool: True for success, False otherwise.
+
+		"""
 		if self.is_valid_row(row) and self.is_valid_column(column):
 			return True
 		return False
 
 
 	def can_generate_a_word(self,row1,column1,row2,column2):
-		''' The cells are valid, they form a vertical or an horizontal line and are long enough'''
-		if  (self.is_valid_cell(row1,column1) and self.is_valid_cell(row2,column2) and\
-			row1 == row2 and column1 != column2 and abs(column1 - column2) >= self.min_word_length) or \
-			(column1 == column2 and row1 != row2 and abs(row1 - row2) >= self.min_word_length):
+		''' Receive 2 cells and check they are valid, 
+			if they form a vertical or an horizontal line,
+			and if they form a word long enough.
+
+		Args:
+			row1 (int): row number of the starting cell.
+			column1 (int): column number of the starting cell.
+			row2 (int): row number of the final cell.
+			column2 (int): column number of the final cell.
+
+		Returns
+			bool: True for success, False otherwise.
+
+		'''
+		if  (self.is_valid_cell(row1,column1) and 
+			 self.is_valid_cell(row2,column2) and \
+			
+			(row1 == row2 and column1 != column2 and 
+			 abs(column1 - column2) >= self.min_word_length) or \
+			
+			(column1 == column2 and row1 != row2 and \
+			abs(row1 - row2) >= self.min_word_length)):
 			return True
 		return False
 
 
 	def get_word(self,row1,column1,row2,column2):
+		""" Get the word from the grid. The word is specified by a starting cell
+			and a final cell.
+		
+		Args:
+			row1 (int): row number of the starting cell.
+			column1 (int): column number of the starting cell.
+			row2 (int): row number of the final cell.
+			column2 (int): column number of the final cell.
+
+		Returns
+			str: word obtained from the grid. None if the cells are not valid.
+
+		"""
+
 		if self.can_generate_a_word(row1,column1,row2,column2):
 			word = "" 
 			# The word is placed horizontally
@@ -192,30 +263,81 @@ class Clue:
 		pass
 
 	def already_found(self,word):
-		# Cheks if the word is has already been found
+		""" Cheks if a word is on the list of words already found.
+
+		Args:
+			word (str): word to be checked.
+
+		Returns:
+			bool: True for success, False otherwise.
+
+		"""
 		return (self.words_found.count(word) != 0)
 
 	def word_not_found(self,word):
-		# Cheks if the word is has not been found
+		""" Cheks if a word is on the list of words that have not been found.
+
+		Args:
+			word (str): word to be checked.
+
+		Returns:
+			bool: True for success, False otherwise.
+			
+		"""
 		return (self.words_not_found.count(word) != 0)
 
 	def word_in_clue(self, word):
+		""" Cheks if a word belongs to a clue. Checks if a word is included on
+			the list of words already found or on the list of words that have 
+			not been found.
+
+		Args:
+			word (str): word to be checked.
+
+		Returns:
+			bool: True for success, False otherwise.
+			
+		"""		
 		return (self.already_found(word) or self.word_not_found(word))
 
 	def add_word_to_not_found(self, word):
 		pass
 
 	def add_word_to_found(self, word):
+		""" Add a word to the list of words that have been found.
+
+		Args:
+			word (str): word to be added.
+
+		"""		
 		self.words_found.append(word)
 
 	def remove_word_from_not_found(self, word):
+		""" Check if the word is on the list of words that have not been found
+			and removed it.
+
+		Args:
+			word (str): word to be removed.
+
+		Returns: 
+			bool: True if the word was successfully removed. False otherwise.
+
+		"""	
 		if (self.word_not_found(word)):
 			self.words_not_found.remove(word)
 			return True
 		return False
 
 	def found_all_the_words(self):
-		return ((len(self.words_not_found) == 0) and (len(self.words_found) != 0))
+		""" Check if the list of words that have not been found is empty and
+			the list of words that have been found is not empty.
+
+		Returns: 
+			bool: True for success, False otherwise.
+
+		"""	
+		return ((len(self.words_not_found) == 0) and\
+				(len(self.words_found) != 0))
 
 
 class BySubject(Clue):
@@ -302,6 +424,12 @@ class Game:
 		pass
 
 	def get_row_number(self):
+		""" Read from standard input an integer.
+
+		Returns: 
+			int: row number read. 
+
+		"""	
 		is_valid = False
 		while not is_valid:
 			try: 
@@ -312,6 +440,12 @@ class Game:
 				print(messages["invalid_row"])
 
 	def get_column_number(self):
+		""" Read from standard input an integer.
+
+		Returns: 
+			int: column number read. 
+
+		"""	
 		is_valid = False
 		while not is_valid:
 			try:
@@ -322,6 +456,12 @@ class Game:
 				print(messages["invalid_column"])
 
 	def find_word(self):
+		""" Find a word specified by the user. Get the row and the column 
+			numbers corresponding to initial and the final cells of the word.
+			Get the word from the board, and check if the word is valid.
+			Display appropiate messages to the user.
+
+		"""	
 		row1 = self.get_row_number()
 		column1 = self.get_column_number()
 		row2 = self.get_row_number()
@@ -465,6 +605,7 @@ class Instruction:
 def main():
 
 	pass
+
 
 if __name__ == '__main__':
   main()
