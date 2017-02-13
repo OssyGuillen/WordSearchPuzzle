@@ -1,5 +1,7 @@
 from random import shuffle, randint, sample
 from string import ascii_uppercase
+import xml.etree.ElementTree as ET
+import glob, os
 
 
 commands = ["help","exit","rotate","word","initial"]
@@ -415,17 +417,51 @@ class Board:
 class Subject:
 # Version 1.0
 
-	def __init__(self, name):
-		self.name = name
+	def __init__(self):
+		self.name = None
 		self.content = []
 
 	def add_word(self, word):
-	#Add a word to self.content.
-		pass
+		''' Add a word into content.
+
+		Parameters:
+		----------
+			word: string
+				Word to be added.
+
+		'''
+
+		if word is not None:
+			self.content.append(word)
+
 
 	def import_subject(self, file):
-	# Import all the words corresponding to a subject from a file
-		pass
+		'''Import the content of a well-formed xml into a subject.
+
+		Parameters:
+		----------
+			file: string
+				The path of the file.
+
+		'''
+		# Parsing XML
+		# xml.etree.ElementTree from Python The ElementTree XML API
+		# Source code: https://docs.python.org/3.4/library/xml.etree.elementtree.html
+		tree = ET.parse(file)
+		root = tree.getroot()
+		words = 0
+		if len(root) > 0:
+			self.name = root[0].attrib['name']
+			root = root[0]
+			for child in root:
+				if child. tag == "word":
+					new_word = child.text
+					self.add_word(new_word)
+					words += 1
+		else:
+			return False
+		return words >= 12
+
 
 	def get_name(self):
 		''' Return the name of the subject. 
@@ -456,9 +492,15 @@ class Dictionary:
 		self.subjects = []
 
 	def add_subject(self, subject):
-	# Return if there was an error.
-	# Version 1.0
-		pass
+		''' Add a subject object into the dictionary.
+
+		Parameters:
+		----------
+			subject: Subject
+				Subject to be added.
+
+		'''
+		self.subjects.append(subject)
 
 	def display_subjects(self):
 		''' Display the list of the names of the subjects. '''
@@ -467,9 +509,32 @@ class Dictionary:
 			print('- ' + subject.get_name())
 		print('')
 
-	def load(self,file):
-	# Version 1.0
-		pass
+	def load(self):
+		''' Load the dictionary from xml files into subjects directory. 
+
+		Return:
+		------
+			Boolean
+				If there was an error or not
+
+		'''
+		# Manage files and directories.
+		# os.walk from Python Miscellaneous operating system interfaces.
+		# Source code: https://docs.python.org/3.4/library/os.html#os.walk
+		try:
+			num_of_correct_subjects = 0
+			for root, dirs, files in os.walk("subjects"):
+				for file in files:
+					if file.endswith(".xml"):
+						new_subject = Subject()
+						correct = new_subject.import_subject(os.path.join(root, file))
+						if correct:
+							self.add_subject(new_subject)
+							num_of_correct_subjects += 1
+			return num_of_correct_subjects > 0
+		except:
+			return False
+		    
 
 	def get_subject_by_name(self, name):
 		''' Return a subject using its name element.
@@ -500,7 +565,7 @@ class Clue:
 		self.words_not_found = []
 		self.words_found = []
 
-	def build(self, subject, n):
+	def build(self, subject, num_words):
 		''' Build the clue, using the words of a subject, adding randomly
 			the words into the not found list. In this version, there will 
 			be 12 clues per board by default.
@@ -509,7 +574,7 @@ class Clue:
 		----------
 			subject: Subject
 				Subject object that contain the words to be used.
-			n: integer
+			num_words: integer
 				Number of words to be selected.
 
 		'''
