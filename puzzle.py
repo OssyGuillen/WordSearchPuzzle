@@ -6,7 +6,7 @@ commands = ["help","exit","rotate","find"]
 bool_answers = ["yes","no"]
 directions = ["right","left","up","down"]
 messages = {"incorret_word":" is not on the list.", 
-			"already_found_word":" was already found.",
+			"word_already_found":" was already found.",
 			"good_word":"Congratulations! You just found ",
 			"welcome":"WORD SEARCH PUZZLE\n\nLet's play!\n",
 			"winner":" is the winner.",
@@ -527,7 +527,7 @@ class Clue:
 			self.add_word_to_not_found(words[i].upper())
 
 
-	def already_found(self,word):
+	def word_already_found(self,word):
 		""" Cheks if a word is on the list of words already found.
 
 		Args:
@@ -563,7 +563,7 @@ class Clue:
 			bool: True for success, False otherwise.
 			
 		"""		
-		return (self.already_found(word) or self.word_not_found(word))
+		return (self.word_already_found(word) or self.word_not_found(word))
 
 	def add_word_to_not_found(self, word):
 		''' Add a word to the clue as not found.
@@ -796,8 +796,8 @@ class Game:
 			if not self.clue.word_in_clue(word):
 				print("'" + word + "'"+ messages["incorret_word"])
 				return
-			if self.clue.already_found(word):
-				print(messages["already_found_word"]+ "'" + word + "'.")
+			if self.clue.word_already_found(word):
+				print(messages["word_already_found"]+ "'" + word + "'.")
 			else:
 				self.clue.add_word_to_found(word)
 				self.clue.remove_word_from_not_found(word)
