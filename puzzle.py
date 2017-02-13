@@ -7,36 +7,47 @@ import glob, os, time
 commands = ["help","exit","rotate","find"]
 bool_answers = ["yes","no"]
 directions = ["right","left","up","down"]
-messages = {"incorret_word":" is not on the list.", 
+messages = {
 			"already_found_word":" was already found.",
+			"choose_subject":"Please, choose a subject...\n",
+			"error": "\nAn error occurred. Leaving the game.\n",
+			"enter_to_continue":"\nEnter to Continue.",
+			"exit_game": "\nLeaving the game.\n",
+			"final_cell": "\nPlease, insert the coordenates of the final cell:",
 			"good_word":"\nCongratulations! You just found ",
-			"welcome":"WORD SEARCH PUZZLE\n\nLet's play!\n",
-			"winner":" is the winner.",
-			"win": "\n\n\nCongratulations! You found all the words. You won. ",
 			"highscore": "NEW HIGHSCORE",
-			"invalid_direction": "\nThat is an invalid direction. Only 'right', 'left', 'up', 'down' are possible.",
-			"invalid_cell": "\nThat cell is not inside the board.",
-			"invalid_row": "\nThat row is not inside the board.",
-			"invalid_column": "\nThat column is not inside the board.",
-			"invalid_number_spaces": "\nInvalid number of spaces.",
-			"invalid_command": "\nThat is an invalid command. Only 'rotate', 'find', 'help', 'exit' are possible.\n",
-			"it_is_not_a_line": "\nThose cells does not form a vertical or an horizontal line.",
-			"it_is_not_an_integer": "\nIt must be an integer.",
+			"incorret_format":"\nERROR: Incorrect format. It was not added.",
+			"incorret_format_clue":"\nERROR: Incorrect format. It was not selected.",
+			"incorret_word":" is not on the list.", 
+			"initial_cell": "\nPlease, insert the coordenates of the initial cell:",
+			"insert_column_number": "Column number ?  ",
+			"insert_command": "\nAction [rotate|find|help|exit] ? ",
 			"insert_direction": "Direction [up|down|right|left] ? ",
+			"insert_menu_action": "\nAction [p|h|e] ? ",
 			"insert_number_spaces": "Spaces ? ",
 			"insert_row_number": "Row number ?  ",
-			"insert_column_number": "Column number ?  ",
+			"invalid_cell": "\nERROR: That cell is not inside the board.",
+			"invalid_column": "\nERROR: That column is not inside the board.",
+			"invalid_command": "\nERROR: That is an invalid command. Only 'rotate', 'find', 'help', 'exit' are possible.\n",
+			"invalid_direction": "\nERROR: That is an invalid direction. Only 'right', 'left', 'up', 'down' are possible.",
+			"invalid_menu_option":"\nERROR: Invalid option. Only 'p' for play, 'h' for help and 'e' for exit.\n",
+			"invalid_number_spaces": "\nERROR: Invalid number of spaces.",
+			"invalid_row": "\nERROR: That row is not inside the board.",
+			"invalid_subject": "\nERROR: It is not a valid subject. Try again.\n",
+			"it_is_not_a_line": "\nERROR: Those cells does not form a vertical or an horizontal line.",
+			"it_is_not_an_integer": "\nERROR: It must be an integer.",
 			"menu": "MENU\n\n[p] Play\n[h] Help\n[e] Exit\n",
-			"single_player_modes":"MODE\n\nPractice mode\n",
-			"error": "\nAn error occurred. Leaving the game.\n",
-			"exit_game": "\nLeaving the game.\n",
-			"insert_command": "\nAction [rotate|find|help| exit] ? ",
-			"insert_menu_action": "\nAction [p|h|e] ? ",
 			"play_again": "\n\nPlay again [yes|no] ? ",
-			"words_to_find":"Words to find: ",
-			"separator": "\n**************************************************\n",
-			"initial_cell": "\nPlease, insert the coordenates of the initial cell:",
-			"final_cell": "\nPlease, insert the coordenates of the final cell:"}
+			"separator": "\n----------------------------------------------------------\n",
+			"setting_up": "Setting up...",
+			"single_player_modes":"MODE\n\nPractice mode\n",
+			"starting":"Starting...",
+			"get_subject":"Type here your subject: ",
+			"welcome":"WORD SEARCH PUZZLE\n\nLet's play!\n",
+			"win": "\n\n\nCongratulations! You found all the words. You won. ",
+			"winner":" is the winner.",
+			"words_to_find":"Words to find: "
+			}
 
 class Instruction:
 
@@ -74,7 +85,7 @@ def start_game():
 
 	os.system('clear')
 	display_initial_message()
-	input("Enter to Continue.")
+	input(messages["enter_to_continue"])
 	os.system('clear')
 
 	option = ''
@@ -84,18 +95,19 @@ def start_game():
 		os.system('clear')
 		if option == 'h':
 			inst.display()
+			print(messages["separator"])
 		elif option == 'e':
 			messages["exit_game"]
 			exit()
 		elif option != 'p':
-			print("Invalid option. Only 'p' for play, 'h' for help and 'e' for exit.")
+			print(messages["invalid_menu_option"])
 
-	print("Setting up...")
+	print(messages["setting_up"])
 	time.sleep(2)
 	os.system('clear')
 	game.setup()
 	os.system('clear')
-	print("Starting...")
+	print(messages["starting"])
 	time.sleep(2)
 	os.system('clear')
 	game.play()
@@ -703,7 +715,7 @@ class Clue:
 
 		'''
 		if word == "" or word == None:
-			print("Error: Incorrect format. It was not added.")
+			print(messages["incorret_format"])
 		else:
 			self.words_not_found.append(word)
 
@@ -765,7 +777,7 @@ class BySolution(Clue):
 
 	def display (self):
 	# Version 1.0
-		print(messages["words_to_find"])
+		print(self.subject_name + ": ")
 		print(self.words_not_found)
 		
 class ByLetters(Clue):
@@ -847,13 +859,13 @@ class Game:
 		sname = ""
 		subject = None
 		while subject == None:
-			print('Please, choose a correct subject...')
+			print(messages["choose_subject"])
 			dictionary.display_subjects()
-			sname = input("Type here your subject: ")
+			sname = input(messages["get_subject"])
 			subject = dictionary.get_subject_by_name(sname)
 			if subject == None:
-				print('----------------------------------------------')
-				print('Error: It is not a valid subject. Try again.')
+				print(messages["separator"])
+				print(messages["invalid_subject"])
 		return subject
 
 	def select_clue(self, subject, num_words, min_length, max_length):
@@ -874,7 +886,7 @@ class Game:
 		'''
 		clue = BySolution()
 		if subject == None:
-			print("Error: Incorrect format. It was not selected")
+			print(messages["incorret_format_clue"])
 		else:
 			clue.build(subject, num_words,min_length, max_length)
 			self.clue = clue
