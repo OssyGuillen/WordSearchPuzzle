@@ -132,6 +132,8 @@ class Board:
 		self.rows = 10
 		self.columns = 10
 		self.min_word_length = 3
+		self.max_word_length = 8
+		self.max_num_words = 10
 
 	def build (self, words):
 		''' Add to the board all the words given and fill the 
@@ -441,6 +443,35 @@ class Board:
 				if self.current_grid[i][j] == '':
 					self.current_grid[i][j] = sample(alfabet,1)[0]
 
+	def get_max_num_words(self):
+		''' Return the maximun number of words allowed.
+
+		Return:
+		------
+			integer
+				The maximun number of words
+		'''
+		return self.max_num_words
+
+	def get_min_length_word(self):
+		''' Return the Minimun length of a word allowed.
+
+		Return:
+		------
+			integer
+				The minimun length
+		'''
+		return self.min_word_length
+
+	def get_max_length_word(self):
+		''' Return the Maximun length of a word allowed.
+
+		Return:
+		------
+			integer
+				The maximun length
+		'''
+		return self.max_word_length
 
 class Subject:
 # Version 1.0
@@ -581,7 +612,7 @@ class Dictionary:
 
 		'''
 		for subject in self.subjects:
-			if subject.get_name() == name:
+			if subject.get_name().lower() == name.lower():
 				return subject
 		return None
 
@@ -593,7 +624,7 @@ class Clue:
 		self.words_not_found = []
 		self.words_found = []
 
-	def build(self, subject, num_words):
+	def build(self, subject, num_words, min_length, max_length):
 		''' Build the clue, using the words of a subject, adding randomly
 			the words into the not found list. In this version, there will 
 			be 12 clues per board by default.
@@ -604,6 +635,10 @@ class Clue:
 				Subject object that contain the words to be used.
 			num_words: integer
 				Number of words to be selected.
+			min_length
+				Minimun length of a word.
+			max_length
+				Maximun length of a word.
 
 		'''
 		self.subject_name = subject.get_name()
@@ -613,7 +648,7 @@ class Clue:
 		if len(words) < num_words:
 			lim = len(words)
 		elif num_words <= 0:
-			lim = 12
+			lim = 10
 		else:
 			lim = num_words
 		for i in range(lim):
@@ -821,7 +856,7 @@ class Game:
 				print('Error: It is not a valid subject. Try again.')
 		return subject
 
-	def select_clue(self, subject):
+	def select_clue(self, subject, num_words, min_length, max_length):
 		''' Select an specific type of clue. For this version,
 			it will be BySolution.
 
@@ -829,13 +864,19 @@ class Game:
 		----------
 			subject: Subject
 				subject that will be used into the building clue processes.
+			num_words: integer
+				Number of words to be selected
+			min_length
+				Minimun length of a word.
+			max_length
+				Maximun length of a word.
 
 		'''
 		clue = BySolution()
 		if subject == None:
 			print("Error: Incorrect format. It was not selected")
 		else:
-			clue.build(subject,12)
+			clue.build(subject, num_words,min_length, max_length)
 			self.clue = clue
 
 
@@ -903,10 +944,13 @@ class Game:
 	def setup(self):
 		''' Setup all the configuration of the game before starting.'''
 
-		selected_subject = self.select_subject()
-		self.select_clue(selected_subject)
-		words = list(self.clue.get_words_not_found())
 		new_board = Board()
+		selected_subject = self.select_subject()
+		self.select_clue(selected_subject,
+						 new_board.get_max_num_words(),
+						 new_board.get_min_length_word(),
+						 new_board.get_max_length_word())
+		words = list(self.clue.get_words_not_found())
 		new_board.build(words)
 		self.add_board(new_board)
 
@@ -1162,6 +1206,3 @@ def main():
 
 if __name__ == '__main__':
   main()
-
-
-	
