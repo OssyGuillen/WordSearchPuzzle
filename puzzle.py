@@ -667,7 +667,7 @@ class Clue:
 			self.add_word_to_not_found(words[i].upper())
 
 
-	def already_found(self,word):
+	def word_already_found(self,word):
 		""" Cheks if a word is on the list of words already found.
 
 		Args:
@@ -703,7 +703,7 @@ class Clue:
 			bool: True for success, False otherwise.
 			
 		"""		
-		return (self.already_found(word) or self.word_not_found(word))
+		return (self.word_already_found(word) or self.word_not_found(word))
 
 	def add_word_to_not_found(self, word):
 		''' Add a word to the clue as not found.
