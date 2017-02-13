@@ -663,12 +663,21 @@ class Clue:
 			lim = 10
 		else:
 			lim = num_words
-		for i in range(lim):
-			self.add_word_to_not_found(words[i].upper())
 
+		i = 0
+		while lim > 0 and i < len(words):
+			if len(words[i]) <= max_length and len(words[i]) >= min_length:
+				self.add_word_to_not_found(words[i].upper())
+				lim -= 1
+			i += 1
+
+		# Inconsistency
+		if lim > 0:
+			print(messages["error"])
+			exit()
 
 	def word_already_found(self,word):
-		""" Cheks if a word is on the list of words already found.
+		""" Checks if a word is on the list of words already found.
 
 		Args:
 			word (str): word to be checked.
