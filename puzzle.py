@@ -92,6 +92,7 @@ def start_game():
 	while(option != 'p'):
 		display_menu()
 		option = input(messages["insert_menu_action"])
+		option.lower()
 		os.system('clear')
 		if option == 'h':
 			inst.display()
