@@ -1,27 +1,21 @@
--------------------------------------------------------------
---------------- WORD SEARCH PUZZLE RULES ---------------------
---------------------------------------------------------------
 
-Object 
+#---------- WORD SEARCH PUZZLE ----------
+
+#Object 
 
 In the Word Search Puzzle game, the player finds hidden 
 words on a not-static board full of letters. All the 
 words on the board are related to a subject.
 
 
-Run the game
+#Run the game
 
 Run in the terminal:
 
->$      make run
+>$   make run
 
-Setup
 
-To select the subject of the board, introduce the name 
-of the subject. A set of 10 words is placed on a board 
-of dimensions 10 x 10.
-
-Gameplay
+#Gameplay
 
 1. After selecting the subject, the game starts automatically.
 2. The board and the list of words to find are displayed.
