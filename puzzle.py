@@ -1,7 +1,7 @@
 from random import shuffle, randint, sample
 from string import ascii_uppercase
 import xml.etree.ElementTree as ET
-import glob, os
+import glob, os, time
 
 
 commands = ["help","exit","rotate","find"]
@@ -50,8 +50,6 @@ class Instruction:
 	def display(self):
 		print(self.instruction)
 
-inst = Instruction()
-
 def display_initial_message():
 	print (messages["welcome"])
 
@@ -67,6 +65,37 @@ def get_player_nickname():
 
 def setup():
 	pass
+
+def start_game():
+	''' Start the game. '''
+
+	os.system('clear')
+	display_initial_message()
+	input("Enter to Continue.")
+	os.system('clear')
+
+	option = ''
+	while(option != 'p'):
+		display_menu()
+		option = input(messages["insert_command"])
+		os.system('clear')
+		if option == 'h':
+			inst.display()
+		elif option == 'e':
+			messages["exit_game"]
+			exit()
+		elif option != 'p':
+			print("Invalid option. Only 'p' for play, 'h' for help and 'e' for exit.")
+
+	print("Setting up...")
+	time.sleep(2)
+	os.system('clear')
+	game.setup()
+	os.system('clear')
+	print("Starting...")
+	time.sleep(2)
+	os.system('clear')
+	game.play()
 
 def exit_game():
 	print (messages["exit_game"])
@@ -301,10 +330,10 @@ class Board:
 			 self.is_valid_cell(row2,column2) and \
 			
 			(row1 == row2 and column1 != column2 and 
-			 abs(column1 - column2) >= self.min_word_length) or \
+			 abs(column1 - column2) + 1 >= self.min_word_length) or \
 			
 			(column1 == column2 and row1 != row2 and \
-			abs(row1 - row2) >= self.min_word_length)):
+			abs(row1 - row2) + 1 >= self.min_word_length)):
 			return True
 		return False
 
@@ -582,12 +611,12 @@ class Clue:
 		words = list(subject.get_words())
 		# Functions from Python Random Lib.
 		shuffle(words)
-		if len(words) < n:
+		if len(words) < num_words:
 			lim = len(words)
-		elif n <= 0:
+		elif num_words <= 0:
 			lim = 12
 		else:
-			lim = n
+			lim = num_words
 		for i in range(lim):
 			self.add_word_to_not_found(words[i].upper())
 
@@ -924,13 +953,13 @@ class Game:
 		"""	
 		direction = self.get_direction()
 		if direction == "up" or direction == "down":
-			row = self.get_column_number()
+			column = self.get_column_number()
 			number = self.get_number_spaces(direction)
-			self.board.rotate_vertically(row,number,direction)
+			self.board.rotate_vertically(column,number,direction)
 		elif direction == "left" or direction == "right":
-			column = self.get_row_number()
+			row = self.get_row_number()
 			number = self.get_number_spaces(direction)
-			self.board.rotate_horizontally(column,number,direction)
+			self.board.rotate_horizontally(row,number,direction)
 
 	def get_play_again(self):
 		''' Ask the user if he-she wants to start a new game.
@@ -984,18 +1013,25 @@ class Game:
 		self.clue.display()
 		self.read_command()
 
+	def play_again(self):
+		''' Return if the player wants to play again.
+
+		Return:
+		------
+			Boolean
+				The boolean value of the decision.
+
+		'''
+		return self.start_again
 
 class SinglePlayer(Game):
 # Version 1.0
 
 	def __init__(self):
 		self.player = None
-<<<<<<< HEAD
-=======
 
 	def add_player(self,player):
 		pass
->>>>>>> turns
 
 	def display_current_state(self):
 	# Display the board, the list of words according to the clue
@@ -1096,25 +1132,32 @@ class MultiPlayer(Game):
 	# Setup of the game again, keeping the same players.
 		pass
 
-def start_game():
-	
-	game = PracticeMode()
-	# Asign board
-	# Asign clue
-	game.play()
-
-<<<<<<< HEAD
 # Dictionary of words.
 dictionary = Dictionary()
-=======
+
+# Class game.
+game = PracticeMode()
+
+# Instructions of the game
+inst = Instruction()
+
 def configure_instructions():
+	''' Import the instructions into the program. '''
+
 	inst.import_instruction("instructions.txt")
-	
->>>>>>> turns
 
 def main():
+	''' Main function of the program '''
 
 	configure_instructions()
+	correct = dictionary.load()
+	if not correct:
+		print(messages["error"])
+		exit()
+	play_again = True
+	while play_again:
+		start_game()
+		play_again = game.play_again()
 
 if __name__ == '__main__':
   main()
