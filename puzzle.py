@@ -9,7 +9,7 @@ bool_answers = ["yes","no"]
 directions = ["right","left","up","down"]
 messages = {"incorret_word":" is not on the list.", 
 			"already_found_word":" was already found.",
-			"good_word":"Congratulations! You just found ",
+			"good_word":"\nCongratulations! You just found ",
 			"welcome":"WORD SEARCH PUZZLE\n\nLet's play!\n",
 			"winner":" is the winner.",
 			"win": "\n\n\nCongratulations! You found all the words. You won. ",
@@ -19,10 +19,10 @@ messages = {"incorret_word":" is not on the list.",
 			"invalid_row": "\nThat row is not inside the board.",
 			"invalid_column": "\nThat column is not inside the board.",
 			"invalid_number_spaces": "\nInvalid number of spaces.",
-			"invalid_command": "\nThat is an invalid command. Only 'rotate', 'word', 'help', 'exit' are possible.\n",
+			"invalid_command": "\nThat is an invalid command. Only 'rotate', 'find', 'help', 'exit' are possible.\n",
 			"it_is_not_a_line": "\nThose cells does not form a vertical or an horizontal line.",
 			"it_is_not_an_integer": "\nIt must be an integer.",
-			"insert_direction": "Direction ? ",
+			"insert_direction": "Direction [up|down|right|left] ? ",
 			"insert_number_spaces": "Spaces ? ",
 			"insert_row_number": "Row number ?  ",
 			"insert_column_number": "Column number ?  ",
@@ -30,10 +30,13 @@ messages = {"incorret_word":" is not on the list.",
 			"single_player_modes":"MODE\n\nPractice mode\n",
 			"error": "\nAn error occurred. Leaving the game.\n",
 			"exit_game": "\nLeaving the game.\n",
-			"insert_command": "\nAction ? ",
-			"play_again": "\n\nPlay again [yes/no] ? ",
+			"insert_command": "\nAction [rotate|find|help| exit] ? ",
+			"insert_menu_action": "\nAction [p|h|e] ? ",
+			"play_again": "\n\nPlay again [yes|no] ? ",
 			"words_to_find":"Words to find: ",
-			"separator": "\n**************************************************\n"}
+			"separator": "\n**************************************************\n",
+			"initial_cell": "\nPlease, insert the coordenates of the initial cell:",
+			"final_cell": "\nPlease, insert the coordenates of the final cell:"}
 
 class Instruction:
 
@@ -77,7 +80,7 @@ def start_game():
 	option = ''
 	while(option != 'p'):
 		display_menu()
-		option = input(messages["insert_command"])
+		option = input(messages["insert_menu_action"])
 		os.system('clear')
 		if option == 'h':
 			inst.display()
@@ -181,9 +184,7 @@ class Board:
 			bool: True for success, False otherwise.
 
 		"""
-		if row < self.rows and row >= 0: 
-			return True
-		return False
+		return (row < self.rows and row >= 0)
 
 	def is_valid_column(self,column):
 		""" Check if the column number is inside the grid.
@@ -195,9 +196,7 @@ class Board:
 			bool: True for success, False otherwise.
 
 		"""
-		if column < self.columns and column >= 0:
-			return True
-		return False
+		return (column < self.columns and column >= 0)
 
 	def is_valid_number_spaces(self,direction,number):
 		""" Check if the number is to rotate is correct.
@@ -819,7 +818,7 @@ class Game:
 			subject = dictionary.get_subject_by_name(sname)
 			if subject == None:
 				print('----------------------------------------------')
-				print('Error: It is not a correct subject. Try again.')
+				print('Error: It is not a valid subject. Try again.')
 		return subject
 
 	def select_clue(self, subject):
@@ -881,8 +880,10 @@ class Game:
 			Display appropiate messages to the user.
 
 		"""	
+		print (messages["initial_cell"])
 		row1 = self.get_row_number()
 		column1 = self.get_column_number()
+		print (messages["final_cell"])
 		row2 = self.get_row_number()
 		column2 = self.get_column_number()
 		word = self.board.get_word(row1,column1,row2,column2)
@@ -891,7 +892,7 @@ class Game:
 				print("'" + word + "'"+ messages["incorret_word"])
 				return
 			if self.clue.already_found(word):
-				print(messages["already_found_word"]+ "'" + word + "'.")
+				print("'" + word + "'" + messages["already_found_word"])
 			else:
 				self.clue.add_word_to_found(word)
 				self.clue.remove_word_from_not_found(word)
