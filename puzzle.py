@@ -954,7 +954,7 @@ class Game:
 			if not self.clue.word_in_clue(word):
 				print("'" + word + "'"+ messages["incorret_word"])
 				return
-			if self.clue.already_found(word):
+			if self.clue.word_already_found(word):
 				print("'" + word + "'" + messages["already_found_word"])
 			else:
 				self.clue.add_word_to_found(word)
