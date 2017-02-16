@@ -52,11 +52,23 @@ messages = {
 			}
 
 class Instruction:
+	''' Manage all the information corresponding to the rules of 
+		the game.
+	'''
 
 	def __init__ (self):
 		self.instruction = None
 
 	def import_instruction(self, file):
+		''' Import the set of instructions of the game from a file.
+
+		Parameters
+		----------
+		file : str
+			Path of the file where the instructions are found.
+
+		'''
+
 		try: 
 			f = open(file,'r')
 			self.instruction = f.read()
@@ -65,65 +77,13 @@ class Instruction:
 			exit()
 
 	def display(self):
+		''''Display on the standard output the rules of the game.
+
+		'''
 		print(self.instruction)
 
-def display_initial_message():
-	print (messages["welcome"])
-
-def display_menu():
-	print (messages["menu"])
-
-def display_single_player_modes():
-	print (messages["single_player_modes"])
-
-def get_player_nickname():
-	pass
-
-
-def setup():
-	pass
-
-def start_game():
-	''' Start the game. '''
-
-	os.system('clear')
-	display_initial_message()
-	input(messages["enter_to_continue"])
-	os.system('clear')
-
-	option = ''
-	while(option != 'p'):
-		display_menu()
-		option = input(messages["insert_menu_action"])
-		option = option.lower()
-		os.system('clear')
-		if option == 'h':
-			inst.display()
-			print(messages["separator"])
-		elif option == 'e':
-			messages["exit_game"]
-			exit()
-		elif option != 'p':
-			print(messages["invalid_menu_option"])
-
-	print(messages["setting_up"])
-	time.sleep(2)
-	os.system('clear')
-	game.setup()
-	os.system('clear')
-	print(messages["starting"])
-	time.sleep(2)
-	os.system('clear')
-	game.play()
-
-def exit_game():
-	print (messages["exit_game"])
-	exit()
-	
-
-
 class Player:
-# Version 1.0
+
 	def __init__(self, nickname):
 		self.nickname = nickname
 		self.clue = None
@@ -131,7 +91,7 @@ class Player:
 	def set_clue(self, clue):
 		''' Set a created clue into the player's clue. 
 
-		Parameters:
+		Parameters
 		----------
 			clue: BySolution(Clue)
 				A clue object
@@ -140,7 +100,9 @@ class Player:
 		pass
 
 class Board:
-# Version 1.0
+	''' Manage the board where the words to be found are placed.
+
+	'''
 
 	def __init__(self):
 		self.original_grid = [[]]
@@ -152,13 +114,13 @@ class Board:
 		self.max_num_words = 10
 
 	def build (self, words):
-		''' Add to the board all the words given and fill the 
-			blanks spaces left with random letters 
+		''' Add to the board all the words given and fill the blanks spaces left
+			with random letters .
 
-		Parameters:
+		Parameters
 		----------
-			words: [string]
-				An array with the words.
+			words : [str]
+				An array with the words to be placed on the board.
 
 		'''
 		self.current_grid = [['' for x in range(10)] for y in range(10)]
@@ -195,11 +157,15 @@ class Board:
 	def is_valid_row(self,row):
 		""" Check if the row number is inside the grid.
 			
-		Args: 
-			row (int): row number.
+		Paramenters
+		----------- 
+		row : int 
+			row number.
 
-		Returns:
-			bool: True for success, False otherwise.
+		Returns
+		-------
+		bool 
+			True for success, False otherwise.
 
 		"""
 		return (row < self.rows and row >= 0)
@@ -207,11 +173,15 @@ class Board:
 	def is_valid_column(self,column):
 		""" Check if the column number is inside the grid.
 			
-		Args: 
-			column (int): column number.
+		Paramenters
+		-----------
+		column : int
+			column number.
 
-		Returns:
-			bool: True for success, False otherwise.
+		Returns
+		-------
+		bool 
+			True for success, False otherwise.
 
 		"""
 		return (column < self.columns and column >= 0)
@@ -219,12 +189,17 @@ class Board:
 	def is_valid_number_spaces(self,direction,number):
 		""" Check if the number is to rotate is correct.
 			
-		Args: 
-			direction (str): direction to rotate.
-			number (int): number of spaces to rotate.
+		Paramenters
+		----------- 
+		direction : str
+			direction to rotate.
+		number : int
+			number of spaces to rotate.
 
-		Returns:
-			bool: True for success, False otherwise.
+		Returns
+		-------
+		bool
+			True for success, False otherwise.
 
 		"""
 		if number > 0 and \
@@ -238,13 +213,19 @@ class Board:
 	def rotate_horizontally(self, row, number, direction):
 		""" Rotates a row of the current grid a 'number' amount of spaces.
 			
-		Args: 
-			row (int): row number to rotate.
-			number (int): number of space to rotate.
-			direction (str): "left" or "right"
+		Paramenters
+		----------- 
+		row : int
+			row number to rotate.
+		number : int
+			number of space to rotate.
+		direction : str
+			direction to rotate the row ("left" or "right").
 
-		Return: 
-			bool: True if the board was successfully rotate, False otherwise.
+		Returns
+		-------
+		bool
+			True if the board was successfully rotate, False otherwise.
 
 		"""
 		if self.is_valid_row(row):
@@ -261,13 +242,19 @@ class Board:
 	def rotate_vertically(self, column, number, direction):
 		""" Rotates a column of the current grid a 'number' amount of spaces.
 			
-		Args: 
-			column (int): column number to rotate.
-			number (int): number of space to rotate.
-			direction (str): "up" or "down"
+		Paramenters
+		-----------
+		column : int
+			column number to rotate.
+		number : int
+			number of space to rotate.
+		direction : str 
+			direction to rotate the column ("up" or "down").
 
-		Returns: 
-			bool: True if the board was successfully rotate, False otherwise.
+		Returns
+		------- 
+		bool
+			True if the board was successfully rotate, False otherwise.
 			
 		"""
 		if self.is_valid_column(column):
@@ -287,12 +274,30 @@ class Board:
 		return False
 
 	def get_letter(self,row,column):
+		''' Return the letter that inside a cell on the board.
+
+		Paramenters
+		-----------
+		row : int
+			row of the cell of the letter wanted.
+		column : int
+			column of the cell of the letter wanted.
+		
+		Returns
+		-------
+		str
+			Letter extratect from the cell of the board.
+
+		'''
 		if self.is_valid_cell(row,column):
 			return self.current_grid[row][column]
 		return None
 
 	def display(self):
-		""" Display the grid on the standard output.	"""
+		""" Display the grid on the standard output. Row and columns numbers
+		are included.
+
+		"""
 		print ("\n   ", end='')
 		for i in range (self.columns):
 			print (str(i) + "   ", end='')
@@ -315,12 +320,17 @@ class Board:
 	def is_valid_cell(self,row,column):
 		""" Check if the cell is inside the grid.
 			
-		Args: 
-			row (int): row number.
-			column (int): column number.
+		Paramenters
+		-----------
+		row : int
+			row number of the cell.
+		column : int 
+			column number of the cell.
 
-		Returns:
-			bool: True for success, False otherwise.
+		Returns
+		-------
+		bool
+			True for success, False otherwise.
 
 		"""
 		if self.is_valid_row(row) and self.is_valid_column(column):
@@ -329,18 +339,24 @@ class Board:
 
 
 	def can_generate_a_word(self,row1,column1,row2,column2):
-		''' Receive 2 cells and check they are valid, 
-			if they form a vertical or an horizontal line,
-			and if they form a word long enough.
+		''' Receive 2 cells and check they are valid, if they form a vertical 
+			or an horizontal line, and if they form a word long enough.
 
-		Args:
-			row1 (int): row number of the starting cell.
-			column1 (int): column number of the starting cell.
-			row2 (int): row number of the final cell.
-			column2 (int): column number of the final cell.
+		Paramenters
+		-----------
+		row1 : int
+			row number of the starting cell.
+		column1 : int
+			column number of the starting cell.
+		row2 : int
+			row number of the final cell.
+		column2 : int
+			column number of the final cell.
 
 		Returns
-			bool: True for success, False otherwise.
+		-------
+		bool
+			True for success, False otherwise.
 
 		'''
 		if  (self.is_valid_cell(row1,column1) and 
@@ -359,14 +375,21 @@ class Board:
 		""" Get the word from the grid. The word is specified by a starting cell
 			and a final cell.
 		
-		Args:
-			row1 (int): row number of the starting cell.
-			column1 (int): column number of the starting cell.
-			row2 (int): row number of the final cell.
-			column2 (int): column number of the final cell.
+		Paramenters
+		-----------
+			row1 : int
+				row number of the starting cell.
+			column1 : int
+				column number of the starting cell.
+			row2 : int
+				row number of the final cell.
+			column2 : int
+				column number of the final cell.
 
 		Returns
-			str: word obtained from the grid. None if the cells are not valid.
+		-------
+		str
+			Word obtained from the grid. None if the cells are not valid.
 
 		"""
 
@@ -393,12 +416,17 @@ class Board:
 	def add_word_into_row(self, row, word):
 		''' Insert a word into a row of the board. 
 
-		Parameters:
+		Parameters
 		----------
-			row: integer
-				The number of the row.
-			word: string
-				The word to be inserted.
+		row: int
+			The number of the row.
+		word: str
+			The word to be inserted.
+
+		Returns
+		-------
+		bool
+			True for success, False otherwise.
 
 		'''
 		column = randint(0,9)
@@ -423,12 +451,17 @@ class Board:
 	def add_word_into_column(self, column, word):
 		''' Insert a word into a column of the board. 
 
-		Parameters:
+		Parameters
 		----------
-			column: integer
-				The number of the column.
-			word: string
-				The word to be inserted.
+		column: integer
+			The number of the column.
+		word: string
+			The word to be inserted.
+
+		Returns
+		-------
+		bool
+			True for success, False otherwise.
 
 		'''
 		row = randint(0,9)
@@ -451,7 +484,9 @@ class Board:
 		return True
 
 	def fill(self):
-		''' Fill the blak spaces with random letters.'''
+		''' Fill the blank spaces of the board with random letters.
+
+		'''
 
 		alfabet = ascii_uppercase
 		for i in range(10):
@@ -462,47 +497,49 @@ class Board:
 	def get_max_num_words(self):
 		''' Return the maximun number of words allowed.
 
-		Return:
-		------
-			integer
-				The maximun number of words
+		Returns
+		-------
+		int
+			The maximun number of words.
+
 		'''
 		return self.max_num_words
 
 	def get_min_length_word(self):
 		''' Return the Minimun length of a word allowed.
 
-		Return:
-		------
-			integer
-				The minimun length
+		Returns
+		-------
+		int
+			The minimun length.
 		'''
 		return self.min_word_length
 
 	def get_max_length_word(self):
 		''' Return the Maximun length of a word allowed.
 
-		Return:
-		------
-			integer
-				The maximun length
+		Returns
+		-------
+		int
+			The maximun length
+
 		'''
 		return self.max_word_length
 
 class Subject:
-# Version 1.0
+	''' Manage the subjects all the words on a board are related to. '''
 
 	def __init__(self):
 		self.name = None
 		self.content = []
 
 	def add_word(self, word):
-		''' Add a word into content.
+		''' Add a word into the subject.
 
-		Parameters:
+		Parameters
 		----------
-			word: string
-				Word to be added.
+		word : str
+			Word to be added.
 
 		'''
 
@@ -511,14 +548,15 @@ class Subject:
 
 
 	def import_subject(self, file):
-		'''Import the content of a well-formed xml into a subject.
+		''' Import the content of a well-formed xml into a subject.
 
-		Parameters:
+		Parameters
 		----------
-			file: string
-				The path of the file.
+		file : str
+			The path of the file.
 
 		'''
+
 		# Parsing XML
 		# xml.etree.ElementTree from Python The ElementTree XML API
 		# Source code: https://docs.python.org/3.4/library/xml.etree.elementtree.html
@@ -545,10 +583,10 @@ class Subject:
 	def get_name(self):
 		''' Return the name of the subject. 
 
-		Return:
-		------
-			string
-				The name - Valid case.
+		Returns
+		-------
+		str
+			Name of the subject.
 
 		'''
 		return self.name
@@ -556,33 +594,39 @@ class Subject:
 	def get_words(self):
 		''' Return all the words of the subject.
 
-			Return:
-			------
-				[string]
-					The words. Can be empty.
+		Returns
+		-------
+		[str]
+			All the words of the subject. Can be empty.
 
 		'''
 		return self.content
 
 
 class Dictionary:
-# Version 1.0
+	''' Manage all the subjects available on the game. 
+
+	'''
+
 	def __init__(self):
 		self.subjects = []
 
 	def add_subject(self, subject):
 		''' Add a subject object into the dictionary.
 
-		Parameters:
+		Parameters
 		----------
-			subject: Subject
-				Subject to be added.
+		subject: Subject
+			Subject to be added.
 
 		'''
 		self.subjects.append(subject)
 
 	def display_subjects(self):
-		''' Display the list of the names of the subjects. '''
+		''' Display on the standard output the list of the names of the 
+		all the subjects. 
+
+		'''
 		print('Subjects: ')
 		for subject in self.subjects:
 			print('- ' + subject.get_name())
@@ -591,12 +635,13 @@ class Dictionary:
 	def load(self):
 		''' Load the dictionary from xml files into subjects directory. 
 
-		Return:
-		------
-			Boolean
-				If there was an error or not
+		Returns
+		-------
+		bool
+			True for success, False otherwise.
 
 		'''
+
 		# Manage files and directories.
 		# os.walk from Python Miscellaneous operating system interfaces.
 		# Source code: https://docs.python.org/3.4/library/os.html#os.walk
@@ -618,17 +663,15 @@ class Dictionary:
 	def get_subject_by_name(self, name):
 		''' Return a subject using its name element.
 
-		Parameters:
+		Parameters
 		----------
-			name: string
-				The name of the subject as a string
+		name : str
+			The name of the subject as a string.
 
-		Return:
-		------
-			Subject
-				Valid case.
-			None 
-				Invalid case. 
+		Returns
+		-------
+		Subject
+			Subject corresponding to `name`.
 
 		'''
 		for subject in self.subjects:
@@ -637,7 +680,9 @@ class Dictionary:
 		return None
 
 class Clue:
-# Version 1.0
+	''' Manage the list of words that the player needs to find on the game.
+
+	'''
 
 	def __init__(self):
 		self.subject_name = None
@@ -646,19 +691,19 @@ class Clue:
 
 	def build(self, subject, num_words, min_length, max_length):
 		''' Build the clue, using the words of a subject, adding randomly
-			the words into the not found list. In this version, there will 
-			be 12 clues per board by default.
+			the words into the not found list. There will be 10 clues per board 
+			by default.
 
-		Parameters:
+		Parameters
 		----------
-			subject: Subject
-				Subject object that contain the words to be used.
-			num_words: integer
-				Number of words to be selected.
-			min_length
-				Minimun length of a word.
-			max_length
-				Maximun length of a word.
+		subject : Subject
+			Subject object that contain the words to be used.
+		num_words : int
+			Number of words to be selected.
+		min_length : int
+			Minimun length of a word.
+		max_length: in
+			Maximun length of a word.
 
 		'''
 		self.subject_name = subject.get_name()
@@ -687,11 +732,15 @@ class Clue:
 	def word_already_found(self,word):
 		""" Checks if a word is on the list of words already found.
 
-		Args:
-			word (str): word to be checked.
+		Parameters
+		----------
+		word : str
+			Word to check.
 
-		Returns:
-			bool: True for success, False otherwise.
+		Returns
+		-------
+		bool
+			True for success, False otherwise.
 
 		"""
 		return (word in self.words_found)
@@ -699,11 +748,15 @@ class Clue:
 	def word_not_found(self,word):
 		""" Cheks if a word is on the list of words that have not been found.
 
-		Args:
-			word (str): word to be checked.
+		Parameters
+		----------
+		word : str
+			word to be checked.
 
-		Returns:
-			bool: True for success, False otherwise.
+		Returns
+		-------
+		bool 
+			True for success, False otherwise.
 			
 		"""
 		return (word in self.words_not_found)
@@ -713,11 +766,15 @@ class Clue:
 			the list of words already found or on the list of words that have 
 			not been found.
 
-		Args:
-			word (str): word to be checked.
+		Parameters
+		----------
+		word : str
+			word to be checked.
 
-		Returns:
-			bool: True for success, False otherwise.
+		Returns
+		-------
+		bool
+			True for success, False otherwise.
 			
 		"""		
 		return (self.word_already_found(word) or self.word_not_found(word))
@@ -725,10 +782,10 @@ class Clue:
 	def add_word_to_not_found(self, word):
 		''' Add a word to the clue as not found.
 
-		Parameters:
+		Parameters
 		----------
-			word: string
-				Word that will be added.
+		word : string
+			Word that will be added.
 
 		'''
 		if word == "" or word == None:
@@ -739,7 +796,8 @@ class Clue:
 	def add_word_to_found(self, word):
 		""" Add a word to the list of words that have been found.
 
-		Args:
+		Parameters
+		----------
 			word (str): word to be added.
 
 		"""		
@@ -749,11 +807,15 @@ class Clue:
 		""" Check if the word is on the list of words that have not been found
 			and removed it.
 
-		Args:
-			word (str): word to be removed.
+		Parameters
+		-----------
+		word : str
+			Word to be removed.
 
-		Returns: 
-			bool: True if the word was successfully removed. False otherwise.
+		Returns
+		------- 
+		bool
+			True if the word was successfully removed. False otherwise.
 
 		"""	
 		if (self.word_not_found(word)):
@@ -765,8 +827,10 @@ class Clue:
 		""" Check if the list of words that have not been found is empty and
 			the list of words that have been found is not empty.
 
-		Returns: 
-			bool: True for success, False otherwise.
+		Returns
+		------- 
+		bool
+			True for success, False otherwise.
 
 		"""	
 		return ((len(self.words_not_found) == 0) and\
@@ -775,10 +839,10 @@ class Clue:
 	def get_words_not_found(self):
 		''' Return the list of words not found. 
 
-		Parameters:
-		----------
-			[string]
-				Words not found.
+		Returns
+		-------
+		[str]
+			List of words that has not been found by the player.
 
 		'''
 		return self.words_not_found
@@ -790,10 +854,15 @@ class BySubject(Clue):
 		pass
 
 class BySolution(Clue):
-# Version 1.0
+	''' Subclass that displays all the words in the Clue.
+
+	''' 
 
 	def display (self):
-	# Version 1.0
+		''' Display on the standard output the name of the subject and the complete
+			list of words that the player needs to find.
+
+		'''
 		print(self.subject_name + ": ")
 		print(self.words_not_found)
 		
@@ -809,7 +878,7 @@ class ByLength(Clue):
 
 
 class Score:
-	# IS THE NICK NAME ENOUGH?
+	
 	def __init__ (self, nickname, points):
 		self.nickname = nickname
 		self.points = points
@@ -818,8 +887,6 @@ class Score:
 		pass
 
 class HighScores:
-
-	# SEPARATE AS 2 INTANCES?
 
 	def __init__(self):
 		self.simple_mode = []
@@ -845,7 +912,9 @@ class HighScores:
 
 
 class Game:
-# Version 1.0
+	''' Superclass. Manage information of a game on its different modes.
+
+	'''
 
 	def __init__(self):
 		self.board = None
@@ -853,12 +922,12 @@ class Game:
 		self.start_again = False
 
 	def add_board(self, board):
-		''' Add the board into the element board of the game 
+		''' Associate a built board to the game.
 
-		Parameters:
+		Parameters
 		----------
-			board: Board
-				Object of type Class Board.
+		board : Board
+			Board to be added to the game.
 
 		'''
 		self.board = board
@@ -867,10 +936,10 @@ class Game:
 	def select_subject(self):
 		''' Return a selected subject from the dictionary.
 
-		Return:
-		------
+		Returns
+		-------
 		Subject
-			the selected subject - Valid case.
+			Subject selected by the player.
 
 		'''
 		sname = ""
@@ -886,19 +955,19 @@ class Game:
 		return subject
 
 	def select_clue(self, subject, num_words, min_length, max_length):
-		''' Select an specific type of clue. For this version,
-			it will be BySolution.
+		''' Select a specific type of clue. For this version, it will be 
+			BySolution.
 
-		Parameters:
+		Parameters
 		----------
-			subject: Subject
-				subject that will be used into the building clue processes.
-			num_words: integer
-				Number of words to be selected
-			min_length
-				Minimun length of a word.
-			max_length
-				Maximun length of a word.
+		subject : Subject
+			subject that will be used into the building clue process.
+		num_words : int
+			Number of words to be selected
+		min_length : int
+			Minimun length of a word.
+		max_length: int
+			Maximun length of a word.
 
 		'''
 		clue = BySolution()
@@ -912,8 +981,9 @@ class Game:
 	def get_row_number(self):
 		""" Read from standard input an integer.
 
-		Returns: 
-			int: row number read. 
+		Returns
+		------- 
+			int : row number read. 
 
 		"""	
 		is_valid = False
@@ -929,8 +999,9 @@ class Game:
 	def get_column_number(self):
 		""" Read from standard input an integer.
 
-		Returns: 
-			int: column number read. 
+		Returns
+		------- 
+			int : column number read. 
 
 		"""	
 		is_valid = False
@@ -985,12 +1056,15 @@ class Game:
 
 	def get_direction(self):
 		""" Read from standard input a string corresponding to a direction.
-		Only 'right', 'left', 'up', 'down' are possible.
+			Only 'right', 'left', 'up', 'down' are possible.
 		
-		Returns: 
-			str: direction read. 
+		Returns
+		-------
+		str
+			direction read. 
 
 		"""	
+
 		is_valid = False
 		while not is_valid:
 			direction = (input(messages["insert_direction"])).lower()
@@ -1001,11 +1075,15 @@ class Game:
 	def get_number_spaces(self,direction):
 		""" Read from standard input an integer.
 		
-		Arguments:
-			direction (str): direction the board is going to rotate.
+		Parameters
+		----------
+		direction : str
+			Direction the board is going to rotate to.
 
-		Returns: 
-			int: number of spaces read. 
+		Returns
+		-------
+		int
+			Number of spaces read. 
 
 		"""	
 		is_valid = False
@@ -1038,8 +1116,11 @@ class Game:
 	def get_play_again(self):
 		''' Ask the user if he-she wants to start a new game.
 
-		Returns:
-			bool = True if success, False otherwise.
+		Returns
+		-------
+		bool
+			True if success, False otherwise.
+
 		'''
 		while True:
 			answer = (input(messages["play_again"])).lower()
@@ -1051,7 +1132,10 @@ class Game:
 			print(messages["invalid_play_again_option"])
 
 	def end_current_game(self):
+		''' If the player wants to end the game, sets the variable start_again 
+			to True. Otherwise exit the game.
 
+		'''
 		if self.get_play_again():
 			self.start_again = True
 		else:
@@ -1059,7 +1143,8 @@ class Game:
 
 	def read_command(self):
 		'''' Reads a command from standard input. Only 'rotate', 'word', 'help', 
-		'exit' are valid. Calls the corresponding function to execute each command.
+			'exit' are valid. Calls the corresponding function to execute each 
+			command.
 
 		'''
 		is_valid = False
@@ -1091,16 +1176,15 @@ class Game:
 	def play_again(self):
 		''' Return if the player wants to play again.
 
-		Return:
-		------
-			Boolean
-				The boolean value of the decision.
+		Returns
+		-------
+		bool
+			True if the player wants to play again. False otherwise.
 
 		'''
 		return self.start_again
 
 class SinglePlayer(Game):
-# Version 1.0
 
 	def __init__(self):
 		self.player = None
@@ -1110,7 +1194,6 @@ class SinglePlayer(Game):
 
 	def display_current_state(self):
 	# Display the board, the list of words according to the clue
-	# Version 1.0
 		pass
 
 	def restart(self):
@@ -1119,13 +1202,26 @@ class SinglePlayer(Game):
 
 
 class PracticeMode(SinglePlayer):
-# Version 1.0
+	''' Single player mode of game implemented on version 1. 
+		Subclass managing specific behaviours of the game.
+
+	'''
 
 	def is_win (self):
+		''' Check the winning condition.
+
+		Returns
+		-------
+		bool
+			True if success, False otherwhise.
+
+		'''
 		return (self.clue.found_all_the_words())
 
 	def play(self):
-	# Version 1.0
+		''' 
+			Manage the gameplay. Handle the turns.
+		'''
 		self.start_again = False
 		while not self.start_again:
 			self.turn()
@@ -1134,7 +1230,6 @@ class PracticeMode(SinglePlayer):
 				self.end_current_game()
 		
 	def restart(self):
-	# Version 1.0
 		pass
 		
 class SimpleMode(SinglePlayer):
@@ -1221,8 +1316,66 @@ def configure_instructions():
 
 	inst.import_instruction("instructions.txt")
 
+def display_initial_message():
+	print (messages["welcome"])
+
+def display_menu():
+	print (messages["menu"])
+
+def display_single_player_modes():
+	print (messages["single_player_modes"])
+
+def get_player_nickname():
+	pass
+
+
+def setup():
+	pass
+
+def start_game():
+	''' Start the game. '''
+
+	os.system('clear')
+	display_initial_message()
+	input(messages["enter_to_continue"])
+	os.system('clear')
+
+	option = ''
+	while(option != 'p'):
+		display_menu()
+		option = input(messages["insert_menu_action"])
+		option = option.lower()
+		os.system('clear')
+		if option == 'h':
+			inst.display()
+			print(messages["separator"])
+		elif option == 'e':
+			messages["exit_game"]
+			exit()
+		elif option != 'p':
+			print(messages["invalid_menu_option"])
+
+	print(messages["setting_up"])
+	time.sleep(2)
+	os.system('clear')
+	game.setup()
+	os.system('clear')
+	print(messages["starting"])
+	time.sleep(2)
+	os.system('clear')
+	game.play()
+
+def exit_game():
+	''' Display an exit message and exit the program. 
+
+	'''
+	print (messages["exit_game"])
+	exit()
+
 def main():
-	''' Main function of the program '''
+	''' Main function of the program 
+
+	'''
 
 	configure_instructions()
 	correct = dictionary.load()

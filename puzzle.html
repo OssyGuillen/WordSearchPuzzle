@@ -1,0 +1,1919 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module puzzle</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>puzzle</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/patty/WordSearchPuzzle/puzzle.py">/home/patty/WordSearchPuzzle/puzzle.py</a></font></td></tr></table>
+    <p></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="xml.etree.ElementTree.html">xml.etree.ElementTree</a><br>
+</td><td width="25%" valign=top><a href="glob.html">glob</a><br>
+</td><td width="25%" valign=top><a href="os.html">os</a><br>
+</td><td width="25%" valign=top><a href="time.html">time</a><br>
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#8b1824">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#8b1824"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="builtins.html#object">builtins.object</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="puzzle.html#Board">Board</a>
+</font></dt><dt><font face="helvetica, arial"><a href="puzzle.html#Clue">Clue</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="puzzle.html#ByLength">ByLength</a>
+</font></dt><dt><font face="helvetica, arial"><a href="puzzle.html#ByLetters">ByLetters</a>
+</font></dt><dt><font face="helvetica, arial"><a href="puzzle.html#BySolution">BySolution</a>
+</font></dt><dt><font face="helvetica, arial"><a href="puzzle.html#BySubject">BySubject</a>
+</font></dt></dl>
+</dd>
+<dt><font face="helvetica, arial"><a href="puzzle.html#Dictionary">Dictionary</a>
+</font></dt><dt><font face="helvetica, arial"><a href="puzzle.html#Game">Game</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="puzzle.html#MultiPlayer">MultiPlayer</a>
+</font></dt><dt><font face="helvetica, arial"><a href="puzzle.html#SinglePlayer">SinglePlayer</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="puzzle.html#PracticeMode">PracticeMode</a>
+</font></dt><dt><font face="helvetica, arial"><a href="puzzle.html#SimpleMode">SimpleMode</a>
+</font></dt><dt><font face="helvetica, arial"><a href="puzzle.html#TimeRaceMode">TimeRaceMode</a>
+</font></dt></dl>
+</dd>
+</dl>
+</dd>
+<dt><font face="helvetica, arial"><a href="puzzle.html#HighScores">HighScores</a>
+</font></dt><dt><font face="helvetica, arial"><a href="puzzle.html#Instruction">Instruction</a>
+</font></dt><dt><font face="helvetica, arial"><a href="puzzle.html#Player">Player</a>
+</font></dt><dt><font face="helvetica, arial"><a href="puzzle.html#Score">Score</a>
+</font></dt><dt><font face="helvetica, arial"><a href="puzzle.html#Subject">Subject</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#F25252">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Board">class <strong>Board</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
+    
+<tr bgcolor="#F25252"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Manage&nbsp;the&nbsp;board&nbsp;where&nbsp;the&nbsp;words&nbsp;to&nbsp;be&nbsp;found&nbsp;are&nbsp;placed.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="Board-__init__"><strong>__init__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Board-add_word_into_column"><strong>add_word_into_column</strong></a>(self, column, word)</dt><dd><tt>Insert&nbsp;a&nbsp;word&nbsp;into&nbsp;a&nbsp;column&nbsp;of&nbsp;the&nbsp;board.&nbsp;<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+column:&nbsp;integer<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The&nbsp;number&nbsp;of&nbsp;the&nbsp;column.<br>
+word:&nbsp;string<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The&nbsp;word&nbsp;to&nbsp;be&nbsp;inserted.<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+bool<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;True&nbsp;for&nbsp;success,&nbsp;False&nbsp;otherwise.</tt></dd></dl>
+
+<dl><dt><a name="Board-add_word_into_row"><strong>add_word_into_row</strong></a>(self, row, word)</dt><dd><tt>Insert&nbsp;a&nbsp;word&nbsp;into&nbsp;a&nbsp;row&nbsp;of&nbsp;the&nbsp;board.&nbsp;<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+row:&nbsp;int<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The&nbsp;number&nbsp;of&nbsp;the&nbsp;row.<br>
+word:&nbsp;str<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The&nbsp;word&nbsp;to&nbsp;be&nbsp;inserted.<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+bool<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;True&nbsp;for&nbsp;success,&nbsp;False&nbsp;otherwise.</tt></dd></dl>
+
+<dl><dt><a name="Board-build"><strong>build</strong></a>(self, words)</dt><dd><tt>Add&nbsp;to&nbsp;the&nbsp;board&nbsp;all&nbsp;the&nbsp;words&nbsp;given&nbsp;and&nbsp;fill&nbsp;the&nbsp;blanks&nbsp;spaces&nbsp;left<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;with&nbsp;random&nbsp;letters&nbsp;.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;words&nbsp;:&nbsp;[str]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;An&nbsp;array&nbsp;with&nbsp;the&nbsp;words&nbsp;to&nbsp;be&nbsp;placed&nbsp;on&nbsp;the&nbsp;board.</tt></dd></dl>
+
+<dl><dt><a name="Board-can_generate_a_word"><strong>can_generate_a_word</strong></a>(self, row1, column1, row2, column2)</dt><dd><tt>Receive&nbsp;2&nbsp;cells&nbsp;and&nbsp;check&nbsp;they&nbsp;are&nbsp;valid,&nbsp;if&nbsp;they&nbsp;form&nbsp;a&nbsp;vertical&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;or&nbsp;an&nbsp;horizontal&nbsp;line,&nbsp;and&nbsp;if&nbsp;they&nbsp;form&nbsp;a&nbsp;word&nbsp;long&nbsp;enough.<br>
+&nbsp;<br>
+Paramenters<br>
+-----------<br>
+row1&nbsp;:&nbsp;int<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;row&nbsp;number&nbsp;of&nbsp;the&nbsp;starting&nbsp;cell.<br>
+column1&nbsp;:&nbsp;int<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;column&nbsp;number&nbsp;of&nbsp;the&nbsp;starting&nbsp;cell.<br>
+row2&nbsp;:&nbsp;int<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;row&nbsp;number&nbsp;of&nbsp;the&nbsp;final&nbsp;cell.<br>
+column2&nbsp;:&nbsp;int<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;column&nbsp;number&nbsp;of&nbsp;the&nbsp;final&nbsp;cell.<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+bool<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;True&nbsp;for&nbsp;success,&nbsp;False&nbsp;otherwise.</tt></dd></dl>
+
+<dl><dt><a name="Board-display"><strong>display</strong></a>(self)</dt><dd><tt>Display&nbsp;the&nbsp;grid&nbsp;on&nbsp;the&nbsp;standard&nbsp;output.&nbsp;Row&nbsp;and&nbsp;columns&nbsp;numbers<br>
+are&nbsp;included.</tt></dd></dl>
+
+<dl><dt><a name="Board-fill"><strong>fill</strong></a>(self)</dt><dd><tt>Fill&nbsp;the&nbsp;blank&nbsp;spaces&nbsp;of&nbsp;the&nbsp;board&nbsp;with&nbsp;random&nbsp;letters.</tt></dd></dl>
+
+<dl><dt><a name="Board-get_letter"><strong>get_letter</strong></a>(self, row, column)</dt><dd><tt>Return&nbsp;the&nbsp;letter&nbsp;that&nbsp;inside&nbsp;a&nbsp;cell&nbsp;on&nbsp;the&nbsp;board.<br>
+&nbsp;<br>
+Paramenters<br>
+-----------<br>
+row&nbsp;:&nbsp;int<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;row&nbsp;of&nbsp;the&nbsp;cell&nbsp;of&nbsp;the&nbsp;letter&nbsp;wanted.<br>
+column&nbsp;:&nbsp;int<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;column&nbsp;of&nbsp;the&nbsp;cell&nbsp;of&nbsp;the&nbsp;letter&nbsp;wanted.<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+str<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Letter&nbsp;extratect&nbsp;from&nbsp;the&nbsp;cell&nbsp;of&nbsp;the&nbsp;board.</tt></dd></dl>
+
+<dl><dt><a name="Board-get_max_length_word"><strong>get_max_length_word</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;Maximun&nbsp;length&nbsp;of&nbsp;a&nbsp;word&nbsp;allowed.<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+int<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The&nbsp;maximun&nbsp;length</tt></dd></dl>
+
+<dl><dt><a name="Board-get_max_num_words"><strong>get_max_num_words</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;maximun&nbsp;number&nbsp;of&nbsp;words&nbsp;allowed.<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+int<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The&nbsp;maximun&nbsp;number&nbsp;of&nbsp;words.</tt></dd></dl>
+
+<dl><dt><a name="Board-get_min_length_word"><strong>get_min_length_word</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;Minimun&nbsp;length&nbsp;of&nbsp;a&nbsp;word&nbsp;allowed.<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+int<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The&nbsp;minimun&nbsp;length.</tt></dd></dl>
+
+<dl><dt><a name="Board-get_word"><strong>get_word</strong></a>(self, row1, column1, row2, column2)</dt><dd><tt>Get&nbsp;the&nbsp;word&nbsp;from&nbsp;the&nbsp;grid.&nbsp;The&nbsp;word&nbsp;is&nbsp;specified&nbsp;by&nbsp;a&nbsp;starting&nbsp;cell<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;and&nbsp;a&nbsp;final&nbsp;cell.<br>
+&nbsp;<br>
+Paramenters<br>
+-----------<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;row1&nbsp;:&nbsp;int<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;row&nbsp;number&nbsp;of&nbsp;the&nbsp;starting&nbsp;cell.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;column1&nbsp;:&nbsp;int<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;column&nbsp;number&nbsp;of&nbsp;the&nbsp;starting&nbsp;cell.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;row2&nbsp;:&nbsp;int<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;row&nbsp;number&nbsp;of&nbsp;the&nbsp;final&nbsp;cell.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;column2&nbsp;:&nbsp;int<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;column&nbsp;number&nbsp;of&nbsp;the&nbsp;final&nbsp;cell.<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+str<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Word&nbsp;obtained&nbsp;from&nbsp;the&nbsp;grid.&nbsp;None&nbsp;if&nbsp;the&nbsp;cells&nbsp;are&nbsp;not&nbsp;valid.</tt></dd></dl>
+
+<dl><dt><a name="Board-is_valid_cell"><strong>is_valid_cell</strong></a>(self, row, column)</dt><dd><tt>Check&nbsp;if&nbsp;the&nbsp;cell&nbsp;is&nbsp;inside&nbsp;the&nbsp;grid.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+Paramenters<br>
+-----------<br>
+row&nbsp;:&nbsp;int<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;row&nbsp;number&nbsp;of&nbsp;the&nbsp;cell.<br>
+column&nbsp;:&nbsp;int&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;column&nbsp;number&nbsp;of&nbsp;the&nbsp;cell.<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+bool<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;True&nbsp;for&nbsp;success,&nbsp;False&nbsp;otherwise.</tt></dd></dl>
+
+<dl><dt><a name="Board-is_valid_column"><strong>is_valid_column</strong></a>(self, column)</dt><dd><tt>Check&nbsp;if&nbsp;the&nbsp;column&nbsp;number&nbsp;is&nbsp;inside&nbsp;the&nbsp;grid.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+Paramenters<br>
+-----------<br>
+column&nbsp;:&nbsp;int<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;column&nbsp;number.<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+bool&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;True&nbsp;for&nbsp;success,&nbsp;False&nbsp;otherwise.</tt></dd></dl>
+
+<dl><dt><a name="Board-is_valid_number_spaces"><strong>is_valid_number_spaces</strong></a>(self, direction, number)</dt><dd><tt>Check&nbsp;if&nbsp;the&nbsp;number&nbsp;is&nbsp;to&nbsp;rotate&nbsp;is&nbsp;correct.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+Paramenters<br>
+-----------&nbsp;<br>
+direction&nbsp;:&nbsp;str<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;direction&nbsp;to&nbsp;rotate.<br>
+number&nbsp;:&nbsp;int<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;number&nbsp;of&nbsp;spaces&nbsp;to&nbsp;rotate.<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+bool<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;True&nbsp;for&nbsp;success,&nbsp;False&nbsp;otherwise.</tt></dd></dl>
+
+<dl><dt><a name="Board-is_valid_row"><strong>is_valid_row</strong></a>(self, row)</dt><dd><tt>Check&nbsp;if&nbsp;the&nbsp;row&nbsp;number&nbsp;is&nbsp;inside&nbsp;the&nbsp;grid.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+Paramenters<br>
+-----------&nbsp;<br>
+row&nbsp;:&nbsp;int&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;row&nbsp;number.<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+bool&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;True&nbsp;for&nbsp;success,&nbsp;False&nbsp;otherwise.</tt></dd></dl>
+
+<dl><dt><a name="Board-restart_board"><strong>restart_board</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Board-rotate_horizontally"><strong>rotate_horizontally</strong></a>(self, row, number, direction)</dt><dd><tt>Rotates&nbsp;a&nbsp;row&nbsp;of&nbsp;the&nbsp;current&nbsp;grid&nbsp;a&nbsp;'number'&nbsp;amount&nbsp;of&nbsp;spaces.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+Paramenters<br>
+-----------&nbsp;<br>
+row&nbsp;:&nbsp;int<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;row&nbsp;number&nbsp;to&nbsp;rotate.<br>
+number&nbsp;:&nbsp;int<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;number&nbsp;of&nbsp;space&nbsp;to&nbsp;rotate.<br>
+direction&nbsp;:&nbsp;str<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;direction&nbsp;to&nbsp;rotate&nbsp;the&nbsp;row&nbsp;("left"&nbsp;or&nbsp;"right").<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+bool<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;True&nbsp;if&nbsp;the&nbsp;board&nbsp;was&nbsp;successfully&nbsp;rotate,&nbsp;False&nbsp;otherwise.</tt></dd></dl>
+
+<dl><dt><a name="Board-rotate_vertically"><strong>rotate_vertically</strong></a>(self, column, number, direction)</dt><dd><tt>Rotates&nbsp;a&nbsp;column&nbsp;of&nbsp;the&nbsp;current&nbsp;grid&nbsp;a&nbsp;'number'&nbsp;amount&nbsp;of&nbsp;spaces.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+Paramenters<br>
+-----------<br>
+column&nbsp;:&nbsp;int<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;column&nbsp;number&nbsp;to&nbsp;rotate.<br>
+number&nbsp;:&nbsp;int<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;number&nbsp;of&nbsp;space&nbsp;to&nbsp;rotate.<br>
+direction&nbsp;:&nbsp;str&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;direction&nbsp;to&nbsp;rotate&nbsp;the&nbsp;column&nbsp;("up"&nbsp;or&nbsp;"down").<br>
+&nbsp;<br>
+Returns<br>
+-------&nbsp;<br>
+bool<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;True&nbsp;if&nbsp;the&nbsp;board&nbsp;was&nbsp;successfully&nbsp;rotate,&nbsp;False&nbsp;otherwise.</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#F25252">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="ByLength">class <strong>ByLength</strong></a>(<a href="puzzle.html#Clue">Clue</a>)</font></td></tr>
+    
+<tr><td bgcolor="#F25252"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="puzzle.html#ByLength">ByLength</a></dd>
+<dd><a href="puzzle.html#Clue">Clue</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="ByLength-display"><strong>display</strong></a>(self)</dt></dl>
+
+<hr>
+Methods inherited from <a href="puzzle.html#Clue">Clue</a>:<br>
+<dl><dt><a name="ByLength-__init__"><strong>__init__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="ByLength-add_word_to_found"><strong>add_word_to_found</strong></a>(self, word)</dt><dd><tt>Add&nbsp;a&nbsp;word&nbsp;to&nbsp;the&nbsp;list&nbsp;of&nbsp;words&nbsp;that&nbsp;have&nbsp;been&nbsp;found.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;word&nbsp;(str):&nbsp;word&nbsp;to&nbsp;be&nbsp;added.</tt></dd></dl>
+
+<dl><dt><a name="ByLength-add_word_to_not_found"><strong>add_word_to_not_found</strong></a>(self, word)</dt><dd><tt>Add&nbsp;a&nbsp;word&nbsp;to&nbsp;the&nbsp;clue&nbsp;as&nbsp;not&nbsp;found.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+word&nbsp;:&nbsp;string<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Word&nbsp;that&nbsp;will&nbsp;be&nbsp;added.</tt></dd></dl>
+
+<dl><dt><a name="ByLength-build"><strong>build</strong></a>(self, subject, num_words, min_length, max_length)</dt><dd><tt>Build&nbsp;the&nbsp;clue,&nbsp;using&nbsp;the&nbsp;words&nbsp;of&nbsp;a&nbsp;subject,&nbsp;adding&nbsp;randomly<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;words&nbsp;into&nbsp;the&nbsp;not&nbsp;found&nbsp;list.&nbsp;There&nbsp;will&nbsp;be&nbsp;10&nbsp;clues&nbsp;per&nbsp;board&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;by&nbsp;default.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+subject&nbsp;:&nbsp;<a href="#Subject">Subject</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#Subject">Subject</a>&nbsp;<a href="builtins.html#object">object</a>&nbsp;that&nbsp;contain&nbsp;the&nbsp;words&nbsp;to&nbsp;be&nbsp;used.<br>
+num_words&nbsp;:&nbsp;int<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Number&nbsp;of&nbsp;words&nbsp;to&nbsp;be&nbsp;selected.<br>
+min_length&nbsp;:&nbsp;int<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Minimun&nbsp;length&nbsp;of&nbsp;a&nbsp;word.<br>
+max_length:&nbsp;in<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Maximun&nbsp;length&nbsp;of&nbsp;a&nbsp;word.</tt></dd></dl>
+
+<dl><dt><a name="ByLength-found_all_the_words"><strong>found_all_the_words</strong></a>(self)</dt><dd><tt>Check&nbsp;if&nbsp;the&nbsp;list&nbsp;of&nbsp;words&nbsp;that&nbsp;have&nbsp;not&nbsp;been&nbsp;found&nbsp;is&nbsp;empty&nbsp;and<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;list&nbsp;of&nbsp;words&nbsp;that&nbsp;have&nbsp;been&nbsp;found&nbsp;is&nbsp;not&nbsp;empty.<br>
+&nbsp;<br>
+Returns<br>
+-------&nbsp;<br>
+bool<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;True&nbsp;for&nbsp;success,&nbsp;False&nbsp;otherwise.</tt></dd></dl>
+
+<dl><dt><a name="ByLength-get_words_not_found"><strong>get_words_not_found</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;list&nbsp;of&nbsp;words&nbsp;not&nbsp;found.&nbsp;<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+[str]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;List&nbsp;of&nbsp;words&nbsp;that&nbsp;has&nbsp;not&nbsp;been&nbsp;found&nbsp;by&nbsp;the&nbsp;player.</tt></dd></dl>
+
+<dl><dt><a name="ByLength-remove_word_from_not_found"><strong>remove_word_from_not_found</strong></a>(self, word)</dt><dd><tt>Check&nbsp;if&nbsp;the&nbsp;word&nbsp;is&nbsp;on&nbsp;the&nbsp;list&nbsp;of&nbsp;words&nbsp;that&nbsp;have&nbsp;not&nbsp;been&nbsp;found<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;and&nbsp;removed&nbsp;it.<br>
+&nbsp;<br>
+Parameters<br>
+-----------<br>
+word&nbsp;:&nbsp;str<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Word&nbsp;to&nbsp;be&nbsp;removed.<br>
+&nbsp;<br>
+Returns<br>
+-------&nbsp;<br>
+bool<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;True&nbsp;if&nbsp;the&nbsp;word&nbsp;was&nbsp;successfully&nbsp;removed.&nbsp;False&nbsp;otherwise.</tt></dd></dl>
+
+<dl><dt><a name="ByLength-word_already_found"><strong>word_already_found</strong></a>(self, word)</dt><dd><tt>Checks&nbsp;if&nbsp;a&nbsp;word&nbsp;is&nbsp;on&nbsp;the&nbsp;list&nbsp;of&nbsp;words&nbsp;already&nbsp;found.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+word&nbsp;:&nbsp;str<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Word&nbsp;to&nbsp;check.<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+bool<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;True&nbsp;for&nbsp;success,&nbsp;False&nbsp;otherwise.</tt></dd></dl>
+
+<dl><dt><a name="ByLength-word_in_clue"><strong>word_in_clue</strong></a>(self, word)</dt><dd><tt>Cheks&nbsp;if&nbsp;a&nbsp;word&nbsp;belongs&nbsp;to&nbsp;a&nbsp;clue.&nbsp;Checks&nbsp;if&nbsp;a&nbsp;word&nbsp;is&nbsp;included&nbsp;on<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;list&nbsp;of&nbsp;words&nbsp;already&nbsp;found&nbsp;or&nbsp;on&nbsp;the&nbsp;list&nbsp;of&nbsp;words&nbsp;that&nbsp;have&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;not&nbsp;been&nbsp;found.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+word&nbsp;:&nbsp;str<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;word&nbsp;to&nbsp;be&nbsp;checked.<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+bool<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;True&nbsp;for&nbsp;success,&nbsp;False&nbsp;otherwise.</tt></dd></dl>
+
+<dl><dt><a name="ByLength-word_not_found"><strong>word_not_found</strong></a>(self, word)</dt><dd><tt>Cheks&nbsp;if&nbsp;a&nbsp;word&nbsp;is&nbsp;on&nbsp;the&nbsp;list&nbsp;of&nbsp;words&nbsp;that&nbsp;have&nbsp;not&nbsp;been&nbsp;found.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+word&nbsp;:&nbsp;str<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;word&nbsp;to&nbsp;be&nbsp;checked.<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+bool&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;True&nbsp;for&nbsp;success,&nbsp;False&nbsp;otherwise.</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="puzzle.html#Clue">Clue</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#F25252">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="ByLetters">class <strong>ByLetters</strong></a>(<a href="puzzle.html#Clue">Clue</a>)</font></td></tr>
+    
+<tr><td bgcolor="#F25252"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="puzzle.html#ByLetters">ByLetters</a></dd>
+<dd><a href="puzzle.html#Clue">Clue</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="ByLetters-display"><strong>display</strong></a>(self)</dt></dl>
+
+<hr>
+Methods inherited from <a href="puzzle.html#Clue">Clue</a>:<br>
+<dl><dt><a name="ByLetters-__init__"><strong>__init__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="ByLetters-add_word_to_found"><strong>add_word_to_found</strong></a>(self, word)</dt><dd><tt>Add&nbsp;a&nbsp;word&nbsp;to&nbsp;the&nbsp;list&nbsp;of&nbsp;words&nbsp;that&nbsp;have&nbsp;been&nbsp;found.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;word&nbsp;(str):&nbsp;word&nbsp;to&nbsp;be&nbsp;added.</tt></dd></dl>
+
+<dl><dt><a name="ByLetters-add_word_to_not_found"><strong>add_word_to_not_found</strong></a>(self, word)</dt><dd><tt>Add&nbsp;a&nbsp;word&nbsp;to&nbsp;the&nbsp;clue&nbsp;as&nbsp;not&nbsp;found.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+word&nbsp;:&nbsp;string<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Word&nbsp;that&nbsp;will&nbsp;be&nbsp;added.</tt></dd></dl>
+
+<dl><dt><a name="ByLetters-build"><strong>build</strong></a>(self, subject, num_words, min_length, max_length)</dt><dd><tt>Build&nbsp;the&nbsp;clue,&nbsp;using&nbsp;the&nbsp;words&nbsp;of&nbsp;a&nbsp;subject,&nbsp;adding&nbsp;randomly<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;words&nbsp;into&nbsp;the&nbsp;not&nbsp;found&nbsp;list.&nbsp;There&nbsp;will&nbsp;be&nbsp;10&nbsp;clues&nbsp;per&nbsp;board&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;by&nbsp;default.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+subject&nbsp;:&nbsp;<a href="#Subject">Subject</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#Subject">Subject</a>&nbsp;<a href="builtins.html#object">object</a>&nbsp;that&nbsp;contain&nbsp;the&nbsp;words&nbsp;to&nbsp;be&nbsp;used.<br>
+num_words&nbsp;:&nbsp;int<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Number&nbsp;of&nbsp;words&nbsp;to&nbsp;be&nbsp;selected.<br>
+min_length&nbsp;:&nbsp;int<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Minimun&nbsp;length&nbsp;of&nbsp;a&nbsp;word.<br>
+max_length:&nbsp;in<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Maximun&nbsp;length&nbsp;of&nbsp;a&nbsp;word.</tt></dd></dl>
+
+<dl><dt><a name="ByLetters-found_all_the_words"><strong>found_all_the_words</strong></a>(self)</dt><dd><tt>Check&nbsp;if&nbsp;the&nbsp;list&nbsp;of&nbsp;words&nbsp;that&nbsp;have&nbsp;not&nbsp;been&nbsp;found&nbsp;is&nbsp;empty&nbsp;and<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;list&nbsp;of&nbsp;words&nbsp;that&nbsp;have&nbsp;been&nbsp;found&nbsp;is&nbsp;not&nbsp;empty.<br>
+&nbsp;<br>
+Returns<br>
+-------&nbsp;<br>
+bool<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;True&nbsp;for&nbsp;success,&nbsp;False&nbsp;otherwise.</tt></dd></dl>
+
+<dl><dt><a name="ByLetters-get_words_not_found"><strong>get_words_not_found</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;list&nbsp;of&nbsp;words&nbsp;not&nbsp;found.&nbsp;<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+[str]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;List&nbsp;of&nbsp;words&nbsp;that&nbsp;has&nbsp;not&nbsp;been&nbsp;found&nbsp;by&nbsp;the&nbsp;player.</tt></dd></dl>
+
+<dl><dt><a name="ByLetters-remove_word_from_not_found"><strong>remove_word_from_not_found</strong></a>(self, word)</dt><dd><tt>Check&nbsp;if&nbsp;the&nbsp;word&nbsp;is&nbsp;on&nbsp;the&nbsp;list&nbsp;of&nbsp;words&nbsp;that&nbsp;have&nbsp;not&nbsp;been&nbsp;found<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;and&nbsp;removed&nbsp;it.<br>
+&nbsp;<br>
+Parameters<br>
+-----------<br>
+word&nbsp;:&nbsp;str<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Word&nbsp;to&nbsp;be&nbsp;removed.<br>
+&nbsp;<br>
+Returns<br>
+-------&nbsp;<br>
+bool<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;True&nbsp;if&nbsp;the&nbsp;word&nbsp;was&nbsp;successfully&nbsp;removed.&nbsp;False&nbsp;otherwise.</tt></dd></dl>
+
+<dl><dt><a name="ByLetters-word_already_found"><strong>word_already_found</strong></a>(self, word)</dt><dd><tt>Checks&nbsp;if&nbsp;a&nbsp;word&nbsp;is&nbsp;on&nbsp;the&nbsp;list&nbsp;of&nbsp;words&nbsp;already&nbsp;found.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+word&nbsp;:&nbsp;str<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Word&nbsp;to&nbsp;check.<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+bool<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;True&nbsp;for&nbsp;success,&nbsp;False&nbsp;otherwise.</tt></dd></dl>
+
+<dl><dt><a name="ByLetters-word_in_clue"><strong>word_in_clue</strong></a>(self, word)</dt><dd><tt>Cheks&nbsp;if&nbsp;a&nbsp;word&nbsp;belongs&nbsp;to&nbsp;a&nbsp;clue.&nbsp;Checks&nbsp;if&nbsp;a&nbsp;word&nbsp;is&nbsp;included&nbsp;on<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;list&nbsp;of&nbsp;words&nbsp;already&nbsp;found&nbsp;or&nbsp;on&nbsp;the&nbsp;list&nbsp;of&nbsp;words&nbsp;that&nbsp;have&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;not&nbsp;been&nbsp;found.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+word&nbsp;:&nbsp;str<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;word&nbsp;to&nbsp;be&nbsp;checked.<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+bool<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;True&nbsp;for&nbsp;success,&nbsp;False&nbsp;otherwise.</tt></dd></dl>
+
+<dl><dt><a name="ByLetters-word_not_found"><strong>word_not_found</strong></a>(self, word)</dt><dd><tt>Cheks&nbsp;if&nbsp;a&nbsp;word&nbsp;is&nbsp;on&nbsp;the&nbsp;list&nbsp;of&nbsp;words&nbsp;that&nbsp;have&nbsp;not&nbsp;been&nbsp;found.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+word&nbsp;:&nbsp;str<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;word&nbsp;to&nbsp;be&nbsp;checked.<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+bool&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;True&nbsp;for&nbsp;success,&nbsp;False&nbsp;otherwise.</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="puzzle.html#Clue">Clue</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#F25252">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="BySolution">class <strong>BySolution</strong></a>(<a href="puzzle.html#Clue">Clue</a>)</font></td></tr>
+    
+<tr bgcolor="#F25252"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Subclass&nbsp;that&nbsp;displays&nbsp;all&nbsp;the&nbsp;words&nbsp;in&nbsp;the&nbsp;<a href="#Clue">Clue</a>.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="puzzle.html#BySolution">BySolution</a></dd>
+<dd><a href="puzzle.html#Clue">Clue</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="BySolution-display"><strong>display</strong></a>(self)</dt><dd><tt>Display&nbsp;on&nbsp;the&nbsp;standard&nbsp;output&nbsp;the&nbsp;name&nbsp;of&nbsp;the&nbsp;subject&nbsp;and&nbsp;the&nbsp;complete<br>
+list&nbsp;of&nbsp;words&nbsp;that&nbsp;the&nbsp;player&nbsp;needs&nbsp;to&nbsp;find.</tt></dd></dl>
+
+<hr>
+Methods inherited from <a href="puzzle.html#Clue">Clue</a>:<br>
+<dl><dt><a name="BySolution-__init__"><strong>__init__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="BySolution-add_word_to_found"><strong>add_word_to_found</strong></a>(self, word)</dt><dd><tt>Add&nbsp;a&nbsp;word&nbsp;to&nbsp;the&nbsp;list&nbsp;of&nbsp;words&nbsp;that&nbsp;have&nbsp;been&nbsp;found.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;word&nbsp;(str):&nbsp;word&nbsp;to&nbsp;be&nbsp;added.</tt></dd></dl>
+
+<dl><dt><a name="BySolution-add_word_to_not_found"><strong>add_word_to_not_found</strong></a>(self, word)</dt><dd><tt>Add&nbsp;a&nbsp;word&nbsp;to&nbsp;the&nbsp;clue&nbsp;as&nbsp;not&nbsp;found.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+word&nbsp;:&nbsp;string<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Word&nbsp;that&nbsp;will&nbsp;be&nbsp;added.</tt></dd></dl>
+
+<dl><dt><a name="BySolution-build"><strong>build</strong></a>(self, subject, num_words, min_length, max_length)</dt><dd><tt>Build&nbsp;the&nbsp;clue,&nbsp;using&nbsp;the&nbsp;words&nbsp;of&nbsp;a&nbsp;subject,&nbsp;adding&nbsp;randomly<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;words&nbsp;into&nbsp;the&nbsp;not&nbsp;found&nbsp;list.&nbsp;There&nbsp;will&nbsp;be&nbsp;10&nbsp;clues&nbsp;per&nbsp;board&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;by&nbsp;default.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+subject&nbsp;:&nbsp;<a href="#Subject">Subject</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#Subject">Subject</a>&nbsp;<a href="builtins.html#object">object</a>&nbsp;that&nbsp;contain&nbsp;the&nbsp;words&nbsp;to&nbsp;be&nbsp;used.<br>
+num_words&nbsp;:&nbsp;int<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Number&nbsp;of&nbsp;words&nbsp;to&nbsp;be&nbsp;selected.<br>
+min_length&nbsp;:&nbsp;int<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Minimun&nbsp;length&nbsp;of&nbsp;a&nbsp;word.<br>
+max_length:&nbsp;in<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Maximun&nbsp;length&nbsp;of&nbsp;a&nbsp;word.</tt></dd></dl>
+
+<dl><dt><a name="BySolution-found_all_the_words"><strong>found_all_the_words</strong></a>(self)</dt><dd><tt>Check&nbsp;if&nbsp;the&nbsp;list&nbsp;of&nbsp;words&nbsp;that&nbsp;have&nbsp;not&nbsp;been&nbsp;found&nbsp;is&nbsp;empty&nbsp;and<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;list&nbsp;of&nbsp;words&nbsp;that&nbsp;have&nbsp;been&nbsp;found&nbsp;is&nbsp;not&nbsp;empty.<br>
+&nbsp;<br>
+Returns<br>
+-------&nbsp;<br>
+bool<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;True&nbsp;for&nbsp;success,&nbsp;False&nbsp;otherwise.</tt></dd></dl>
+
+<dl><dt><a name="BySolution-get_words_not_found"><strong>get_words_not_found</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;list&nbsp;of&nbsp;words&nbsp;not&nbsp;found.&nbsp;<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+[str]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;List&nbsp;of&nbsp;words&nbsp;that&nbsp;has&nbsp;not&nbsp;been&nbsp;found&nbsp;by&nbsp;the&nbsp;player.</tt></dd></dl>
+
+<dl><dt><a name="BySolution-remove_word_from_not_found"><strong>remove_word_from_not_found</strong></a>(self, word)</dt><dd><tt>Check&nbsp;if&nbsp;the&nbsp;word&nbsp;is&nbsp;on&nbsp;the&nbsp;list&nbsp;of&nbsp;words&nbsp;that&nbsp;have&nbsp;not&nbsp;been&nbsp;found<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;and&nbsp;removed&nbsp;it.<br>
+&nbsp;<br>
+Parameters<br>
+-----------<br>
+word&nbsp;:&nbsp;str<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Word&nbsp;to&nbsp;be&nbsp;removed.<br>
+&nbsp;<br>
+Returns<br>
+-------&nbsp;<br>
+bool<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;True&nbsp;if&nbsp;the&nbsp;word&nbsp;was&nbsp;successfully&nbsp;removed.&nbsp;False&nbsp;otherwise.</tt></dd></dl>
+
+<dl><dt><a name="BySolution-word_already_found"><strong>word_already_found</strong></a>(self, word)</dt><dd><tt>Checks&nbsp;if&nbsp;a&nbsp;word&nbsp;is&nbsp;on&nbsp;the&nbsp;list&nbsp;of&nbsp;words&nbsp;already&nbsp;found.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+word&nbsp;:&nbsp;str<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Word&nbsp;to&nbsp;check.<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+bool<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;True&nbsp;for&nbsp;success,&nbsp;False&nbsp;otherwise.</tt></dd></dl>
+
+<dl><dt><a name="BySolution-word_in_clue"><strong>word_in_clue</strong></a>(self, word)</dt><dd><tt>Cheks&nbsp;if&nbsp;a&nbsp;word&nbsp;belongs&nbsp;to&nbsp;a&nbsp;clue.&nbsp;Checks&nbsp;if&nbsp;a&nbsp;word&nbsp;is&nbsp;included&nbsp;on<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;list&nbsp;of&nbsp;words&nbsp;already&nbsp;found&nbsp;or&nbsp;on&nbsp;the&nbsp;list&nbsp;of&nbsp;words&nbsp;that&nbsp;have&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;not&nbsp;been&nbsp;found.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+word&nbsp;:&nbsp;str<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;word&nbsp;to&nbsp;be&nbsp;checked.<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+bool<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;True&nbsp;for&nbsp;success,&nbsp;False&nbsp;otherwise.</tt></dd></dl>
+
+<dl><dt><a name="BySolution-word_not_found"><strong>word_not_found</strong></a>(self, word)</dt><dd><tt>Cheks&nbsp;if&nbsp;a&nbsp;word&nbsp;is&nbsp;on&nbsp;the&nbsp;list&nbsp;of&nbsp;words&nbsp;that&nbsp;have&nbsp;not&nbsp;been&nbsp;found.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+word&nbsp;:&nbsp;str<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;word&nbsp;to&nbsp;be&nbsp;checked.<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+bool&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;True&nbsp;for&nbsp;success,&nbsp;False&nbsp;otherwise.</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="puzzle.html#Clue">Clue</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#F25252">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="BySubject">class <strong>BySubject</strong></a>(<a href="puzzle.html#Clue">Clue</a>)</font></td></tr>
+    
+<tr><td bgcolor="#F25252"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="puzzle.html#BySubject">BySubject</a></dd>
+<dd><a href="puzzle.html#Clue">Clue</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="BySubject-display"><strong>display</strong></a>(self)</dt></dl>
+
+<hr>
+Methods inherited from <a href="puzzle.html#Clue">Clue</a>:<br>
+<dl><dt><a name="BySubject-__init__"><strong>__init__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="BySubject-add_word_to_found"><strong>add_word_to_found</strong></a>(self, word)</dt><dd><tt>Add&nbsp;a&nbsp;word&nbsp;to&nbsp;the&nbsp;list&nbsp;of&nbsp;words&nbsp;that&nbsp;have&nbsp;been&nbsp;found.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;word&nbsp;(str):&nbsp;word&nbsp;to&nbsp;be&nbsp;added.</tt></dd></dl>
+
+<dl><dt><a name="BySubject-add_word_to_not_found"><strong>add_word_to_not_found</strong></a>(self, word)</dt><dd><tt>Add&nbsp;a&nbsp;word&nbsp;to&nbsp;the&nbsp;clue&nbsp;as&nbsp;not&nbsp;found.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+word&nbsp;:&nbsp;string<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Word&nbsp;that&nbsp;will&nbsp;be&nbsp;added.</tt></dd></dl>
+
+<dl><dt><a name="BySubject-build"><strong>build</strong></a>(self, subject, num_words, min_length, max_length)</dt><dd><tt>Build&nbsp;the&nbsp;clue,&nbsp;using&nbsp;the&nbsp;words&nbsp;of&nbsp;a&nbsp;subject,&nbsp;adding&nbsp;randomly<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;words&nbsp;into&nbsp;the&nbsp;not&nbsp;found&nbsp;list.&nbsp;There&nbsp;will&nbsp;be&nbsp;10&nbsp;clues&nbsp;per&nbsp;board&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;by&nbsp;default.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+subject&nbsp;:&nbsp;<a href="#Subject">Subject</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#Subject">Subject</a>&nbsp;<a href="builtins.html#object">object</a>&nbsp;that&nbsp;contain&nbsp;the&nbsp;words&nbsp;to&nbsp;be&nbsp;used.<br>
+num_words&nbsp;:&nbsp;int<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Number&nbsp;of&nbsp;words&nbsp;to&nbsp;be&nbsp;selected.<br>
+min_length&nbsp;:&nbsp;int<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Minimun&nbsp;length&nbsp;of&nbsp;a&nbsp;word.<br>
+max_length:&nbsp;in<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Maximun&nbsp;length&nbsp;of&nbsp;a&nbsp;word.</tt></dd></dl>
+
+<dl><dt><a name="BySubject-found_all_the_words"><strong>found_all_the_words</strong></a>(self)</dt><dd><tt>Check&nbsp;if&nbsp;the&nbsp;list&nbsp;of&nbsp;words&nbsp;that&nbsp;have&nbsp;not&nbsp;been&nbsp;found&nbsp;is&nbsp;empty&nbsp;and<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;list&nbsp;of&nbsp;words&nbsp;that&nbsp;have&nbsp;been&nbsp;found&nbsp;is&nbsp;not&nbsp;empty.<br>
+&nbsp;<br>
+Returns<br>
+-------&nbsp;<br>
+bool<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;True&nbsp;for&nbsp;success,&nbsp;False&nbsp;otherwise.</tt></dd></dl>
+
+<dl><dt><a name="BySubject-get_words_not_found"><strong>get_words_not_found</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;list&nbsp;of&nbsp;words&nbsp;not&nbsp;found.&nbsp;<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+[str]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;List&nbsp;of&nbsp;words&nbsp;that&nbsp;has&nbsp;not&nbsp;been&nbsp;found&nbsp;by&nbsp;the&nbsp;player.</tt></dd></dl>
+
+<dl><dt><a name="BySubject-remove_word_from_not_found"><strong>remove_word_from_not_found</strong></a>(self, word)</dt><dd><tt>Check&nbsp;if&nbsp;the&nbsp;word&nbsp;is&nbsp;on&nbsp;the&nbsp;list&nbsp;of&nbsp;words&nbsp;that&nbsp;have&nbsp;not&nbsp;been&nbsp;found<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;and&nbsp;removed&nbsp;it.<br>
+&nbsp;<br>
+Parameters<br>
+-----------<br>
+word&nbsp;:&nbsp;str<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Word&nbsp;to&nbsp;be&nbsp;removed.<br>
+&nbsp;<br>
+Returns<br>
+-------&nbsp;<br>
+bool<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;True&nbsp;if&nbsp;the&nbsp;word&nbsp;was&nbsp;successfully&nbsp;removed.&nbsp;False&nbsp;otherwise.</tt></dd></dl>
+
+<dl><dt><a name="BySubject-word_already_found"><strong>word_already_found</strong></a>(self, word)</dt><dd><tt>Checks&nbsp;if&nbsp;a&nbsp;word&nbsp;is&nbsp;on&nbsp;the&nbsp;list&nbsp;of&nbsp;words&nbsp;already&nbsp;found.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+word&nbsp;:&nbsp;str<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Word&nbsp;to&nbsp;check.<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+bool<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;True&nbsp;for&nbsp;success,&nbsp;False&nbsp;otherwise.</tt></dd></dl>
+
+<dl><dt><a name="BySubject-word_in_clue"><strong>word_in_clue</strong></a>(self, word)</dt><dd><tt>Cheks&nbsp;if&nbsp;a&nbsp;word&nbsp;belongs&nbsp;to&nbsp;a&nbsp;clue.&nbsp;Checks&nbsp;if&nbsp;a&nbsp;word&nbsp;is&nbsp;included&nbsp;on<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;list&nbsp;of&nbsp;words&nbsp;already&nbsp;found&nbsp;or&nbsp;on&nbsp;the&nbsp;list&nbsp;of&nbsp;words&nbsp;that&nbsp;have&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;not&nbsp;been&nbsp;found.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+word&nbsp;:&nbsp;str<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;word&nbsp;to&nbsp;be&nbsp;checked.<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+bool<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;True&nbsp;for&nbsp;success,&nbsp;False&nbsp;otherwise.</tt></dd></dl>
+
+<dl><dt><a name="BySubject-word_not_found"><strong>word_not_found</strong></a>(self, word)</dt><dd><tt>Cheks&nbsp;if&nbsp;a&nbsp;word&nbsp;is&nbsp;on&nbsp;the&nbsp;list&nbsp;of&nbsp;words&nbsp;that&nbsp;have&nbsp;not&nbsp;been&nbsp;found.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+word&nbsp;:&nbsp;str<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;word&nbsp;to&nbsp;be&nbsp;checked.<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+bool&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;True&nbsp;for&nbsp;success,&nbsp;False&nbsp;otherwise.</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="puzzle.html#Clue">Clue</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#F25252">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Clue">class <strong>Clue</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
+    
+<tr bgcolor="#F25252"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Manage&nbsp;the&nbsp;list&nbsp;of&nbsp;words&nbsp;that&nbsp;the&nbsp;player&nbsp;needs&nbsp;to&nbsp;find&nbsp;on&nbsp;the&nbsp;game.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="Clue-__init__"><strong>__init__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Clue-add_word_to_found"><strong>add_word_to_found</strong></a>(self, word)</dt><dd><tt>Add&nbsp;a&nbsp;word&nbsp;to&nbsp;the&nbsp;list&nbsp;of&nbsp;words&nbsp;that&nbsp;have&nbsp;been&nbsp;found.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;word&nbsp;(str):&nbsp;word&nbsp;to&nbsp;be&nbsp;added.</tt></dd></dl>
+
+<dl><dt><a name="Clue-add_word_to_not_found"><strong>add_word_to_not_found</strong></a>(self, word)</dt><dd><tt>Add&nbsp;a&nbsp;word&nbsp;to&nbsp;the&nbsp;clue&nbsp;as&nbsp;not&nbsp;found.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+word&nbsp;:&nbsp;string<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Word&nbsp;that&nbsp;will&nbsp;be&nbsp;added.</tt></dd></dl>
+
+<dl><dt><a name="Clue-build"><strong>build</strong></a>(self, subject, num_words, min_length, max_length)</dt><dd><tt>Build&nbsp;the&nbsp;clue,&nbsp;using&nbsp;the&nbsp;words&nbsp;of&nbsp;a&nbsp;subject,&nbsp;adding&nbsp;randomly<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;words&nbsp;into&nbsp;the&nbsp;not&nbsp;found&nbsp;list.&nbsp;There&nbsp;will&nbsp;be&nbsp;10&nbsp;clues&nbsp;per&nbsp;board&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;by&nbsp;default.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+subject&nbsp;:&nbsp;<a href="#Subject">Subject</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#Subject">Subject</a>&nbsp;<a href="builtins.html#object">object</a>&nbsp;that&nbsp;contain&nbsp;the&nbsp;words&nbsp;to&nbsp;be&nbsp;used.<br>
+num_words&nbsp;:&nbsp;int<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Number&nbsp;of&nbsp;words&nbsp;to&nbsp;be&nbsp;selected.<br>
+min_length&nbsp;:&nbsp;int<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Minimun&nbsp;length&nbsp;of&nbsp;a&nbsp;word.<br>
+max_length:&nbsp;in<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Maximun&nbsp;length&nbsp;of&nbsp;a&nbsp;word.</tt></dd></dl>
+
+<dl><dt><a name="Clue-found_all_the_words"><strong>found_all_the_words</strong></a>(self)</dt><dd><tt>Check&nbsp;if&nbsp;the&nbsp;list&nbsp;of&nbsp;words&nbsp;that&nbsp;have&nbsp;not&nbsp;been&nbsp;found&nbsp;is&nbsp;empty&nbsp;and<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;list&nbsp;of&nbsp;words&nbsp;that&nbsp;have&nbsp;been&nbsp;found&nbsp;is&nbsp;not&nbsp;empty.<br>
+&nbsp;<br>
+Returns<br>
+-------&nbsp;<br>
+bool<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;True&nbsp;for&nbsp;success,&nbsp;False&nbsp;otherwise.</tt></dd></dl>
+
+<dl><dt><a name="Clue-get_words_not_found"><strong>get_words_not_found</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;list&nbsp;of&nbsp;words&nbsp;not&nbsp;found.&nbsp;<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+[str]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;List&nbsp;of&nbsp;words&nbsp;that&nbsp;has&nbsp;not&nbsp;been&nbsp;found&nbsp;by&nbsp;the&nbsp;player.</tt></dd></dl>
+
+<dl><dt><a name="Clue-remove_word_from_not_found"><strong>remove_word_from_not_found</strong></a>(self, word)</dt><dd><tt>Check&nbsp;if&nbsp;the&nbsp;word&nbsp;is&nbsp;on&nbsp;the&nbsp;list&nbsp;of&nbsp;words&nbsp;that&nbsp;have&nbsp;not&nbsp;been&nbsp;found<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;and&nbsp;removed&nbsp;it.<br>
+&nbsp;<br>
+Parameters<br>
+-----------<br>
+word&nbsp;:&nbsp;str<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Word&nbsp;to&nbsp;be&nbsp;removed.<br>
+&nbsp;<br>
+Returns<br>
+-------&nbsp;<br>
+bool<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;True&nbsp;if&nbsp;the&nbsp;word&nbsp;was&nbsp;successfully&nbsp;removed.&nbsp;False&nbsp;otherwise.</tt></dd></dl>
+
+<dl><dt><a name="Clue-word_already_found"><strong>word_already_found</strong></a>(self, word)</dt><dd><tt>Checks&nbsp;if&nbsp;a&nbsp;word&nbsp;is&nbsp;on&nbsp;the&nbsp;list&nbsp;of&nbsp;words&nbsp;already&nbsp;found.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+word&nbsp;:&nbsp;str<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Word&nbsp;to&nbsp;check.<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+bool<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;True&nbsp;for&nbsp;success,&nbsp;False&nbsp;otherwise.</tt></dd></dl>
+
+<dl><dt><a name="Clue-word_in_clue"><strong>word_in_clue</strong></a>(self, word)</dt><dd><tt>Cheks&nbsp;if&nbsp;a&nbsp;word&nbsp;belongs&nbsp;to&nbsp;a&nbsp;clue.&nbsp;Checks&nbsp;if&nbsp;a&nbsp;word&nbsp;is&nbsp;included&nbsp;on<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;list&nbsp;of&nbsp;words&nbsp;already&nbsp;found&nbsp;or&nbsp;on&nbsp;the&nbsp;list&nbsp;of&nbsp;words&nbsp;that&nbsp;have&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;not&nbsp;been&nbsp;found.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+word&nbsp;:&nbsp;str<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;word&nbsp;to&nbsp;be&nbsp;checked.<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+bool<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;True&nbsp;for&nbsp;success,&nbsp;False&nbsp;otherwise.</tt></dd></dl>
+
+<dl><dt><a name="Clue-word_not_found"><strong>word_not_found</strong></a>(self, word)</dt><dd><tt>Cheks&nbsp;if&nbsp;a&nbsp;word&nbsp;is&nbsp;on&nbsp;the&nbsp;list&nbsp;of&nbsp;words&nbsp;that&nbsp;have&nbsp;not&nbsp;been&nbsp;found.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+word&nbsp;:&nbsp;str<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;word&nbsp;to&nbsp;be&nbsp;checked.<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+bool&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;True&nbsp;for&nbsp;success,&nbsp;False&nbsp;otherwise.</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#F25252">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Dictionary">class <strong>Dictionary</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
+    
+<tr bgcolor="#F25252"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Manage&nbsp;all&nbsp;the&nbsp;subjects&nbsp;available&nbsp;on&nbsp;the&nbsp;game.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="Dictionary-__init__"><strong>__init__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Dictionary-add_subject"><strong>add_subject</strong></a>(self, subject)</dt><dd><tt>Add&nbsp;a&nbsp;subject&nbsp;<a href="builtins.html#object">object</a>&nbsp;into&nbsp;the&nbsp;dictionary.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+subject:&nbsp;<a href="#Subject">Subject</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#Subject">Subject</a>&nbsp;to&nbsp;be&nbsp;added.</tt></dd></dl>
+
+<dl><dt><a name="Dictionary-display_subjects"><strong>display_subjects</strong></a>(self)</dt><dd><tt>Display&nbsp;on&nbsp;the&nbsp;standard&nbsp;output&nbsp;the&nbsp;list&nbsp;of&nbsp;the&nbsp;names&nbsp;of&nbsp;the&nbsp;<br>
+all&nbsp;the&nbsp;subjects.</tt></dd></dl>
+
+<dl><dt><a name="Dictionary-get_subject_by_name"><strong>get_subject_by_name</strong></a>(self, name)</dt><dd><tt>Return&nbsp;a&nbsp;subject&nbsp;using&nbsp;its&nbsp;name&nbsp;element.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+name&nbsp;:&nbsp;str<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The&nbsp;name&nbsp;of&nbsp;the&nbsp;subject&nbsp;as&nbsp;a&nbsp;string.<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+<a href="#Subject">Subject</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#Subject">Subject</a>&nbsp;corresponding&nbsp;to&nbsp;`name`.</tt></dd></dl>
+
+<dl><dt><a name="Dictionary-load"><strong>load</strong></a>(self)</dt><dd><tt>Load&nbsp;the&nbsp;dictionary&nbsp;from&nbsp;xml&nbsp;files&nbsp;into&nbsp;subjects&nbsp;directory.&nbsp;<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+bool<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;True&nbsp;for&nbsp;success,&nbsp;False&nbsp;otherwise.</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#F25252">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Game">class <strong>Game</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
+    
+<tr bgcolor="#F25252"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Superclass.&nbsp;Manage&nbsp;information&nbsp;of&nbsp;a&nbsp;game&nbsp;on&nbsp;its&nbsp;different&nbsp;modes.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="Game-__init__"><strong>__init__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Game-add_board"><strong>add_board</strong></a>(self, board)</dt><dd><tt>Associate&nbsp;a&nbsp;built&nbsp;board&nbsp;to&nbsp;the&nbsp;game.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+board&nbsp;:&nbsp;<a href="#Board">Board</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#Board">Board</a>&nbsp;to&nbsp;be&nbsp;added&nbsp;to&nbsp;the&nbsp;game.</tt></dd></dl>
+
+<dl><dt><a name="Game-end_current_game"><strong>end_current_game</strong></a>(self)</dt><dd><tt>If&nbsp;the&nbsp;player&nbsp;wants&nbsp;to&nbsp;end&nbsp;the&nbsp;game,&nbsp;sets&nbsp;the&nbsp;variable&nbsp;start_again&nbsp;<br>
+to&nbsp;True.&nbsp;Otherwise&nbsp;exit&nbsp;the&nbsp;game.</tt></dd></dl>
+
+<dl><dt><a name="Game-find_word"><strong>find_word</strong></a>(self)</dt><dd><tt>Find&nbsp;a&nbsp;word&nbsp;specified&nbsp;by&nbsp;the&nbsp;user.&nbsp;Get&nbsp;the&nbsp;row&nbsp;and&nbsp;the&nbsp;column&nbsp;<br>
+numbers&nbsp;corresponding&nbsp;to&nbsp;initial&nbsp;and&nbsp;the&nbsp;final&nbsp;cells&nbsp;of&nbsp;the&nbsp;word.<br>
+Get&nbsp;the&nbsp;word&nbsp;from&nbsp;the&nbsp;board,&nbsp;and&nbsp;check&nbsp;if&nbsp;the&nbsp;word&nbsp;is&nbsp;valid.<br>
+Display&nbsp;appropiate&nbsp;messages&nbsp;to&nbsp;the&nbsp;user.</tt></dd></dl>
+
+<dl><dt><a name="Game-get_column_number"><strong>get_column_number</strong></a>(self)</dt><dd><tt>Read&nbsp;from&nbsp;standard&nbsp;input&nbsp;an&nbsp;integer.<br>
+&nbsp;<br>
+Returns<br>
+-------&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;:&nbsp;column&nbsp;number&nbsp;read.</tt></dd></dl>
+
+<dl><dt><a name="Game-get_direction"><strong>get_direction</strong></a>(self)</dt><dd><tt>Read&nbsp;from&nbsp;standard&nbsp;input&nbsp;a&nbsp;string&nbsp;corresponding&nbsp;to&nbsp;a&nbsp;direction.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Only&nbsp;'right',&nbsp;'left',&nbsp;'up',&nbsp;'down'&nbsp;are&nbsp;possible.<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+str<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;direction&nbsp;read.</tt></dd></dl>
+
+<dl><dt><a name="Game-get_number_spaces"><strong>get_number_spaces</strong></a>(self, direction)</dt><dd><tt>Read&nbsp;from&nbsp;standard&nbsp;input&nbsp;an&nbsp;integer.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+direction&nbsp;:&nbsp;str<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Direction&nbsp;the&nbsp;board&nbsp;is&nbsp;going&nbsp;to&nbsp;rotate&nbsp;to.<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+int<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Number&nbsp;of&nbsp;spaces&nbsp;read.</tt></dd></dl>
+
+<dl><dt><a name="Game-get_play_again"><strong>get_play_again</strong></a>(self)</dt><dd><tt>Ask&nbsp;the&nbsp;user&nbsp;if&nbsp;he-she&nbsp;wants&nbsp;to&nbsp;start&nbsp;a&nbsp;new&nbsp;game.<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+bool<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;True&nbsp;if&nbsp;success,&nbsp;False&nbsp;otherwise.</tt></dd></dl>
+
+<dl><dt><a name="Game-get_rotation_attr"><strong>get_rotation_attr</strong></a>(self)</dt><dd><tt>Get&nbsp;the&nbsp;direction&nbsp;to&nbsp;rotate&nbsp;the&nbsp;board,&nbsp;the&nbsp;number&nbsp;of&nbsp;row&nbsp;or&nbsp;column<br>
+that&nbsp;is&nbsp;going&nbsp;to&nbsp;rotate&nbsp;and&nbsp;the&nbsp;amount&nbsp;of&nbsp;spaces&nbsp;to&nbsp;rotate.&nbsp;Then<br>
+rotates&nbsp;the&nbsp;board&nbsp;accordint&nbsp;to&nbsp;these&nbsp;parameters.</tt></dd></dl>
+
+<dl><dt><a name="Game-get_row_number"><strong>get_row_number</strong></a>(self)</dt><dd><tt>Read&nbsp;from&nbsp;standard&nbsp;input&nbsp;an&nbsp;integer.<br>
+&nbsp;<br>
+Returns<br>
+-------&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;:&nbsp;row&nbsp;number&nbsp;read.</tt></dd></dl>
+
+<dl><dt><a name="Game-play_again"><strong>play_again</strong></a>(self)</dt><dd><tt>Return&nbsp;if&nbsp;the&nbsp;player&nbsp;wants&nbsp;to&nbsp;play&nbsp;again.<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+bool<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;True&nbsp;if&nbsp;the&nbsp;player&nbsp;wants&nbsp;to&nbsp;play&nbsp;again.&nbsp;False&nbsp;otherwise.</tt></dd></dl>
+
+<dl><dt><a name="Game-read_command"><strong>read_command</strong></a>(self)</dt><dd><tt>'&nbsp;Reads&nbsp;a&nbsp;command&nbsp;from&nbsp;standard&nbsp;input.&nbsp;Only&nbsp;'rotate',&nbsp;'word',&nbsp;'help',&nbsp;<br>
+'exit'&nbsp;are&nbsp;valid.&nbsp;Calls&nbsp;the&nbsp;corresponding&nbsp;function&nbsp;to&nbsp;execute&nbsp;each&nbsp;<br>
+command.</tt></dd></dl>
+
+<dl><dt><a name="Game-select_clue"><strong>select_clue</strong></a>(self, subject, num_words, min_length, max_length)</dt><dd><tt>Select&nbsp;a&nbsp;specific&nbsp;type&nbsp;of&nbsp;clue.&nbsp;For&nbsp;this&nbsp;version,&nbsp;it&nbsp;will&nbsp;be&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#BySolution">BySolution</a>.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+subject&nbsp;:&nbsp;<a href="#Subject">Subject</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;subject&nbsp;that&nbsp;will&nbsp;be&nbsp;used&nbsp;into&nbsp;the&nbsp;building&nbsp;clue&nbsp;process.<br>
+num_words&nbsp;:&nbsp;int<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Number&nbsp;of&nbsp;words&nbsp;to&nbsp;be&nbsp;selected<br>
+min_length&nbsp;:&nbsp;int<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Minimun&nbsp;length&nbsp;of&nbsp;a&nbsp;word.<br>
+max_length:&nbsp;int<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Maximun&nbsp;length&nbsp;of&nbsp;a&nbsp;word.</tt></dd></dl>
+
+<dl><dt><a name="Game-select_subject"><strong>select_subject</strong></a>(self)</dt><dd><tt>Return&nbsp;a&nbsp;selected&nbsp;subject&nbsp;from&nbsp;the&nbsp;dictionary.<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+<a href="#Subject">Subject</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#Subject">Subject</a>&nbsp;selected&nbsp;by&nbsp;the&nbsp;player.</tt></dd></dl>
+
+<dl><dt><a name="Game-setup"><strong>setup</strong></a>(self)</dt><dd><tt>Setup&nbsp;all&nbsp;the&nbsp;configuration&nbsp;of&nbsp;the&nbsp;game&nbsp;before&nbsp;starting.</tt></dd></dl>
+
+<dl><dt><a name="Game-turn"><strong>turn</strong></a>(self)</dt><dd><tt>Manages&nbsp;the&nbsp;turns&nbsp;of&nbsp;the&nbsp;player.&nbsp;Call&nbsp;the&nbsp;function&nbsp;to&nbsp;read&nbsp;the<br>
+commands,&nbsp;and&nbsp;display&nbsp;the&nbsp;current&nbsp;state&nbsp;of&nbsp;the&nbsp;game.</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#F25252">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="HighScores">class <strong>HighScores</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
+    
+<tr><td bgcolor="#F25252"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="HighScores-__init__"><strong>__init__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="HighScores-add_race_time_mode_highscore"><strong>add_race_time_mode_highscore</strong></a>(self, score)</dt></dl>
+
+<dl><dt><a name="HighScores-add_simple_mode_highscore"><strong>add_simple_mode_highscore</strong></a>(self, score)</dt></dl>
+
+<dl><dt><a name="HighScores-display"><strong>display</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="HighScores-export_highscores"><strong>export_highscores</strong></a>(self, file)</dt></dl>
+
+<dl><dt><a name="HighScores-import_highscores"><strong>import_highscores</strong></a>(self, file)</dt></dl>
+
+<dl><dt><a name="HighScores-is_highscore"><strong>is_highscore</strong></a>(self, score)</dt></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#F25252">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Instruction">class <strong>Instruction</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
+    
+<tr bgcolor="#F25252"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Manage&nbsp;all&nbsp;the&nbsp;information&nbsp;corresponding&nbsp;to&nbsp;the&nbsp;rules&nbsp;of&nbsp;<br>
+the&nbsp;game.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="Instruction-__init__"><strong>__init__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Instruction-display"><strong>display</strong></a>(self)</dt><dd><tt>'Display&nbsp;on&nbsp;the&nbsp;standard&nbsp;output&nbsp;the&nbsp;rules&nbsp;of&nbsp;the&nbsp;game.</tt></dd></dl>
+
+<dl><dt><a name="Instruction-import_instruction"><strong>import_instruction</strong></a>(self, file)</dt><dd><tt>Import&nbsp;the&nbsp;set&nbsp;of&nbsp;instructions&nbsp;of&nbsp;the&nbsp;game&nbsp;from&nbsp;a&nbsp;file.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+file&nbsp;:&nbsp;str<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Path&nbsp;of&nbsp;the&nbsp;file&nbsp;where&nbsp;the&nbsp;instructions&nbsp;are&nbsp;found.</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#F25252">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="MultiPlayer">class <strong>MultiPlayer</strong></a>(<a href="puzzle.html#Game">Game</a>)</font></td></tr>
+    
+<tr><td bgcolor="#F25252"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="puzzle.html#MultiPlayer">MultiPlayer</a></dd>
+<dd><a href="puzzle.html#Game">Game</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="MultiPlayer-__init__"><strong>__init__</strong></a>(self, player1, player2)</dt></dl>
+
+<dl><dt><a name="MultiPlayer-display_current_state"><strong>display_current_state</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="MultiPlayer-display_winner"><strong>display_winner</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="MultiPlayer-is_time_over"><strong>is_time_over</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="MultiPlayer-manage_time"><strong>manage_time</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="MultiPlayer-play"><strong>play</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="MultiPlayer-restart"><strong>restart</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="MultiPlayer-set_current_player"><strong>set_current_player</strong></a>(self)</dt></dl>
+
+<hr>
+Methods inherited from <a href="puzzle.html#Game">Game</a>:<br>
+<dl><dt><a name="MultiPlayer-add_board"><strong>add_board</strong></a>(self, board)</dt><dd><tt>Associate&nbsp;a&nbsp;built&nbsp;board&nbsp;to&nbsp;the&nbsp;game.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+board&nbsp;:&nbsp;<a href="#Board">Board</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#Board">Board</a>&nbsp;to&nbsp;be&nbsp;added&nbsp;to&nbsp;the&nbsp;game.</tt></dd></dl>
+
+<dl><dt><a name="MultiPlayer-end_current_game"><strong>end_current_game</strong></a>(self)</dt><dd><tt>If&nbsp;the&nbsp;player&nbsp;wants&nbsp;to&nbsp;end&nbsp;the&nbsp;game,&nbsp;sets&nbsp;the&nbsp;variable&nbsp;start_again&nbsp;<br>
+to&nbsp;True.&nbsp;Otherwise&nbsp;exit&nbsp;the&nbsp;game.</tt></dd></dl>
+
+<dl><dt><a name="MultiPlayer-find_word"><strong>find_word</strong></a>(self)</dt><dd><tt>Find&nbsp;a&nbsp;word&nbsp;specified&nbsp;by&nbsp;the&nbsp;user.&nbsp;Get&nbsp;the&nbsp;row&nbsp;and&nbsp;the&nbsp;column&nbsp;<br>
+numbers&nbsp;corresponding&nbsp;to&nbsp;initial&nbsp;and&nbsp;the&nbsp;final&nbsp;cells&nbsp;of&nbsp;the&nbsp;word.<br>
+Get&nbsp;the&nbsp;word&nbsp;from&nbsp;the&nbsp;board,&nbsp;and&nbsp;check&nbsp;if&nbsp;the&nbsp;word&nbsp;is&nbsp;valid.<br>
+Display&nbsp;appropiate&nbsp;messages&nbsp;to&nbsp;the&nbsp;user.</tt></dd></dl>
+
+<dl><dt><a name="MultiPlayer-get_column_number"><strong>get_column_number</strong></a>(self)</dt><dd><tt>Read&nbsp;from&nbsp;standard&nbsp;input&nbsp;an&nbsp;integer.<br>
+&nbsp;<br>
+Returns<br>
+-------&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;:&nbsp;column&nbsp;number&nbsp;read.</tt></dd></dl>
+
+<dl><dt><a name="MultiPlayer-get_direction"><strong>get_direction</strong></a>(self)</dt><dd><tt>Read&nbsp;from&nbsp;standard&nbsp;input&nbsp;a&nbsp;string&nbsp;corresponding&nbsp;to&nbsp;a&nbsp;direction.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Only&nbsp;'right',&nbsp;'left',&nbsp;'up',&nbsp;'down'&nbsp;are&nbsp;possible.<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+str<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;direction&nbsp;read.</tt></dd></dl>
+
+<dl><dt><a name="MultiPlayer-get_number_spaces"><strong>get_number_spaces</strong></a>(self, direction)</dt><dd><tt>Read&nbsp;from&nbsp;standard&nbsp;input&nbsp;an&nbsp;integer.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+direction&nbsp;:&nbsp;str<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Direction&nbsp;the&nbsp;board&nbsp;is&nbsp;going&nbsp;to&nbsp;rotate&nbsp;to.<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+int<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Number&nbsp;of&nbsp;spaces&nbsp;read.</tt></dd></dl>
+
+<dl><dt><a name="MultiPlayer-get_play_again"><strong>get_play_again</strong></a>(self)</dt><dd><tt>Ask&nbsp;the&nbsp;user&nbsp;if&nbsp;he-she&nbsp;wants&nbsp;to&nbsp;start&nbsp;a&nbsp;new&nbsp;game.<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+bool<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;True&nbsp;if&nbsp;success,&nbsp;False&nbsp;otherwise.</tt></dd></dl>
+
+<dl><dt><a name="MultiPlayer-get_rotation_attr"><strong>get_rotation_attr</strong></a>(self)</dt><dd><tt>Get&nbsp;the&nbsp;direction&nbsp;to&nbsp;rotate&nbsp;the&nbsp;board,&nbsp;the&nbsp;number&nbsp;of&nbsp;row&nbsp;or&nbsp;column<br>
+that&nbsp;is&nbsp;going&nbsp;to&nbsp;rotate&nbsp;and&nbsp;the&nbsp;amount&nbsp;of&nbsp;spaces&nbsp;to&nbsp;rotate.&nbsp;Then<br>
+rotates&nbsp;the&nbsp;board&nbsp;accordint&nbsp;to&nbsp;these&nbsp;parameters.</tt></dd></dl>
+
+<dl><dt><a name="MultiPlayer-get_row_number"><strong>get_row_number</strong></a>(self)</dt><dd><tt>Read&nbsp;from&nbsp;standard&nbsp;input&nbsp;an&nbsp;integer.<br>
+&nbsp;<br>
+Returns<br>
+-------&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;:&nbsp;row&nbsp;number&nbsp;read.</tt></dd></dl>
+
+<dl><dt><a name="MultiPlayer-play_again"><strong>play_again</strong></a>(self)</dt><dd><tt>Return&nbsp;if&nbsp;the&nbsp;player&nbsp;wants&nbsp;to&nbsp;play&nbsp;again.<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+bool<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;True&nbsp;if&nbsp;the&nbsp;player&nbsp;wants&nbsp;to&nbsp;play&nbsp;again.&nbsp;False&nbsp;otherwise.</tt></dd></dl>
+
+<dl><dt><a name="MultiPlayer-read_command"><strong>read_command</strong></a>(self)</dt><dd><tt>'&nbsp;Reads&nbsp;a&nbsp;command&nbsp;from&nbsp;standard&nbsp;input.&nbsp;Only&nbsp;'rotate',&nbsp;'word',&nbsp;'help',&nbsp;<br>
+'exit'&nbsp;are&nbsp;valid.&nbsp;Calls&nbsp;the&nbsp;corresponding&nbsp;function&nbsp;to&nbsp;execute&nbsp;each&nbsp;<br>
+command.</tt></dd></dl>
+
+<dl><dt><a name="MultiPlayer-select_clue"><strong>select_clue</strong></a>(self, subject, num_words, min_length, max_length)</dt><dd><tt>Select&nbsp;a&nbsp;specific&nbsp;type&nbsp;of&nbsp;clue.&nbsp;For&nbsp;this&nbsp;version,&nbsp;it&nbsp;will&nbsp;be&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#BySolution">BySolution</a>.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+subject&nbsp;:&nbsp;<a href="#Subject">Subject</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;subject&nbsp;that&nbsp;will&nbsp;be&nbsp;used&nbsp;into&nbsp;the&nbsp;building&nbsp;clue&nbsp;process.<br>
+num_words&nbsp;:&nbsp;int<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Number&nbsp;of&nbsp;words&nbsp;to&nbsp;be&nbsp;selected<br>
+min_length&nbsp;:&nbsp;int<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Minimun&nbsp;length&nbsp;of&nbsp;a&nbsp;word.<br>
+max_length:&nbsp;int<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Maximun&nbsp;length&nbsp;of&nbsp;a&nbsp;word.</tt></dd></dl>
+
+<dl><dt><a name="MultiPlayer-select_subject"><strong>select_subject</strong></a>(self)</dt><dd><tt>Return&nbsp;a&nbsp;selected&nbsp;subject&nbsp;from&nbsp;the&nbsp;dictionary.<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+<a href="#Subject">Subject</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#Subject">Subject</a>&nbsp;selected&nbsp;by&nbsp;the&nbsp;player.</tt></dd></dl>
+
+<dl><dt><a name="MultiPlayer-setup"><strong>setup</strong></a>(self)</dt><dd><tt>Setup&nbsp;all&nbsp;the&nbsp;configuration&nbsp;of&nbsp;the&nbsp;game&nbsp;before&nbsp;starting.</tt></dd></dl>
+
+<dl><dt><a name="MultiPlayer-turn"><strong>turn</strong></a>(self)</dt><dd><tt>Manages&nbsp;the&nbsp;turns&nbsp;of&nbsp;the&nbsp;player.&nbsp;Call&nbsp;the&nbsp;function&nbsp;to&nbsp;read&nbsp;the<br>
+commands,&nbsp;and&nbsp;display&nbsp;the&nbsp;current&nbsp;state&nbsp;of&nbsp;the&nbsp;game.</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="puzzle.html#Game">Game</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#F25252">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Player">class <strong>Player</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
+    
+<tr><td bgcolor="#F25252"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="Player-__init__"><strong>__init__</strong></a>(self, nickname)</dt></dl>
+
+<dl><dt><a name="Player-set_clue"><strong>set_clue</strong></a>(self, clue)</dt><dd><tt>Set&nbsp;a&nbsp;created&nbsp;clue&nbsp;into&nbsp;the&nbsp;player's&nbsp;clue.&nbsp;<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;clue:&nbsp;<a href="#BySolution">BySolution</a>(<a href="#Clue">Clue</a>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A&nbsp;clue&nbsp;<a href="builtins.html#object">object</a></tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#F25252">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="PracticeMode">class <strong>PracticeMode</strong></a>(<a href="puzzle.html#SinglePlayer">SinglePlayer</a>)</font></td></tr>
+    
+<tr bgcolor="#F25252"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Single&nbsp;player&nbsp;mode&nbsp;of&nbsp;game&nbsp;implemented&nbsp;on&nbsp;version&nbsp;1.&nbsp;<br>
+Subclass&nbsp;managing&nbsp;specific&nbsp;behaviours&nbsp;of&nbsp;the&nbsp;game.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="puzzle.html#PracticeMode">PracticeMode</a></dd>
+<dd><a href="puzzle.html#SinglePlayer">SinglePlayer</a></dd>
+<dd><a href="puzzle.html#Game">Game</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="PracticeMode-is_win"><strong>is_win</strong></a>(self)</dt><dd><tt>Check&nbsp;the&nbsp;winning&nbsp;condition.<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+bool<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;True&nbsp;if&nbsp;success,&nbsp;False&nbsp;otherwhise.</tt></dd></dl>
+
+<dl><dt><a name="PracticeMode-play"><strong>play</strong></a>(self)</dt><dd><tt>Manage&nbsp;the&nbsp;gameplay.&nbsp;Handle&nbsp;the&nbsp;turns.</tt></dd></dl>
+
+<dl><dt><a name="PracticeMode-restart"><strong>restart</strong></a>(self)</dt></dl>
+
+<hr>
+Methods inherited from <a href="puzzle.html#SinglePlayer">SinglePlayer</a>:<br>
+<dl><dt><a name="PracticeMode-__init__"><strong>__init__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="PracticeMode-add_player"><strong>add_player</strong></a>(self, player)</dt></dl>
+
+<dl><dt><a name="PracticeMode-display_current_state"><strong>display_current_state</strong></a>(self)</dt></dl>
+
+<hr>
+Methods inherited from <a href="puzzle.html#Game">Game</a>:<br>
+<dl><dt><a name="PracticeMode-add_board"><strong>add_board</strong></a>(self, board)</dt><dd><tt>Associate&nbsp;a&nbsp;built&nbsp;board&nbsp;to&nbsp;the&nbsp;game.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+board&nbsp;:&nbsp;<a href="#Board">Board</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#Board">Board</a>&nbsp;to&nbsp;be&nbsp;added&nbsp;to&nbsp;the&nbsp;game.</tt></dd></dl>
+
+<dl><dt><a name="PracticeMode-end_current_game"><strong>end_current_game</strong></a>(self)</dt><dd><tt>If&nbsp;the&nbsp;player&nbsp;wants&nbsp;to&nbsp;end&nbsp;the&nbsp;game,&nbsp;sets&nbsp;the&nbsp;variable&nbsp;start_again&nbsp;<br>
+to&nbsp;True.&nbsp;Otherwise&nbsp;exit&nbsp;the&nbsp;game.</tt></dd></dl>
+
+<dl><dt><a name="PracticeMode-find_word"><strong>find_word</strong></a>(self)</dt><dd><tt>Find&nbsp;a&nbsp;word&nbsp;specified&nbsp;by&nbsp;the&nbsp;user.&nbsp;Get&nbsp;the&nbsp;row&nbsp;and&nbsp;the&nbsp;column&nbsp;<br>
+numbers&nbsp;corresponding&nbsp;to&nbsp;initial&nbsp;and&nbsp;the&nbsp;final&nbsp;cells&nbsp;of&nbsp;the&nbsp;word.<br>
+Get&nbsp;the&nbsp;word&nbsp;from&nbsp;the&nbsp;board,&nbsp;and&nbsp;check&nbsp;if&nbsp;the&nbsp;word&nbsp;is&nbsp;valid.<br>
+Display&nbsp;appropiate&nbsp;messages&nbsp;to&nbsp;the&nbsp;user.</tt></dd></dl>
+
+<dl><dt><a name="PracticeMode-get_column_number"><strong>get_column_number</strong></a>(self)</dt><dd><tt>Read&nbsp;from&nbsp;standard&nbsp;input&nbsp;an&nbsp;integer.<br>
+&nbsp;<br>
+Returns<br>
+-------&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;:&nbsp;column&nbsp;number&nbsp;read.</tt></dd></dl>
+
+<dl><dt><a name="PracticeMode-get_direction"><strong>get_direction</strong></a>(self)</dt><dd><tt>Read&nbsp;from&nbsp;standard&nbsp;input&nbsp;a&nbsp;string&nbsp;corresponding&nbsp;to&nbsp;a&nbsp;direction.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Only&nbsp;'right',&nbsp;'left',&nbsp;'up',&nbsp;'down'&nbsp;are&nbsp;possible.<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+str<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;direction&nbsp;read.</tt></dd></dl>
+
+<dl><dt><a name="PracticeMode-get_number_spaces"><strong>get_number_spaces</strong></a>(self, direction)</dt><dd><tt>Read&nbsp;from&nbsp;standard&nbsp;input&nbsp;an&nbsp;integer.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+direction&nbsp;:&nbsp;str<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Direction&nbsp;the&nbsp;board&nbsp;is&nbsp;going&nbsp;to&nbsp;rotate&nbsp;to.<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+int<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Number&nbsp;of&nbsp;spaces&nbsp;read.</tt></dd></dl>
+
+<dl><dt><a name="PracticeMode-get_play_again"><strong>get_play_again</strong></a>(self)</dt><dd><tt>Ask&nbsp;the&nbsp;user&nbsp;if&nbsp;he-she&nbsp;wants&nbsp;to&nbsp;start&nbsp;a&nbsp;new&nbsp;game.<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+bool<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;True&nbsp;if&nbsp;success,&nbsp;False&nbsp;otherwise.</tt></dd></dl>
+
+<dl><dt><a name="PracticeMode-get_rotation_attr"><strong>get_rotation_attr</strong></a>(self)</dt><dd><tt>Get&nbsp;the&nbsp;direction&nbsp;to&nbsp;rotate&nbsp;the&nbsp;board,&nbsp;the&nbsp;number&nbsp;of&nbsp;row&nbsp;or&nbsp;column<br>
+that&nbsp;is&nbsp;going&nbsp;to&nbsp;rotate&nbsp;and&nbsp;the&nbsp;amount&nbsp;of&nbsp;spaces&nbsp;to&nbsp;rotate.&nbsp;Then<br>
+rotates&nbsp;the&nbsp;board&nbsp;accordint&nbsp;to&nbsp;these&nbsp;parameters.</tt></dd></dl>
+
+<dl><dt><a name="PracticeMode-get_row_number"><strong>get_row_number</strong></a>(self)</dt><dd><tt>Read&nbsp;from&nbsp;standard&nbsp;input&nbsp;an&nbsp;integer.<br>
+&nbsp;<br>
+Returns<br>
+-------&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;:&nbsp;row&nbsp;number&nbsp;read.</tt></dd></dl>
+
+<dl><dt><a name="PracticeMode-play_again"><strong>play_again</strong></a>(self)</dt><dd><tt>Return&nbsp;if&nbsp;the&nbsp;player&nbsp;wants&nbsp;to&nbsp;play&nbsp;again.<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+bool<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;True&nbsp;if&nbsp;the&nbsp;player&nbsp;wants&nbsp;to&nbsp;play&nbsp;again.&nbsp;False&nbsp;otherwise.</tt></dd></dl>
+
+<dl><dt><a name="PracticeMode-read_command"><strong>read_command</strong></a>(self)</dt><dd><tt>'&nbsp;Reads&nbsp;a&nbsp;command&nbsp;from&nbsp;standard&nbsp;input.&nbsp;Only&nbsp;'rotate',&nbsp;'word',&nbsp;'help',&nbsp;<br>
+'exit'&nbsp;are&nbsp;valid.&nbsp;Calls&nbsp;the&nbsp;corresponding&nbsp;function&nbsp;to&nbsp;execute&nbsp;each&nbsp;<br>
+command.</tt></dd></dl>
+
+<dl><dt><a name="PracticeMode-select_clue"><strong>select_clue</strong></a>(self, subject, num_words, min_length, max_length)</dt><dd><tt>Select&nbsp;a&nbsp;specific&nbsp;type&nbsp;of&nbsp;clue.&nbsp;For&nbsp;this&nbsp;version,&nbsp;it&nbsp;will&nbsp;be&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#BySolution">BySolution</a>.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+subject&nbsp;:&nbsp;<a href="#Subject">Subject</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;subject&nbsp;that&nbsp;will&nbsp;be&nbsp;used&nbsp;into&nbsp;the&nbsp;building&nbsp;clue&nbsp;process.<br>
+num_words&nbsp;:&nbsp;int<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Number&nbsp;of&nbsp;words&nbsp;to&nbsp;be&nbsp;selected<br>
+min_length&nbsp;:&nbsp;int<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Minimun&nbsp;length&nbsp;of&nbsp;a&nbsp;word.<br>
+max_length:&nbsp;int<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Maximun&nbsp;length&nbsp;of&nbsp;a&nbsp;word.</tt></dd></dl>
+
+<dl><dt><a name="PracticeMode-select_subject"><strong>select_subject</strong></a>(self)</dt><dd><tt>Return&nbsp;a&nbsp;selected&nbsp;subject&nbsp;from&nbsp;the&nbsp;dictionary.<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+<a href="#Subject">Subject</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#Subject">Subject</a>&nbsp;selected&nbsp;by&nbsp;the&nbsp;player.</tt></dd></dl>
+
+<dl><dt><a name="PracticeMode-setup"><strong>setup</strong></a>(self)</dt><dd><tt>Setup&nbsp;all&nbsp;the&nbsp;configuration&nbsp;of&nbsp;the&nbsp;game&nbsp;before&nbsp;starting.</tt></dd></dl>
+
+<dl><dt><a name="PracticeMode-turn"><strong>turn</strong></a>(self)</dt><dd><tt>Manages&nbsp;the&nbsp;turns&nbsp;of&nbsp;the&nbsp;player.&nbsp;Call&nbsp;the&nbsp;function&nbsp;to&nbsp;read&nbsp;the<br>
+commands,&nbsp;and&nbsp;display&nbsp;the&nbsp;current&nbsp;state&nbsp;of&nbsp;the&nbsp;game.</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="puzzle.html#Game">Game</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#F25252">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Score">class <strong>Score</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
+    
+<tr><td bgcolor="#F25252"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="Score-__init__"><strong>__init__</strong></a>(self, nickname, points)</dt></dl>
+
+<dl><dt><a name="Score-__str__"><strong>__str__</strong></a>(self)</dt></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#F25252">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="SimpleMode">class <strong>SimpleMode</strong></a>(<a href="puzzle.html#SinglePlayer">SinglePlayer</a>)</font></td></tr>
+    
+<tr><td bgcolor="#F25252"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="puzzle.html#SimpleMode">SimpleMode</a></dd>
+<dd><a href="puzzle.html#SinglePlayer">SinglePlayer</a></dd>
+<dd><a href="puzzle.html#Game">Game</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="SimpleMode-__init__"><strong>__init__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="SimpleMode-compute_score"><strong>compute_score</strong></a>(self, words, time)</dt></dl>
+
+<dl><dt><a name="SimpleMode-manage_time"><strong>manage_time</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="SimpleMode-play"><strong>play</strong></a>(self)</dt></dl>
+
+<hr>
+Methods inherited from <a href="puzzle.html#SinglePlayer">SinglePlayer</a>:<br>
+<dl><dt><a name="SimpleMode-add_player"><strong>add_player</strong></a>(self, player)</dt></dl>
+
+<dl><dt><a name="SimpleMode-display_current_state"><strong>display_current_state</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="SimpleMode-restart"><strong>restart</strong></a>(self)</dt></dl>
+
+<hr>
+Methods inherited from <a href="puzzle.html#Game">Game</a>:<br>
+<dl><dt><a name="SimpleMode-add_board"><strong>add_board</strong></a>(self, board)</dt><dd><tt>Associate&nbsp;a&nbsp;built&nbsp;board&nbsp;to&nbsp;the&nbsp;game.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+board&nbsp;:&nbsp;<a href="#Board">Board</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#Board">Board</a>&nbsp;to&nbsp;be&nbsp;added&nbsp;to&nbsp;the&nbsp;game.</tt></dd></dl>
+
+<dl><dt><a name="SimpleMode-end_current_game"><strong>end_current_game</strong></a>(self)</dt><dd><tt>If&nbsp;the&nbsp;player&nbsp;wants&nbsp;to&nbsp;end&nbsp;the&nbsp;game,&nbsp;sets&nbsp;the&nbsp;variable&nbsp;start_again&nbsp;<br>
+to&nbsp;True.&nbsp;Otherwise&nbsp;exit&nbsp;the&nbsp;game.</tt></dd></dl>
+
+<dl><dt><a name="SimpleMode-find_word"><strong>find_word</strong></a>(self)</dt><dd><tt>Find&nbsp;a&nbsp;word&nbsp;specified&nbsp;by&nbsp;the&nbsp;user.&nbsp;Get&nbsp;the&nbsp;row&nbsp;and&nbsp;the&nbsp;column&nbsp;<br>
+numbers&nbsp;corresponding&nbsp;to&nbsp;initial&nbsp;and&nbsp;the&nbsp;final&nbsp;cells&nbsp;of&nbsp;the&nbsp;word.<br>
+Get&nbsp;the&nbsp;word&nbsp;from&nbsp;the&nbsp;board,&nbsp;and&nbsp;check&nbsp;if&nbsp;the&nbsp;word&nbsp;is&nbsp;valid.<br>
+Display&nbsp;appropiate&nbsp;messages&nbsp;to&nbsp;the&nbsp;user.</tt></dd></dl>
+
+<dl><dt><a name="SimpleMode-get_column_number"><strong>get_column_number</strong></a>(self)</dt><dd><tt>Read&nbsp;from&nbsp;standard&nbsp;input&nbsp;an&nbsp;integer.<br>
+&nbsp;<br>
+Returns<br>
+-------&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;:&nbsp;column&nbsp;number&nbsp;read.</tt></dd></dl>
+
+<dl><dt><a name="SimpleMode-get_direction"><strong>get_direction</strong></a>(self)</dt><dd><tt>Read&nbsp;from&nbsp;standard&nbsp;input&nbsp;a&nbsp;string&nbsp;corresponding&nbsp;to&nbsp;a&nbsp;direction.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Only&nbsp;'right',&nbsp;'left',&nbsp;'up',&nbsp;'down'&nbsp;are&nbsp;possible.<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+str<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;direction&nbsp;read.</tt></dd></dl>
+
+<dl><dt><a name="SimpleMode-get_number_spaces"><strong>get_number_spaces</strong></a>(self, direction)</dt><dd><tt>Read&nbsp;from&nbsp;standard&nbsp;input&nbsp;an&nbsp;integer.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+direction&nbsp;:&nbsp;str<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Direction&nbsp;the&nbsp;board&nbsp;is&nbsp;going&nbsp;to&nbsp;rotate&nbsp;to.<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+int<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Number&nbsp;of&nbsp;spaces&nbsp;read.</tt></dd></dl>
+
+<dl><dt><a name="SimpleMode-get_play_again"><strong>get_play_again</strong></a>(self)</dt><dd><tt>Ask&nbsp;the&nbsp;user&nbsp;if&nbsp;he-she&nbsp;wants&nbsp;to&nbsp;start&nbsp;a&nbsp;new&nbsp;game.<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+bool<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;True&nbsp;if&nbsp;success,&nbsp;False&nbsp;otherwise.</tt></dd></dl>
+
+<dl><dt><a name="SimpleMode-get_rotation_attr"><strong>get_rotation_attr</strong></a>(self)</dt><dd><tt>Get&nbsp;the&nbsp;direction&nbsp;to&nbsp;rotate&nbsp;the&nbsp;board,&nbsp;the&nbsp;number&nbsp;of&nbsp;row&nbsp;or&nbsp;column<br>
+that&nbsp;is&nbsp;going&nbsp;to&nbsp;rotate&nbsp;and&nbsp;the&nbsp;amount&nbsp;of&nbsp;spaces&nbsp;to&nbsp;rotate.&nbsp;Then<br>
+rotates&nbsp;the&nbsp;board&nbsp;accordint&nbsp;to&nbsp;these&nbsp;parameters.</tt></dd></dl>
+
+<dl><dt><a name="SimpleMode-get_row_number"><strong>get_row_number</strong></a>(self)</dt><dd><tt>Read&nbsp;from&nbsp;standard&nbsp;input&nbsp;an&nbsp;integer.<br>
+&nbsp;<br>
+Returns<br>
+-------&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;:&nbsp;row&nbsp;number&nbsp;read.</tt></dd></dl>
+
+<dl><dt><a name="SimpleMode-play_again"><strong>play_again</strong></a>(self)</dt><dd><tt>Return&nbsp;if&nbsp;the&nbsp;player&nbsp;wants&nbsp;to&nbsp;play&nbsp;again.<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+bool<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;True&nbsp;if&nbsp;the&nbsp;player&nbsp;wants&nbsp;to&nbsp;play&nbsp;again.&nbsp;False&nbsp;otherwise.</tt></dd></dl>
+
+<dl><dt><a name="SimpleMode-read_command"><strong>read_command</strong></a>(self)</dt><dd><tt>'&nbsp;Reads&nbsp;a&nbsp;command&nbsp;from&nbsp;standard&nbsp;input.&nbsp;Only&nbsp;'rotate',&nbsp;'word',&nbsp;'help',&nbsp;<br>
+'exit'&nbsp;are&nbsp;valid.&nbsp;Calls&nbsp;the&nbsp;corresponding&nbsp;function&nbsp;to&nbsp;execute&nbsp;each&nbsp;<br>
+command.</tt></dd></dl>
+
+<dl><dt><a name="SimpleMode-select_clue"><strong>select_clue</strong></a>(self, subject, num_words, min_length, max_length)</dt><dd><tt>Select&nbsp;a&nbsp;specific&nbsp;type&nbsp;of&nbsp;clue.&nbsp;For&nbsp;this&nbsp;version,&nbsp;it&nbsp;will&nbsp;be&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#BySolution">BySolution</a>.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+subject&nbsp;:&nbsp;<a href="#Subject">Subject</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;subject&nbsp;that&nbsp;will&nbsp;be&nbsp;used&nbsp;into&nbsp;the&nbsp;building&nbsp;clue&nbsp;process.<br>
+num_words&nbsp;:&nbsp;int<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Number&nbsp;of&nbsp;words&nbsp;to&nbsp;be&nbsp;selected<br>
+min_length&nbsp;:&nbsp;int<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Minimun&nbsp;length&nbsp;of&nbsp;a&nbsp;word.<br>
+max_length:&nbsp;int<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Maximun&nbsp;length&nbsp;of&nbsp;a&nbsp;word.</tt></dd></dl>
+
+<dl><dt><a name="SimpleMode-select_subject"><strong>select_subject</strong></a>(self)</dt><dd><tt>Return&nbsp;a&nbsp;selected&nbsp;subject&nbsp;from&nbsp;the&nbsp;dictionary.<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+<a href="#Subject">Subject</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#Subject">Subject</a>&nbsp;selected&nbsp;by&nbsp;the&nbsp;player.</tt></dd></dl>
+
+<dl><dt><a name="SimpleMode-setup"><strong>setup</strong></a>(self)</dt><dd><tt>Setup&nbsp;all&nbsp;the&nbsp;configuration&nbsp;of&nbsp;the&nbsp;game&nbsp;before&nbsp;starting.</tt></dd></dl>
+
+<dl><dt><a name="SimpleMode-turn"><strong>turn</strong></a>(self)</dt><dd><tt>Manages&nbsp;the&nbsp;turns&nbsp;of&nbsp;the&nbsp;player.&nbsp;Call&nbsp;the&nbsp;function&nbsp;to&nbsp;read&nbsp;the<br>
+commands,&nbsp;and&nbsp;display&nbsp;the&nbsp;current&nbsp;state&nbsp;of&nbsp;the&nbsp;game.</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="puzzle.html#Game">Game</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#F25252">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="SinglePlayer">class <strong>SinglePlayer</strong></a>(<a href="puzzle.html#Game">Game</a>)</font></td></tr>
+    
+<tr><td bgcolor="#F25252"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="puzzle.html#SinglePlayer">SinglePlayer</a></dd>
+<dd><a href="puzzle.html#Game">Game</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="SinglePlayer-__init__"><strong>__init__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="SinglePlayer-add_player"><strong>add_player</strong></a>(self, player)</dt></dl>
+
+<dl><dt><a name="SinglePlayer-display_current_state"><strong>display_current_state</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="SinglePlayer-restart"><strong>restart</strong></a>(self)</dt></dl>
+
+<hr>
+Methods inherited from <a href="puzzle.html#Game">Game</a>:<br>
+<dl><dt><a name="SinglePlayer-add_board"><strong>add_board</strong></a>(self, board)</dt><dd><tt>Associate&nbsp;a&nbsp;built&nbsp;board&nbsp;to&nbsp;the&nbsp;game.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+board&nbsp;:&nbsp;<a href="#Board">Board</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#Board">Board</a>&nbsp;to&nbsp;be&nbsp;added&nbsp;to&nbsp;the&nbsp;game.</tt></dd></dl>
+
+<dl><dt><a name="SinglePlayer-end_current_game"><strong>end_current_game</strong></a>(self)</dt><dd><tt>If&nbsp;the&nbsp;player&nbsp;wants&nbsp;to&nbsp;end&nbsp;the&nbsp;game,&nbsp;sets&nbsp;the&nbsp;variable&nbsp;start_again&nbsp;<br>
+to&nbsp;True.&nbsp;Otherwise&nbsp;exit&nbsp;the&nbsp;game.</tt></dd></dl>
+
+<dl><dt><a name="SinglePlayer-find_word"><strong>find_word</strong></a>(self)</dt><dd><tt>Find&nbsp;a&nbsp;word&nbsp;specified&nbsp;by&nbsp;the&nbsp;user.&nbsp;Get&nbsp;the&nbsp;row&nbsp;and&nbsp;the&nbsp;column&nbsp;<br>
+numbers&nbsp;corresponding&nbsp;to&nbsp;initial&nbsp;and&nbsp;the&nbsp;final&nbsp;cells&nbsp;of&nbsp;the&nbsp;word.<br>
+Get&nbsp;the&nbsp;word&nbsp;from&nbsp;the&nbsp;board,&nbsp;and&nbsp;check&nbsp;if&nbsp;the&nbsp;word&nbsp;is&nbsp;valid.<br>
+Display&nbsp;appropiate&nbsp;messages&nbsp;to&nbsp;the&nbsp;user.</tt></dd></dl>
+
+<dl><dt><a name="SinglePlayer-get_column_number"><strong>get_column_number</strong></a>(self)</dt><dd><tt>Read&nbsp;from&nbsp;standard&nbsp;input&nbsp;an&nbsp;integer.<br>
+&nbsp;<br>
+Returns<br>
+-------&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;:&nbsp;column&nbsp;number&nbsp;read.</tt></dd></dl>
+
+<dl><dt><a name="SinglePlayer-get_direction"><strong>get_direction</strong></a>(self)</dt><dd><tt>Read&nbsp;from&nbsp;standard&nbsp;input&nbsp;a&nbsp;string&nbsp;corresponding&nbsp;to&nbsp;a&nbsp;direction.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Only&nbsp;'right',&nbsp;'left',&nbsp;'up',&nbsp;'down'&nbsp;are&nbsp;possible.<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+str<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;direction&nbsp;read.</tt></dd></dl>
+
+<dl><dt><a name="SinglePlayer-get_number_spaces"><strong>get_number_spaces</strong></a>(self, direction)</dt><dd><tt>Read&nbsp;from&nbsp;standard&nbsp;input&nbsp;an&nbsp;integer.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+direction&nbsp;:&nbsp;str<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Direction&nbsp;the&nbsp;board&nbsp;is&nbsp;going&nbsp;to&nbsp;rotate&nbsp;to.<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+int<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Number&nbsp;of&nbsp;spaces&nbsp;read.</tt></dd></dl>
+
+<dl><dt><a name="SinglePlayer-get_play_again"><strong>get_play_again</strong></a>(self)</dt><dd><tt>Ask&nbsp;the&nbsp;user&nbsp;if&nbsp;he-she&nbsp;wants&nbsp;to&nbsp;start&nbsp;a&nbsp;new&nbsp;game.<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+bool<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;True&nbsp;if&nbsp;success,&nbsp;False&nbsp;otherwise.</tt></dd></dl>
+
+<dl><dt><a name="SinglePlayer-get_rotation_attr"><strong>get_rotation_attr</strong></a>(self)</dt><dd><tt>Get&nbsp;the&nbsp;direction&nbsp;to&nbsp;rotate&nbsp;the&nbsp;board,&nbsp;the&nbsp;number&nbsp;of&nbsp;row&nbsp;or&nbsp;column<br>
+that&nbsp;is&nbsp;going&nbsp;to&nbsp;rotate&nbsp;and&nbsp;the&nbsp;amount&nbsp;of&nbsp;spaces&nbsp;to&nbsp;rotate.&nbsp;Then<br>
+rotates&nbsp;the&nbsp;board&nbsp;accordint&nbsp;to&nbsp;these&nbsp;parameters.</tt></dd></dl>
+
+<dl><dt><a name="SinglePlayer-get_row_number"><strong>get_row_number</strong></a>(self)</dt><dd><tt>Read&nbsp;from&nbsp;standard&nbsp;input&nbsp;an&nbsp;integer.<br>
+&nbsp;<br>
+Returns<br>
+-------&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;:&nbsp;row&nbsp;number&nbsp;read.</tt></dd></dl>
+
+<dl><dt><a name="SinglePlayer-play_again"><strong>play_again</strong></a>(self)</dt><dd><tt>Return&nbsp;if&nbsp;the&nbsp;player&nbsp;wants&nbsp;to&nbsp;play&nbsp;again.<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+bool<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;True&nbsp;if&nbsp;the&nbsp;player&nbsp;wants&nbsp;to&nbsp;play&nbsp;again.&nbsp;False&nbsp;otherwise.</tt></dd></dl>
+
+<dl><dt><a name="SinglePlayer-read_command"><strong>read_command</strong></a>(self)</dt><dd><tt>'&nbsp;Reads&nbsp;a&nbsp;command&nbsp;from&nbsp;standard&nbsp;input.&nbsp;Only&nbsp;'rotate',&nbsp;'word',&nbsp;'help',&nbsp;<br>
+'exit'&nbsp;are&nbsp;valid.&nbsp;Calls&nbsp;the&nbsp;corresponding&nbsp;function&nbsp;to&nbsp;execute&nbsp;each&nbsp;<br>
+command.</tt></dd></dl>
+
+<dl><dt><a name="SinglePlayer-select_clue"><strong>select_clue</strong></a>(self, subject, num_words, min_length, max_length)</dt><dd><tt>Select&nbsp;a&nbsp;specific&nbsp;type&nbsp;of&nbsp;clue.&nbsp;For&nbsp;this&nbsp;version,&nbsp;it&nbsp;will&nbsp;be&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#BySolution">BySolution</a>.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+subject&nbsp;:&nbsp;<a href="#Subject">Subject</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;subject&nbsp;that&nbsp;will&nbsp;be&nbsp;used&nbsp;into&nbsp;the&nbsp;building&nbsp;clue&nbsp;process.<br>
+num_words&nbsp;:&nbsp;int<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Number&nbsp;of&nbsp;words&nbsp;to&nbsp;be&nbsp;selected<br>
+min_length&nbsp;:&nbsp;int<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Minimun&nbsp;length&nbsp;of&nbsp;a&nbsp;word.<br>
+max_length:&nbsp;int<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Maximun&nbsp;length&nbsp;of&nbsp;a&nbsp;word.</tt></dd></dl>
+
+<dl><dt><a name="SinglePlayer-select_subject"><strong>select_subject</strong></a>(self)</dt><dd><tt>Return&nbsp;a&nbsp;selected&nbsp;subject&nbsp;from&nbsp;the&nbsp;dictionary.<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+<a href="#Subject">Subject</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#Subject">Subject</a>&nbsp;selected&nbsp;by&nbsp;the&nbsp;player.</tt></dd></dl>
+
+<dl><dt><a name="SinglePlayer-setup"><strong>setup</strong></a>(self)</dt><dd><tt>Setup&nbsp;all&nbsp;the&nbsp;configuration&nbsp;of&nbsp;the&nbsp;game&nbsp;before&nbsp;starting.</tt></dd></dl>
+
+<dl><dt><a name="SinglePlayer-turn"><strong>turn</strong></a>(self)</dt><dd><tt>Manages&nbsp;the&nbsp;turns&nbsp;of&nbsp;the&nbsp;player.&nbsp;Call&nbsp;the&nbsp;function&nbsp;to&nbsp;read&nbsp;the<br>
+commands,&nbsp;and&nbsp;display&nbsp;the&nbsp;current&nbsp;state&nbsp;of&nbsp;the&nbsp;game.</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="puzzle.html#Game">Game</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#F25252">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Subject">class <strong>Subject</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
+    
+<tr bgcolor="#F25252"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Manage&nbsp;the&nbsp;subjects&nbsp;all&nbsp;the&nbsp;words&nbsp;on&nbsp;a&nbsp;board&nbsp;are&nbsp;related&nbsp;to.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="Subject-__init__"><strong>__init__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Subject-add_word"><strong>add_word</strong></a>(self, word)</dt><dd><tt>Add&nbsp;a&nbsp;word&nbsp;into&nbsp;the&nbsp;subject.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+word&nbsp;:&nbsp;str<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Word&nbsp;to&nbsp;be&nbsp;added.</tt></dd></dl>
+
+<dl><dt><a name="Subject-get_name"><strong>get_name</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;name&nbsp;of&nbsp;the&nbsp;subject.&nbsp;<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+str<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Name&nbsp;of&nbsp;the&nbsp;subject.</tt></dd></dl>
+
+<dl><dt><a name="Subject-get_words"><strong>get_words</strong></a>(self)</dt><dd><tt>Return&nbsp;all&nbsp;the&nbsp;words&nbsp;of&nbsp;the&nbsp;subject.<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+[str]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;All&nbsp;the&nbsp;words&nbsp;of&nbsp;the&nbsp;subject.&nbsp;Can&nbsp;be&nbsp;empty.</tt></dd></dl>
+
+<dl><dt><a name="Subject-import_subject"><strong>import_subject</strong></a>(self, file)</dt><dd><tt>Import&nbsp;the&nbsp;content&nbsp;of&nbsp;a&nbsp;well-formed&nbsp;xml&nbsp;into&nbsp;a&nbsp;subject.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+file&nbsp;:&nbsp;str<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The&nbsp;path&nbsp;of&nbsp;the&nbsp;file.</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#F25252">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="TimeRaceMode">class <strong>TimeRaceMode</strong></a>(<a href="puzzle.html#SinglePlayer">SinglePlayer</a>)</font></td></tr>
+    
+<tr><td bgcolor="#F25252"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="puzzle.html#TimeRaceMode">TimeRaceMode</a></dd>
+<dd><a href="puzzle.html#SinglePlayer">SinglePlayer</a></dd>
+<dd><a href="puzzle.html#Game">Game</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="TimeRaceMode-__init__"><strong>__init__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="TimeRaceMode-compute_score"><strong>compute_score</strong></a>(self, words, time)</dt></dl>
+
+<dl><dt><a name="TimeRaceMode-is_time_over"><strong>is_time_over</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="TimeRaceMode-manage_time"><strong>manage_time</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="TimeRaceMode-play"><strong>play</strong></a>(self)</dt></dl>
+
+<hr>
+Methods inherited from <a href="puzzle.html#SinglePlayer">SinglePlayer</a>:<br>
+<dl><dt><a name="TimeRaceMode-add_player"><strong>add_player</strong></a>(self, player)</dt></dl>
+
+<dl><dt><a name="TimeRaceMode-display_current_state"><strong>display_current_state</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="TimeRaceMode-restart"><strong>restart</strong></a>(self)</dt></dl>
+
+<hr>
+Methods inherited from <a href="puzzle.html#Game">Game</a>:<br>
+<dl><dt><a name="TimeRaceMode-add_board"><strong>add_board</strong></a>(self, board)</dt><dd><tt>Associate&nbsp;a&nbsp;built&nbsp;board&nbsp;to&nbsp;the&nbsp;game.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+board&nbsp;:&nbsp;<a href="#Board">Board</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#Board">Board</a>&nbsp;to&nbsp;be&nbsp;added&nbsp;to&nbsp;the&nbsp;game.</tt></dd></dl>
+
+<dl><dt><a name="TimeRaceMode-end_current_game"><strong>end_current_game</strong></a>(self)</dt><dd><tt>If&nbsp;the&nbsp;player&nbsp;wants&nbsp;to&nbsp;end&nbsp;the&nbsp;game,&nbsp;sets&nbsp;the&nbsp;variable&nbsp;start_again&nbsp;<br>
+to&nbsp;True.&nbsp;Otherwise&nbsp;exit&nbsp;the&nbsp;game.</tt></dd></dl>
+
+<dl><dt><a name="TimeRaceMode-find_word"><strong>find_word</strong></a>(self)</dt><dd><tt>Find&nbsp;a&nbsp;word&nbsp;specified&nbsp;by&nbsp;the&nbsp;user.&nbsp;Get&nbsp;the&nbsp;row&nbsp;and&nbsp;the&nbsp;column&nbsp;<br>
+numbers&nbsp;corresponding&nbsp;to&nbsp;initial&nbsp;and&nbsp;the&nbsp;final&nbsp;cells&nbsp;of&nbsp;the&nbsp;word.<br>
+Get&nbsp;the&nbsp;word&nbsp;from&nbsp;the&nbsp;board,&nbsp;and&nbsp;check&nbsp;if&nbsp;the&nbsp;word&nbsp;is&nbsp;valid.<br>
+Display&nbsp;appropiate&nbsp;messages&nbsp;to&nbsp;the&nbsp;user.</tt></dd></dl>
+
+<dl><dt><a name="TimeRaceMode-get_column_number"><strong>get_column_number</strong></a>(self)</dt><dd><tt>Read&nbsp;from&nbsp;standard&nbsp;input&nbsp;an&nbsp;integer.<br>
+&nbsp;<br>
+Returns<br>
+-------&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;:&nbsp;column&nbsp;number&nbsp;read.</tt></dd></dl>
+
+<dl><dt><a name="TimeRaceMode-get_direction"><strong>get_direction</strong></a>(self)</dt><dd><tt>Read&nbsp;from&nbsp;standard&nbsp;input&nbsp;a&nbsp;string&nbsp;corresponding&nbsp;to&nbsp;a&nbsp;direction.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Only&nbsp;'right',&nbsp;'left',&nbsp;'up',&nbsp;'down'&nbsp;are&nbsp;possible.<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+str<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;direction&nbsp;read.</tt></dd></dl>
+
+<dl><dt><a name="TimeRaceMode-get_number_spaces"><strong>get_number_spaces</strong></a>(self, direction)</dt><dd><tt>Read&nbsp;from&nbsp;standard&nbsp;input&nbsp;an&nbsp;integer.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+direction&nbsp;:&nbsp;str<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Direction&nbsp;the&nbsp;board&nbsp;is&nbsp;going&nbsp;to&nbsp;rotate&nbsp;to.<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+int<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Number&nbsp;of&nbsp;spaces&nbsp;read.</tt></dd></dl>
+
+<dl><dt><a name="TimeRaceMode-get_play_again"><strong>get_play_again</strong></a>(self)</dt><dd><tt>Ask&nbsp;the&nbsp;user&nbsp;if&nbsp;he-she&nbsp;wants&nbsp;to&nbsp;start&nbsp;a&nbsp;new&nbsp;game.<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+bool<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;True&nbsp;if&nbsp;success,&nbsp;False&nbsp;otherwise.</tt></dd></dl>
+
+<dl><dt><a name="TimeRaceMode-get_rotation_attr"><strong>get_rotation_attr</strong></a>(self)</dt><dd><tt>Get&nbsp;the&nbsp;direction&nbsp;to&nbsp;rotate&nbsp;the&nbsp;board,&nbsp;the&nbsp;number&nbsp;of&nbsp;row&nbsp;or&nbsp;column<br>
+that&nbsp;is&nbsp;going&nbsp;to&nbsp;rotate&nbsp;and&nbsp;the&nbsp;amount&nbsp;of&nbsp;spaces&nbsp;to&nbsp;rotate.&nbsp;Then<br>
+rotates&nbsp;the&nbsp;board&nbsp;accordint&nbsp;to&nbsp;these&nbsp;parameters.</tt></dd></dl>
+
+<dl><dt><a name="TimeRaceMode-get_row_number"><strong>get_row_number</strong></a>(self)</dt><dd><tt>Read&nbsp;from&nbsp;standard&nbsp;input&nbsp;an&nbsp;integer.<br>
+&nbsp;<br>
+Returns<br>
+-------&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;:&nbsp;row&nbsp;number&nbsp;read.</tt></dd></dl>
+
+<dl><dt><a name="TimeRaceMode-play_again"><strong>play_again</strong></a>(self)</dt><dd><tt>Return&nbsp;if&nbsp;the&nbsp;player&nbsp;wants&nbsp;to&nbsp;play&nbsp;again.<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+bool<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;True&nbsp;if&nbsp;the&nbsp;player&nbsp;wants&nbsp;to&nbsp;play&nbsp;again.&nbsp;False&nbsp;otherwise.</tt></dd></dl>
+
+<dl><dt><a name="TimeRaceMode-read_command"><strong>read_command</strong></a>(self)</dt><dd><tt>'&nbsp;Reads&nbsp;a&nbsp;command&nbsp;from&nbsp;standard&nbsp;input.&nbsp;Only&nbsp;'rotate',&nbsp;'word',&nbsp;'help',&nbsp;<br>
+'exit'&nbsp;are&nbsp;valid.&nbsp;Calls&nbsp;the&nbsp;corresponding&nbsp;function&nbsp;to&nbsp;execute&nbsp;each&nbsp;<br>
+command.</tt></dd></dl>
+
+<dl><dt><a name="TimeRaceMode-select_clue"><strong>select_clue</strong></a>(self, subject, num_words, min_length, max_length)</dt><dd><tt>Select&nbsp;a&nbsp;specific&nbsp;type&nbsp;of&nbsp;clue.&nbsp;For&nbsp;this&nbsp;version,&nbsp;it&nbsp;will&nbsp;be&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#BySolution">BySolution</a>.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+subject&nbsp;:&nbsp;<a href="#Subject">Subject</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;subject&nbsp;that&nbsp;will&nbsp;be&nbsp;used&nbsp;into&nbsp;the&nbsp;building&nbsp;clue&nbsp;process.<br>
+num_words&nbsp;:&nbsp;int<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Number&nbsp;of&nbsp;words&nbsp;to&nbsp;be&nbsp;selected<br>
+min_length&nbsp;:&nbsp;int<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Minimun&nbsp;length&nbsp;of&nbsp;a&nbsp;word.<br>
+max_length:&nbsp;int<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Maximun&nbsp;length&nbsp;of&nbsp;a&nbsp;word.</tt></dd></dl>
+
+<dl><dt><a name="TimeRaceMode-select_subject"><strong>select_subject</strong></a>(self)</dt><dd><tt>Return&nbsp;a&nbsp;selected&nbsp;subject&nbsp;from&nbsp;the&nbsp;dictionary.<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+<a href="#Subject">Subject</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#Subject">Subject</a>&nbsp;selected&nbsp;by&nbsp;the&nbsp;player.</tt></dd></dl>
+
+<dl><dt><a name="TimeRaceMode-setup"><strong>setup</strong></a>(self)</dt><dd><tt>Setup&nbsp;all&nbsp;the&nbsp;configuration&nbsp;of&nbsp;the&nbsp;game&nbsp;before&nbsp;starting.</tt></dd></dl>
+
+<dl><dt><a name="TimeRaceMode-turn"><strong>turn</strong></a>(self)</dt><dd><tt>Manages&nbsp;the&nbsp;turns&nbsp;of&nbsp;the&nbsp;player.&nbsp;Call&nbsp;the&nbsp;function&nbsp;to&nbsp;read&nbsp;the<br>
+commands,&nbsp;and&nbsp;display&nbsp;the&nbsp;current&nbsp;state&nbsp;of&nbsp;the&nbsp;game.</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="puzzle.html#Game">Game</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-configure_instructions"><strong>configure_instructions</strong></a>()</dt><dd><tt>Import&nbsp;the&nbsp;instructions&nbsp;into&nbsp;the&nbsp;program.</tt></dd></dl>
+ <dl><dt><a name="-display_initial_message"><strong>display_initial_message</strong></a>()</dt></dl>
+ <dl><dt><a name="-display_menu"><strong>display_menu</strong></a>()</dt></dl>
+ <dl><dt><a name="-display_single_player_modes"><strong>display_single_player_modes</strong></a>()</dt></dl>
+ <dl><dt><a name="-exit_game"><strong>exit_game</strong></a>()</dt><dd><tt>Display&nbsp;an&nbsp;exit&nbsp;message&nbsp;and&nbsp;exit&nbsp;the&nbsp;program.</tt></dd></dl>
+ <dl><dt><a name="-get_player_nickname"><strong>get_player_nickname</strong></a>()</dt></dl>
+ <dl><dt><a name="-main"><strong>main</strong></a>()</dt><dd><tt>Main&nbsp;function&nbsp;of&nbsp;the&nbsp;program</tt></dd></dl>
+ <dl><dt><a name="-setup"><strong>setup</strong></a>()</dt></dl>
+ <dl><dt><a name="-start_game"><strong>start_game</strong></a>()</dt><dd><tt>Start&nbsp;the&nbsp;game.</tt></dd></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>ascii_uppercase</strong> = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'<br>
+<strong>bool_answers</strong> = ['yes', 'no']<br>
+<strong>commands</strong> = ['help', 'exit', 'rotate', 'find']<br>
+<strong>dictionary</strong> = &lt;puzzle.Dictionary object&gt;<br>
+<strong>directions</strong> = ['right', 'left', 'up', 'down']<br>
+<strong>game</strong> = &lt;puzzle.PracticeMode object&gt;<br>
+<strong>inst</strong> = &lt;puzzle.Instruction object&gt;<br>
+<strong>messages</strong> = {'already_found_word': ' was already found.', 'choose_subject': 'Please, choose a subject...<font color="#c040c0">\n</font>', 'enter_to_continue': '<font color="#c040c0">\n</font>Enter to Continue.', 'error': '<font color="#c040c0">\n</font>An error occurred. Leaving the game.<font color="#c040c0">\n</font>', 'exit_game': '<font color="#c040c0">\n</font>Leaving the game.<font color="#c040c0">\n</font>', 'final_cell': '<font color="#c040c0">\n</font>Please, insert the coordenates of the final cell:', 'get_subject': 'Type here your subject: ', 'good_word': '<font color="#c040c0">\n</font>Congratulations! You just found ', 'highscore': 'NEW HIGHSCORE', 'incorret_format': '<font color="#c040c0">\n</font>ERROR: Incorrect format. It was not added.', ...}</td></tr></table>
+</body></html>
