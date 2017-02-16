@@ -11,7 +11,7 @@ messages = {
 			"already_found_word":" was already found.",
 			"choose_subject":"Please, choose a subject...\n",
 			"error": "\nAn error occurred. Leaving the game.\n",
-			"error_instruction": "\nAn error occurred. There is not instructions file or it has a wrong name. Leaving the game.\n",
+			"error_instruction": "\nAn error occurred. No instructions. Leaving the game.\n",
 			"enter_to_continue":"\nEnter to Continue.",
 			"exit_game": "\nLeaving the game.\n",
 			"final_cell": "\nPlease, insert the coordenates of the final cell:",
@@ -33,6 +33,7 @@ messages = {
 			"invalid_direction": "\nERROR: That is an invalid direction. Only 'right', 'left', 'up', 'down' are possible.",
 			"invalid_menu_option":"\nERROR: Invalid option. Only 'p' for play, 'h' for help and 'e' for exit.\n",
 			"invalid_number_spaces": "\nERROR: Invalid number of spaces.",
+			"invalid_play_again_option": "\nERROR: Invalid option. Only 'yes' or 'no'.",
 			"invalid_row": "\nERROR: That row is not inside the board.",
 			"invalid_subject": "\nERROR: It is not a valid subject. Try again.\n",
 			"it_is_not_a_line": "\nERROR: Those cells does not form a vertical or an horizontal line.",
@@ -60,7 +61,7 @@ class Instruction:
 			f = open(file,'r')
 			self.instruction = f.read()
 		except:
-			print(messages["error"])
+			print(messages["error_instruction"])
 			exit()
 
 	def display(self):
@@ -1047,6 +1048,7 @@ class Game:
 					return True
 				elif answer == "no":
 					return False
+			print(messages["invalid_play_again_option"])
 
 	def end_current_game(self):
 
