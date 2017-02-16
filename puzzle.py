@@ -1317,9 +1317,15 @@ def configure_instructions():
 	inst.import_instruction("instructions.txt")
 
 def display_initial_message():
+	''' Display on the standard output a welcome message.
+
+	'''
 	print (messages["welcome"])
 
 def display_menu():
+	''' Display on the standard output a welcome message.
+
+	'''
 	print (messages["menu"])
 
 def display_single_player_modes():
