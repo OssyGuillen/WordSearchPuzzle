@@ -1,8 +1,16 @@
+''' Implementation of a non-static version of the game Word Search Puzzle.
+
+'''
+
 from random import shuffle, randint, sample
 from string import ascii_uppercase
 import xml.etree.ElementTree as ET
 import glob, os, time, re
 
+
+__author__ = "Oscar Guillen, Patricia Reinoso"
+__date__ = "17/02/2017"
+__version__ = "1"
 
 commands = ["help","exit","rotate","find"]
 bool_answers = ["yes","no"]
@@ -11,16 +19,19 @@ messages = {
 			"already_found_word":" was already found.",
 			"choose_subject":"Please, choose a subject...\n",
 			"error": "\nAn error occurred. Leaving the game.\n",
-			"error_instruction": "\nAn error occurred. No instructions. Leaving the game.\n",
+			"error_instruction": "\nAn error occurred. No instructions. "\
+								"Leaving the game.\n",
 			"enter_to_continue":"\nEnter to Continue.",
 			"exit_game": "\nLeaving the game.\n",
 			"final_cell": "\nPlease, insert the coordinates of the final cell:",
 			"good_word":"\nCongratulations! You just found ",
 			"highscore": "NEW HIGHSCORE",
 			"incorret_format":"\nERROR: Incorrect format. It was not added.",
-			"incorret_format_clue":"\nERROR: Incorrect format. It was not selected.",
+			"incorret_format_clue":"\nERROR: Incorrect format. It was not "\
+									"selected.",
 			"incorret_word":" is not on the list.", 
-			"initial_cell": "\nPlease, insert the coordinates of the initial cell:",
+			"initial_cell": "\nPlease, insert the coordinates of the initial"\
+							" cell:",
 			"insert_column_number": "Column number ?  ",
 			"insert_command": "\nAction [rotate|find|help|exit] ? ",
 			"insert_direction": "Direction [up|down|right|left] ? ",
@@ -29,18 +40,25 @@ messages = {
 			"insert_row_number": "Row number ?  ",
 			"invalid_cell": "\nERROR: That cell is not inside the board.",
 			"invalid_column": "\nERROR: That column is not inside the board.",
-			"invalid_command": "\nERROR: That is an invalid command. Only 'rotate', 'find', 'help', 'exit' are possible.\n",
-			"invalid_direction": "\nERROR: That is an invalid direction. Only 'right', 'left', 'up', 'down' are possible.",
-			"invalid_menu_option":"\nERROR: Invalid option. Only 'p' for play, 'h' for help and 'e' for exit.\n",
+			"invalid_command": "\nERROR: That is an invalid command. Only "\
+							"'rotate', 'find', 'help', 'exit' are possible.\n",
+			"invalid_direction": "\nERROR: That is an invalid direction. Only"\
+								" 'right', 'left', 'up', 'down' are possible.",
+			"invalid_menu_option":"\nERROR: Invalid option. Only 'p' for play,"\
+									" 'h' for help and 'e' for exit.\n",
 			"invalid_number_spaces": "\nERROR: Invalid number of spaces.",
-			"invalid_play_again_option": "\nERROR: Invalid option. Only 'yes' or 'no'.",
+			"invalid_play_again_option": "\nERROR: Invalid option. Only 'yes'"\
+										" or 'no'.",
 			"invalid_row": "\nERROR: That row is not inside the board.",
-			"invalid_subject": "\nERROR: It is not a valid subject. Try again.\n",
-			"it_is_not_a_line": "\nERROR: The cells must form a vertical or a horizontal line of at least 3 letters.",
+			"invalid_subject": "\nERROR: It is not a valid subject. Try "\
+								"again.\n",
+			"it_is_not_a_line": "\nERROR: The cells must form a vertical or a"\
+								" horizontal line of at least 3 letters.",
 			"it_is_not_an_integer": "\nERROR: It must be an integer.",
 			"menu": "MENU\n\n[p] Play\n[h] Help\n[e] Exit\n",
 			"play_again": "\n\nPlay again [yes|no] ? ",
-			"separator": "\n----------------------------------------------------------\n",
+			"separator": "\n-----------------------------------------------"\
+						"-----------------\n",
 			"setting_up": "Setting up...",
 			"single_player_modes":"MODE\n\nPractice mode\n",
 			"starting":"Starting...",
@@ -81,23 +99,6 @@ class Instruction:
 
 		'''
 		print(self.instruction)
-
-class Player:
-
-	def __init__(self, nickname):
-		self.nickname = nickname
-		self.clue = None
-
-	def set_clue(self, clue):
-		''' Set a created clue into the player's clue. 
-
-		Parameters
-		----------
-			clue: BySolution(Clue)
-				A clue object
-
-		'''
-		pass
 
 class Board:
 	''' Manage the board where the words to be found are placed.
@@ -149,10 +150,6 @@ class Board:
 		self.original_grid = []
 		for row in self.current_grid:
 			self.original_grid.append(list(row))
-
-	def restart_board(self):
-	# Restart the board to its original state
-		pass
 
 	def is_valid_row(self,row):
 		""" Check if the row number is inside the grid.
@@ -651,7 +648,8 @@ class Dictionary:
 				for file in files:
 					if file.endswith(".xml"):
 						new_subject = Subject()
-						correct = new_subject.import_subject(os.path.join(root, file))
+						correct = new_subject.import_subject(os.path.join(root,\
+								file))
 						if correct:
 							self.add_subject(new_subject)
 							num_of_correct_subjects += 1
@@ -847,70 +845,19 @@ class Clue:
 		'''
 		return self.words_not_found
 
-
-class BySubject(Clue):
-
-	def display (self):
-		pass
-
 class BySolution(Clue):
 	''' Subclass that displays all the words in the Clue.
 
 	''' 
 
 	def display (self):
-		''' Display on the standard output the name of the subject and the complete
-			list of words that the player needs to find.
+		''' Display on the standard output the name of the subject and the 
+			complete`list of words that the player needs to find.
 
 		'''
 		print(self.subject_name + ": ")
 		print(self.words_not_found)
 		
-class ByLetters(Clue):
-
-	def display (self):
-		pass
-		
-class ByLength(Clue):
-
-	def display (self):
-		pass
-
-
-class Score:
-	
-	def __init__ (self, nickname, points):
-		self.nickname = nickname
-		self.points = points
-
-	def __str__(self):
-		pass
-
-class HighScores:
-
-	def __init__(self):
-		self.simple_mode = []
-		self.racetime_mode = []
-
-	def add_simple_mode_highscore(self, score):
-		pass
-	
-	def add_race_time_mode_highscore(self, score):
-		pass
-
-	def import_highscores(self, file):
-		pass
-		
-	def export_highscores(self, file):
-		pass
-
-	def is_highscore(self, score):
-		pass
-
-	def display(self):
-		pass
-
-
 class Game:
 	''' Superclass. Manage information of a game on its different modes.
 
@@ -1030,7 +977,7 @@ class Game:
 		word = self.board.get_word(row1,column1,row2,column2)
 		if word != None:
 			if not self.clue.word_in_clue(word):
-				print("'" + word + "'"+ messages["incorret_word"])
+				print("\n'" + word + "'"+ messages["incorret_word"])
 				return
 			if self.clue.word_already_found(word):
 				print("'" + word + "'" + messages["already_found_word"])
@@ -1184,24 +1131,8 @@ class Game:
 		'''
 		return self.start_again
 
-class SinglePlayer(Game):
 
-	def __init__(self):
-		self.player = None
-
-	def add_player(self,player):
-		pass
-
-	def display_current_state(self):
-	# Display the board, the list of words according to the clue
-		pass
-
-	def restart(self):
-	# Version 1.0
-		pass
-
-
-class PracticeMode(SinglePlayer):
+class PracticeMode(Game):
 	''' Single player mode of game implemented on version 1. 
 		Subclass managing specific behaviours of the game.
 
@@ -1229,79 +1160,6 @@ class PracticeMode(SinglePlayer):
 				print(messages["win"])
 				self.end_current_game()
 		
-	def restart(self):
-		pass
-		
-class SimpleMode(SinglePlayer):
-
-	def __init__(self):
-		self.initial_time = 0
-		
-	def play(self):
-		pass
-		
-	def manage_time(self):
-	# Starts the time
-	# Thread 
-		pass
-
-	def compute_score(self, words, time):
-		pass
-
-
-class TimeRaceMode(SinglePlayer):
-
-	def __init__(self):
-		self.initial_time = 0
-		self.final_time = 0
-
-	def manage_time(self):
-	# Takes the time
-		pass
-
-	def is_time_over(self):
-		pass
-	
-	def play(self):
-		pass
-
-	def compute_score(self, words, time):
-		pass
-
-class MultiPlayer(Game):
-
-	def __init__ (self, player1, player2):
-		self.player1 = player1
-		self.player2 = player2
-		self.current_player = player1
-		self.time_per_turn = 0
-
-	def display_current_state(self):
-	# Display the board, the list of words according to the clue
-	# The name of the player in turn
-		pass
-
-	def set_current_player(self):
-	# change of current_player
-		pass
-
-	def manage_time(self):
-	# take the time corresponding to each turn
-		pass
-
-	def play(self):
-		pass
-
-	def is_time_over(self):
-		pass
-
-	def display_winner(self):
-		pass
-
-	def restart(self):
-	# Setup of the game again, keeping the same players.
-		pass
-
 # Dictionary of words.
 dictionary = Dictionary()
 
@@ -1312,7 +1170,9 @@ game = PracticeMode()
 inst = Instruction()
 
 def configure_instructions():
-	''' Import the instructions into the program. '''
+	''' Import the instructions into the program. 
+
+	'''
 
 	inst.import_instruction("./rules/instructions.txt")
 
@@ -1327,16 +1187,6 @@ def display_menu():
 
 	'''
 	print (messages["menu"])
-
-def display_single_player_modes():
-	print (messages["single_player_modes"])
-
-def get_player_nickname():
-	pass
-
-
-def setup():
-	pass
 
 def start_game():
 	''' Start the game. '''
