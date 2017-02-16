@@ -1,7 +1,7 @@
 from random import shuffle, randint, sample
 from string import ascii_uppercase
 import xml.etree.ElementTree as ET
-import glob, os, time
+import glob, os, time, re
 
 
 commands = ["help","exit","rotate","find"]
@@ -11,6 +11,7 @@ messages = {
 			"already_found_word":" was already found.",
 			"choose_subject":"Please, choose a subject...\n",
 			"error": "\nAn error occurred. Leaving the game.\n",
+			"error_instruction": "\nAn error occurred. There is not instructions file or it has a wrong name. Leaving the game.\n",
 			"enter_to_continue":"\nEnter to Continue.",
 			"exit_game": "\nLeaving the game.\n",
 			"final_cell": "\nPlease, insert the coordenates of the final cell:",
@@ -60,6 +61,7 @@ class Instruction:
 			self.instruction = f.read()
 		except:
 			print(messages["error"])
+			exit()
 
 	def display(self):
 		print(self.instruction)
@@ -528,8 +530,12 @@ class Subject:
 			for child in root:
 				if child. tag == "word":
 					new_word = child.text
-					self.add_word(new_word)
-					words += 1
+					# Parsing a string using Regular Expression
+					# re from Python Regular expression operations
+					# Source code: https://docs.python.org/3.4/library/re.html
+					if re.match('^[a-zA-Z]+$', new_word) is not None:
+						self.add_word(new_word)
+						words += 1
 		else:
 			return False
 		return words >= 12
