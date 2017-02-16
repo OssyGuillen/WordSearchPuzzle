@@ -1314,7 +1314,7 @@ inst = Instruction()
 def configure_instructions():
 	''' Import the instructions into the program. '''
 
-	inst.import_instruction("instructions.txt")
+	inst.import_instruction("./rules/instructions.txt")
 
 def display_initial_message():
 	''' Display on the standard output a welcome message.
