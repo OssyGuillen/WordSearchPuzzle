@@ -570,11 +570,12 @@ class Subject:
 					# re from Python Regular expression operations
 					# Source code: https://docs.python.org/3.4/library/re.html
 					if re.match('^[a-zA-Z]+$', new_word) is not None:
-						self.add_word(new_word)
-						words += 1
+						if new_word not in self.content:
+							self.add_word(new_word)
+							words += 1
 		else:
 			return False
-		return words >= 12
+		return words >= 10
 
 
 	def get_name(self):
@@ -717,7 +718,7 @@ class Clue:
 
 		i = 0
 		while lim > 0 and i < len(words):
-			if len(words[i]) <= max_length and len(words[i]) >= min_length:
+			if len(words[i]) <= max_length and len(words[i]) >= min_length and words[i] not in self.words_not_found:
 				self.add_word_to_not_found(words[i].upper())
 				lim -= 1
 			i += 1
